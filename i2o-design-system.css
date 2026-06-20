@@ -1,0 +1,803 @@
+/*
+ * ═══════════════════════════════════════════════════════════════
+ * INWARD2ONWARD LLC — CANONICAL DESIGN SYSTEM
+ * i2o-design-system.css
+ * Version 1.0 — June 2026
+ * ───────────────────────────────────────────────────────────────
+ * Source of truth for all I2O web properties.
+ * Every color, type scale, gradient, component style, and spacing
+ * value used across the following builds:
+ *   - i2o-one-pager.html
+ *   - gbc-client.html (Gap / Bottleneck / Cliff coaching tool)
+ *   - gbc-admin.html
+ *   - i2o-atlas-intake (intake.inward2onward.com)
+ *   - Case Study Intelligence System (cases.inward2onward.com)
+ *   - inward2onward.com website
+ *
+ * USAGE:
+ *   <link href="/assets/i2o-design-system.css" rel="stylesheet" />
+ *   Or copy the :root block into any <style> tag for standalone files.
+ *
+ * FONTS (load before this stylesheet):
+ *   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+ * ═══════════════════════════════════════════════════════════════
+ */
+
+/* ─────────────────────────────────────────────
+   RESET
+───────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─────────────────────────────────────────────
+   DESIGN TOKENS — CSS CUSTOM PROPERTIES
+   Reference these everywhere. Never hardcode.
+───────────────────────────────────────────── */
+:root {
+
+  /* ── BRAND COLORS ── */
+  --i2o-blue:        #3B82F6;   /* Primary blue — CTAs, links, accents */
+  --i2o-blue-dark:   #1D4ED8;   /* Dark blue — button gradients, hover */
+  --i2o-blue-mid:    #2563EB;   /* Mid blue — header bands */
+  --i2o-indigo:      #6366F1;   /* Indigo — secondary accent, gradients */
+  --i2o-indigo-dark: #4F46E5;   /* Dark indigo — header band gradient end */
+
+  /* ── NAVY FOUNDATION (dark surfaces) ── */
+  --i2o-navy:        #0a0f1e;   /* Page background, html background */
+  --i2o-navy-2:      #0d1424;   /* Card backgrounds, input backgrounds */
+  --i2o-navy-3:      #111827;   /* Secondary card backgrounds */
+  --i2o-navy-4:      #0f1f3d;   /* CTA block backgrounds */
+
+  /* ── SLATE SCALE (text + borders on dark) ── */
+  --i2o-s1:          #f1f5f9;   /* Primary text on dark */
+  --i2o-s2:          #94a3b8;   /* Secondary text on dark */
+  --i2o-s3:          #475569;   /* Tertiary text, placeholders, hints */
+  --i2o-s4:          #1e293b;   /* Disabled states, deepest dark text */
+  --i2o-border:      #1e3a5f;   /* All borders on dark surfaces */
+
+  /* ── SLATE SCALE (text + borders on light) ── */
+  --i2o-slate-50:    #F8FAFC;   /* Light page backgrounds */
+  --i2o-slate-200:   #E2E8F0;   /* Borders on light surfaces */
+  --i2o-slate-600:   #475569;   /* Secondary text on light */
+  --i2o-slate-700:   #334155;   /* Body text on light */
+  --i2o-slate-800:   #1E293B;   /* Headings on light */
+
+  /* ── STATUS COLORS ── */
+  --i2o-green:       #10B981;   /* Success, published, confirmed */
+  --i2o-amber:       #F59E0B;   /* Warning, draft, gap detected */
+  --i2o-red:         #EF4444;   /* Error states */
+  --i2o-violet:      #8B5CF6;   /* Info, committed states */
+  --i2o-gray:        #9CA3AF;   /* Archived, disabled */
+
+  /* ── CATEGORY COLORS (AI agent types) ── */
+  --i2o-cat-customer-bg:   #EFF6FF;  /* blue-50 */
+  --i2o-cat-customer-text: #1D4ED8;  /* blue-700 */
+  --i2o-cat-creative-bg:   #FAF5FF;  /* purple-50 */
+  --i2o-cat-creative-text: #7C3AED;  /* purple-700 */
+  --i2o-cat-security-bg:   #FEF2F2;  /* red-50 */
+  --i2o-cat-security-text: #B91C1C;  /* red-700 */
+  --i2o-cat-data-bg:       #F0FDF4;  /* green-50 */
+  --i2o-cat-data-text:     #047857;  /* green-700 */
+
+  /* ── GRADIENTS ── */
+  --i2o-gradient-primary:     linear-gradient(135deg, #1D4ED8, #3B82F6);
+  --i2o-gradient-indigo:      linear-gradient(135deg, #6366F1, #3B82F6);
+  --i2o-gradient-header:      linear-gradient(135deg, #2563EB, #4F46E5);
+  --i2o-gradient-cta-block:   linear-gradient(135deg, #0f1f3d 0%, #111827 100%);
+  --i2o-gradient-page-light:  linear-gradient(135deg, #F8FAFC, rgba(219,234,254,0.3), rgba(224,231,255,0.5));
+  --i2o-gradient-metric-card: linear-gradient(135deg, #EFF6FF, #EEF2FF);
+  --i2o-gradient-card-hover:  linear-gradient(135deg, #EFF6FF, #EEF2FF);
+
+  /* ── TYPOGRAPHY ── */
+  --i2o-font-display: 'Barlow Condensed', sans-serif;
+  --i2o-font-body:    'Inter', sans-serif;
+
+  /* ── TYPE SCALE ── */
+  --i2o-text-xs:   11px;   /* Eyebrows, labels, badges, timestamps */
+  --i2o-text-sm:   12px;   /* Secondary labels, footer notes */
+  --i2o-text-base: 13px;   /* Body text, card descriptions */
+  --i2o-text-md:   14px;   /* Supporting body, table cells */
+  --i2o-text-lg:   15px;   /* Button labels, primary body */
+  --i2o-text-xl:   16px;   /* Section body text */
+  --i2o-text-2xl:  17px;   /* Lead text, question text */
+  --i2o-text-3xl:  20px;   /* Pull quotes */
+  --i2o-text-4xl:  22px;   /* Logo names, section heads */
+  --i2o-text-5xl:  26px;   /* CTA headlines */
+  --i2o-text-6xl:  28px;   /* Admin headings */
+  --i2o-text-7xl:  36px;   /* Confirmation headings */
+  --i2o-text-8xl:  48px;   /* Question headings (mobile) */
+  --i2o-text-9xl:  72px;   /* Positioning statement (desktop) */
+
+  /* ── FONT WEIGHTS ── */
+  --i2o-weight-normal:  400;
+  --i2o-weight-medium:  500;
+  --i2o-weight-semibold: 600;
+  --i2o-weight-bold:    700;
+
+  /* ── LETTER SPACING ── */
+  --i2o-tracking-tight:  -0.01em;  /* Large display headlines */
+  --i2o-tracking-normal: 0;
+  --i2o-tracking-wide:   0.05em;   /* Section titles in caps */
+  --i2o-tracking-wider:  0.06em;   /* Button labels */
+  --i2o-tracking-widest: 0.08em;   /* CTA buttons */
+  --i2o-tracking-label:  0.10em;   /* ATLAS badges, dot labels */
+  --i2o-tracking-eyebrow: 0.14em;  /* Section eyebrows, logo eyebrows */
+
+  /* ── LINE HEIGHTS ── */
+  --i2o-leading-none:    1;
+  --i2o-leading-tight:   1.1;
+  --i2o-leading-snug:    1.4;
+  --i2o-leading-normal:  1.5;
+  --i2o-leading-relaxed: 1.6;
+  --i2o-leading-loose:   1.65;
+  --i2o-leading-looser:  1.7;
+  --i2o-leading-display: 0.95;  /* Oversized display text */
+
+  /* ── BORDER RADIUS ── */
+  --i2o-radius-sm:   4px;
+  --i2o-radius-md:   6px;
+  --i2o-radius-lg:   8px;
+  --i2o-radius-xl:   12px;
+  --i2o-radius-full: 50%;
+
+  /* ── SPACING ── */
+  --i2o-space-1:  4px;
+  --i2o-space-2:  8px;
+  --i2o-space-3:  12px;
+  --i2o-space-4:  16px;
+  --i2o-space-5:  20px;
+  --i2o-space-6:  24px;
+  --i2o-space-7:  28px;
+  --i2o-space-8:  32px;
+  --i2o-space-10: 40px;
+  --i2o-space-12: 48px;
+  --i2o-space-16: 64px;
+
+  /* ── MAX WIDTHS ── */
+  --i2o-max-one-pager:  760px;
+  --i2o-max-tool:       600px;
+  --i2o-max-admin:      860px;
+  --i2o-max-body-text:  560px;
+}
+
+
+/* ─────────────────────────────────────────────
+   BASE
+───────────────────────────────────────────── */
+html {
+  background: var(--i2o-navy);
+}
+
+body {
+  font-family: var(--i2o-font-body);
+  background: var(--i2o-navy);
+  color: var(--i2o-s1);
+  font-size: var(--i2o-text-base);
+  line-height: var(--i2o-leading-relaxed);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--i2o-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.85;
+}
+
+
+/* ─────────────────────────────────────────────
+   TYPOGRAPHY COMPONENTS
+───────────────────────────────────────────── */
+
+/* Eyebrow — section label above headings */
+.i2o-eyebrow {
+  font-family: var(--i2o-font-display);
+  font-size: var(--i2o-text-xs);
+  font-weight: var(--i2o-weight-semibold);
+  letter-spacing: var(--i2o-tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--i2o-blue);
+}
+
+/* Logo name */
+.i2o-logo {
+  font-family: var(--i2o-font-display);
+  font-size: var(--i2o-text-4xl);
+  font-weight: var(--i2o-weight-bold);
+  color: var(--i2o-s1);
+  line-height: var(--i2o-leading-none);
+}
+
+/* Logo eyebrow above logo name */
+.i2o-logo-eyebrow {
+  font-family: var(--i2o-font-display);
+  font-size: var(--i2o-text-xs);
+  font-weight: var(--i2o-weight-semibold);
+  letter-spacing: var(--i2o-tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--i2o-blue);
+  margin-bottom: 4px;
+}
+
+/* Display heading — positioning statement scale */
+.i2o-display {
+  font-family: var(--i2o-font-display);
+  font-size: var(--i2o-text-9xl);
+  font-weight: var(--i2o-weight-bold);
+  line-height: var(--i2o-leading-display);
+  letter-spacing: var(--i2o-tracking-tight);
+  color: var(--i2o-s1);
+}
+
+/* Question heading — GBC tool scale */
+.i2o-q-heading {
+  font-family: var(--i2o-font-display);
+  font-size: var(--i2o-text-9xl);
+  font-weight: var(--i2o-weight-bold);
+  line-height: var(--i2o-leading-none);
+  color: var(--i2o-s1);
+}
+
+/* Section heading — card and section titles */
+.i2o-section-heading {
+  font-family: var(--i2o-font-display);
+  font-size: var(--i2o-text-4xl);
+  font-weight: var(--i2o-weight-bold);
+  color: var(--i2o-s1);
+  line-height: var(--i2o-leading-tight);
+}
+
+/* Body text — standard paragraphs */
+.i2o-body {
+  font-size: var(--i2o-text-base);
+  color: var(--i2o-s2);
+  line-height: var(--i2o-leading-loose);
+}
+
+/* Hint text — italic helper text below fields */
+.i2o-hint {
+  font-size: var(--i2o-text-base);
+  color: var(--i2o-s3);
+  line-height: var(--i2o-leading-relaxed);
+  font-style: italic;
+}
+
+/* Pull quote */
+.i2o-pull-quote {
+  border-left: 4px solid var(--i2o-blue);
+  padding-left: var(--i2o-space-6);
+  font-style: italic;
+  color: var(--i2o-s2);
+  font-size: var(--i2o-text-3xl);
+  line-height: var(--i2o-leading-relaxed);
+}
+
+
+/* ─────────────────────────────────────────────
+   ACCENT RULE — the blue divider between
+   "Built right." and "Accountable throughout."
+───────────────────────────────────────────── */
+.i2o-rule {
+  width: 48px;
+  height: 3px;
+  background: var(--i2o-blue);
+  margin: var(--i2o-space-4) 0;
+}
+
+.i2o-rule--wide {
+  width: 80px;
+}
+
+
+/* ─────────────────────────────────────────────
+   LAYOUT
+───────────────────────────────────────────── */
+.i2o-page {
+  width: 100%;
+  max-width: var(--i2o-max-one-pager);
+  margin: 0 auto;
+  padding: var(--i2o-space-10) var(--i2o-space-5);
+}
+
+.i2o-page--tool {
+  max-width: var(--i2o-max-tool);
+}
+
+.i2o-page--admin {
+  max-width: var(--i2o-max-admin);
+}
+
+
+/* ─────────────────────────────────────────────
+   HEADER BAND — gradient, used on one-pager
+   top bar and case study preview header
+───────────────────────────────────────────── */
+.i2o-header-band {
+  background: var(--i2o-gradient-header);
+  padding: var(--i2o-space-7) var(--i2o-space-8);
+  border-bottom: 1px solid var(--i2o-border);
+}
+
+
+/* ─────────────────────────────────────────────
+   CARDS
+───────────────────────────────────────────── */
+
+/* Standard dark card */
+.i2o-card {
+  background: var(--i2o-navy-2);
+  border: 1px solid var(--i2o-border);
+  border-radius: var(--i2o-radius-lg);
+  padding: var(--i2o-space-5) var(--i2o-space-6);
+}
+
+/* Metric card — gradient blue/indigo */
+.i2o-card--metric {
+  background: var(--i2o-gradient-metric-card);
+  border: 1px solid #E0E7FF;
+  border-radius: var(--i2o-radius-xl);
+  padding: var(--i2o-space-5);
+}
+
+/* CTA block */
+.i2o-card--cta {
+  background: var(--i2o-gradient-cta-block);
+  border: 1px solid var(--i2o-border);
+  border-radius: var(--i2o-radius-lg);
+  padding: var(--i2o-space-8) var(--i2o-space-10);
+}
+
+/* Left-accent card — used for proof items, quotes */
+.i2o-card--accent {
+  background: var(--i2o-navy-2);
+  border: 1px solid var(--i2o-border);
+  border-left: 3px solid var(--i2o-blue);
+  border-radius: 0 var(--i2o-radius-md) var(--i2o-radius-md) 0;
+  padding: var(--i2o-space-4) var(--i2o-space-5);
+}
+
+/* Warning card — gap detection, amber accent */
+.i2o-card--warning {
+  background: var(--i2o-navy-2);
+  border: 1px solid var(--i2o-amber);
+  border-left: 3px solid var(--i2o-amber);
+  border-radius: 0 var(--i2o-radius-md) var(--i2o-radius-md) 0;
+  padding: var(--i2o-space-4) var(--i2o-space-5);
+}
+
+
+/* ─────────────────────────────────────────────
+   BUTTONS
+───────────────────────────────────────────── */
+
+/* Primary — blue gradient */
+.i2o-btn {
+  display: inline-block;
+  font-family: var(--i2o-font-display);
+  font-size: var(--i2o-text-lg);
+  font-weight: var(--i2o-weight-bold);
+  letter-spacing: var(--i2o-tracking-widest);
+  text-transform: uppercase;
+  background: var(--i2o-gradient-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--i2o-radius-md);
+  padding: 13px 32px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  line-height: 1;
+}
+
+.i2o-btn:hover {
+  opacity: 0.88;
+}
+
+/* Primary — full width */
+.i2o-btn--full {
+  width: 100%;
+  text-align: center;
+}
+
+/* Secondary — ghost */
+.i2o-btn--ghost {
+  background: none;
+  border: 1px solid var(--i2o-border);
+  color: var(--i2o-s2);
+  font-family: var(--i2o-font-body);
+  font-size: var(--i2o-text-sm);
+  font-weight: var(--i2o-weight-medium);
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 6px 12px;
+  border-radius: var(--i2o-radius-sm);
+}
+
+.i2o-btn--ghost:hover {
+  border-color: var(--i2o-blue);
+  color: var(--i2o-blue);
+  opacity: 1;
+}
+
+/* Text link button */
+.i2o-btn--text {
+  background: none;
+  border: none;
+  color: var(--i2o-s3);
+  font-family: var(--i2o-font-body);
+  font-size: var(--i2o-text-sm);
+  cursor: pointer;
+  padding: 0;
+}
+
+.i2o-btn--text:hover {
+  color: var(--i2o-s2);
+}
+
+/* Commit / indigo variant */
+.i2o-btn--commit {
+  background: var(--i2o-gradient-indigo);
+}
+
+/* Disabled state */
+.i2o-btn:disabled,
+.i2o-btn--disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+
+/* ─────────────────────────────────────────────
+   BADGES + PILLS
+───────────────────────────────────────────── */
+
+/* ATLAS stage badge */
+.i2o-atlas-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--i2o-navy);
+  border: 1px solid var(--i2o-border);
+  border-radius: var(--i2o-radius-sm);
+  padding: 3px 8px;
+  font-family: var(--i2o-font-display);
+  font-size: var(--i2o-text-xs);
+  font-weight: var(--i2o-weight-semibold);
+  letter-spacing: var(--i2o-tracking-label);
+  color: var(--i2o-blue);
+  text-transform: uppercase;
+}
+
+/* Generic pill */
+.i2o-pill {
+  display: inline-block;
+  background: var(--i2o-navy-3);
+  border: 1px solid var(--i2o-border);
+  border-radius: var(--i2o-radius-sm);
+  padding: 7px 14px;
+  font-size: var(--i2o-text-sm);
+  font-weight: var(--i2o-weight-medium);
+  color: var(--i2o-s2);
+  white-space: nowrap;
+}
+
+/* Audience badges */
+.i2o-badge--prospective {
+  background: var(--i2o-blue);
+  color: #fff;
+  border-radius: var(--i2o-radius-sm);
+  padding: 3px 8px;
+  font-size: var(--i2o-text-xs);
+  font-weight: var(--i2o-weight-semibold);
+}
+
+.i2o-badge--skeptical {
+  background: var(--i2o-indigo);
+  color: #fff;
+  border-radius: var(--i2o-radius-sm);
+  padding: 3px 8px;
+  font-size: var(--i2o-text-xs);
+  font-weight: var(--i2o-weight-semibold);
+}
+
+.i2o-badge--partner {
+  background: var(--i2o-s4);
+  color: #fff;
+  border-radius: var(--i2o-radius-sm);
+  padding: 3px 8px;
+  font-size: var(--i2o-text-xs);
+  font-weight: var(--i2o-weight-semibold);
+}
+
+/* Status badges */
+.i2o-status--published { color: var(--i2o-green); }
+.i2o-status--draft     { color: var(--i2o-amber); }
+.i2o-status--archived  { color: var(--i2o-gray); }
+
+
+/* ─────────────────────────────────────────────
+   FORM ELEMENTS
+───────────────────────────────────────────── */
+.i2o-input,
+.i2o-select,
+.i2o-textarea {
+  width: 100%;
+  background: var(--i2o-navy-2);
+  border: 1px solid var(--i2o-border);
+  border-radius: var(--i2o-radius-md);
+  color: var(--i2o-s1);
+  font-family: var(--i2o-font-body);
+  font-size: var(--i2o-text-base);
+  padding: 10px 12px;
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: none;
+}
+
+.i2o-input:focus,
+.i2o-select:focus,
+.i2o-textarea:focus {
+  border-color: var(--i2o-blue);
+}
+
+.i2o-input::placeholder,
+.i2o-textarea::placeholder {
+  color: var(--i2o-s3);
+}
+
+.i2o-textarea {
+  resize: vertical;
+  min-height: 72px;
+  line-height: var(--i2o-leading-loose);
+}
+
+.i2o-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+  cursor: pointer;
+}
+
+.i2o-select option {
+  background: var(--i2o-navy-2);
+}
+
+.i2o-field-label {
+  display: block;
+  font-size: var(--i2o-text-sm);
+  font-weight: var(--i2o-weight-medium);
+  color: var(--i2o-s2);
+  margin-bottom: 6px;
+  letter-spacing: 0.03em;
+}
+
+.i2o-field-label .required {
+  color: var(--i2o-blue);
+  margin-left: 2px;
+}
+
+.i2o-field-group {
+  margin-bottom: var(--i2o-space-4);
+}
+
+
+/* ─────────────────────────────────────────────
+   PROGRESS SEGMENTS — ATLAS intake stages
+───────────────────────────────────────────── */
+.i2o-progress-track {
+  display: flex;
+  gap: 4px;
+}
+
+.i2o-progress-seg {
+  flex: 1;
+  height: 3px;
+  background: var(--i2o-s4);
+  border-radius: 2px;
+  transition: background 0.4s;
+}
+
+.i2o-progress-seg--active {
+  background: var(--i2o-blue);
+}
+
+.i2o-progress-seg--done {
+  background: var(--i2o-blue-dark);
+}
+
+
+/* ─────────────────────────────────────────────
+   DASHBOARD TABLE — admin views
+───────────────────────────────────────────── */
+.i2o-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--i2o-text-base);
+}
+
+.i2o-table th {
+  text-align: left;
+  font-family: var(--i2o-font-display);
+  font-size: var(--i2o-text-xs);
+  font-weight: var(--i2o-weight-semibold);
+  letter-spacing: var(--i2o-tracking-wide);
+  text-transform: uppercase;
+  color: var(--i2o-s3);
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--i2o-border);
+}
+
+.i2o-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--i2o-border);
+  color: var(--i2o-s2);
+  vertical-align: middle;
+}
+
+.i2o-table tr:last-child td {
+  border-bottom: none;
+}
+
+.i2o-table tr:hover td {
+  background: var(--i2o-navy-2);
+}
+
+/* Status dot */
+.i2o-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--i2o-s4);
+}
+
+.i2o-dot--active    { background: var(--i2o-green); }
+.i2o-dot--committed { background: var(--i2o-indigo); }
+.i2o-dot--warning   { background: var(--i2o-amber); }
+
+
+/* ─────────────────────────────────────────────
+   CONFIRMATION / SUCCESS SCREEN
+───────────────────────────────────────────── */
+.i2o-confirm-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--i2o-radius-full);
+  background: var(--i2o-gradient-indigo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #fff;
+  margin-bottom: var(--i2o-space-6);
+}
+
+.i2o-confirm-heading {
+  font-family: var(--i2o-font-display);
+  font-size: var(--i2o-text-7xl);
+  font-weight: var(--i2o-weight-bold);
+  color: var(--i2o-s1);
+  margin-bottom: var(--i2o-text-sm);
+}
+
+
+/* ─────────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────────── */
+.i2o-footer {
+  border-top: 1px solid var(--i2o-border);
+  padding-top: var(--i2o-space-5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--i2o-space-4);
+}
+
+.i2o-footer-note {
+  font-size: var(--i2o-text-xs);
+  color: var(--i2o-s3);
+  line-height: var(--i2o-leading-normal);
+}
+
+.i2o-footer-tag {
+  font-family: var(--i2o-font-display);
+  font-size: var(--i2o-text-xs);
+  font-weight: var(--i2o-weight-semibold);
+  letter-spacing: var(--i2o-tracking-label);
+  text-transform: uppercase;
+  color: var(--i2o-s3);
+  text-align: right;
+}
+
+
+/* ─────────────────────────────────────────────
+   PRINT STYLES
+───────────────────────────────────────────── */
+@media print {
+  body {
+    background: white !important;
+    color: #1E293B !important;
+  }
+
+  .i2o-header-band {
+    background: #1E293B !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .i2o-card--metric {
+    background: white !important;
+    border: 1px solid #CBD5E1 !important;
+  }
+
+  .i2o-btn,
+  .sticky-toolbar,
+  .footer-cta-button {
+    display: none !important;
+  }
+
+  @page {
+    margin: 1in;
+  }
+}
+
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .i2o-display,
+  .i2o-q-heading {
+    font-size: var(--i2o-text-8xl);
+  }
+
+  .i2o-page {
+    padding: var(--i2o-space-5) var(--i2o-space-4);
+  }
+
+  .i2o-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+/* ─────────────────────────────────────────────
+   UTILITY — two-column grid
+───────────────────────────────────────────── */
+.i2o-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 600px) {
+  .i2o-two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/*
+ * ═══════════════════════════════════════════════════════════════
+ * FORBIDDEN WORDS — never appear in any I2O copy
+ * passionate about · seamless · holistic · transformative
+ * cutting-edge · state-of-the-art · best-in-class · synergy
+ * leverage (as verb) · unlock your potential · journey (business)
+ * exclamation marks in professional copy
+ *
+ * LOCATION — always Glendale AZ, never Phoenix
+ * The Cascalote is also Glendale, never Phoenix
+ *
+ * BRAND VOICE — direct, sardonic, pattern-oriented
+ * "We don't sell AI. We install systems that work."
+ * "Built right. Accountable throughout."
+ * ═══════════════════════════════════════════════════════════════
+ */
