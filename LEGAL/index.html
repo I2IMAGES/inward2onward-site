@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inward2Onward LLC – Legal Policies &amp; SMS Terms</title>
+<style>
+  :root {
+    --brand-blue: #3B82F6;
+    --brand-indigo: #6366F1;
+    --brand-dark: #1E293B;
+    --brand-mid: #334155;
+    --brand-sub: #475569;
+    --brand-border: #E2E8F0;
+    --brand-bg: #F8FAFC;
+    --brand-card: #ffffff;
+    --brand-accent: #1D4ED8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: var(--brand-bg);
+    color: var(--brand-mid);
+    line-height: 1.8;
+    font-size: 15px;
+  }
+  .page-header {
+    background: linear-gradient(135deg, #1E293B 0%, #1D4ED8 60%, #6366F1 100%);
+    padding: 48px 40px 40px;
+    color: white;
+  }
+  .page-header .logo {
+    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 12px;
+  }
+  .page-header h1 {
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: white;
+    margin-bottom: 8px;
+  }
+  .page-header p {
+    font-size: 13px;
+    opacity: 0.65;
+    font-family: 'Arial', sans-serif;
+  }
+  .tab-nav {
+    display: flex;
+    background: white;
+    border-bottom: 1px solid var(--brand-border);
+    padding: 0 40px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 16px 20px;
+    font-size: 13px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
+    color: var(--brand-sub);
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--brand-accent); }
+  .tab-btn.active { color: var(--brand-accent); border-bottom-color: var(--brand-accent); }
+  .policy-panel { display: none; padding: 48px 40px; max-width: 860px; margin: 0 auto; }
+  .policy-panel.active { display: block; }
+  .effective-date {
+    display: inline-block;
+    background: #EFF6FF;
+    color: #1D4ED8;
+    font-size: 11px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 32px;
+  }
+  .policy-panel h2 {
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--brand-dark);
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .policy-panel .intro {
+    font-size: 15px;
+    color: var(--brand-sub);
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--brand-border);
+    font-family: 'Arial', sans-serif;
+    line-height: 1.7;
+  }
+  .section { margin-bottom: 36px; }
+  .section h3 {
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Arial', sans-serif;
+    color: var(--brand-dark);
+    margin-bottom: 10px;
+    letter-spacing: 0.01em;
+  }
+  .section p { margin-bottom: 12px; color: var(--brand-mid); }
+  .section ul { padding-left: 20px; margin-bottom: 12px; }
+  .section ul li { margin-bottom: 6px; color: var(--brand-mid); }
+  .callout {
+    background: #F0F7FF;
+    border-left: 3px solid var(--brand-blue);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 20px 0;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    color: #1E3A5F;
+    line-height: 1.6;
+  }
+  .callout strong { color: #1D4ED8; }
+  .highlight-box {
+    background: #FFF8E7;
+    border: 1px solid #FCD34D;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    color: #92400E;
+  }
+  .contact-block {
+    background: var(--brand-dark);
+    color: white;
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-top: 40px;
+    font-family: 'Arial', sans-serif;
+  }
+  .contact-block p { color: rgba(255,255,255,0.75); font-size: 14px; margin-bottom: 4px; }
+  .contact-block a { color: #93C5FD; text-decoration: none; font-weight: 600; }
+  .contact-block .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 12px;
+  }
+  .cookie-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+    margin: 16px 0;
+  }
+  .cookie-table th {
+    background: var(--brand-dark);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .cookie-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--brand-border);
+    color: var(--brand-mid);
+    vertical-align: top;
+  }
+  .cookie-table tr:nth-child(even) td { background: #F8FAFC; }
+  @media print {
+    .tab-nav { display: none !important; }
+    .policy-panel { display: block !important; page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="logo">Inward2Onward LLC</div>
+  <h1>Legal Policies</h1>
+  <p>Privacy Policy &nbsp;·&nbsp; Cookie Policy &nbsp;·&nbsp; Terms &amp; Conditions &nbsp;·&nbsp; SMS Terms &nbsp;·&nbsp; Effective: May 16, 2025</p>
+</div>
+
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('privacy', this)">Privacy Policy</button>
+  <button class="tab-btn" onclick="showTab('cookies', this)">Cookie Policy</button>
+  <button class="tab-btn" onclick="showTab('terms', this)">Terms &amp; Conditions</button>
+  <button class="tab-btn" onclick="showTab('sms', this)">SMS Terms</button>
+</div>
+
+<!-- ======================== PRIVACY POLICY ======================== -->
+<div id="privacy" class="policy-panel active">
+  <span class="effective-date">Effective: June 19, 2026 &nbsp;·&nbsp; Version 1.1</span>
+  <h2>Privacy Policy</h2>
+  <p class="intro">Inward2Onward LLC ("we," "us," or "our") is an AI-Strategy and Business Consultancy headquartered in Glendale, Arizona. We take the privacy of every person who engages with our website, tools, and services seriously. This policy explains — plainly and completely — what personal information we collect, why we collect it, how we protect it, and what rights you hold over it.</p>
+
+  <div class="section">
+    <h3>1. Who This Policy Covers</h3>
+    <p>This policy applies to all visitors to <strong>inward2onward.com</strong> and any related subdomains, users of our consulting services, purchasers of our digital products, and subscribers to our communications. Our services are intended exclusively for adults. <strong>You must be 18 years of age or older to use our platform.</strong> We do not knowingly collect information from anyone under the age of 18.</p>
+  </div>
+
+  <div class="section">
+    <h3>2. Information We Collect</h3>
+    <p>We collect only what is necessary to deliver our services. This includes:</p>
+    <ul>
+      <li><strong>Contact &amp; Account Information:</strong> Name, email address, phone number, and business name provided when you contact us, complete a form, or purchase a service.</li>
+      <li><strong>Billing &amp; Payment Information:</strong> Payment is processed exclusively through <strong>Stripe, Inc.</strong> We do not store, see, or have access to your full credit card number. Stripe provides us only with a transaction confirmation and billing summary.</li>
+      <li><strong>Communications:</strong> Emails, form submissions, and support messages you send us.</li>
+      <li><strong>CRM Data:</strong> Contact records managed within our CRM platforms (Keap / Thryv) for the purposes of client relationship management, service delivery, and communications you have opted into.</li>
+      <li><strong>Usage &amp; Analytics Data:</strong> Website behavior data (pages visited, time on site, traffic source) collected via <strong>Google Analytics</strong> in pseudonymized form. This data does not directly identify you.</li>
+      <li><strong>Cookie &amp; Technical Data:</strong> IP address, browser type, device type, and cookie identifiers. See our Cookie Policy for full details.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>3. How We Use Your Information</h3>
+    <p>We use the information we collect for these purposes only:</p>
+    <ul>
+      <li>To deliver consulting services and fulfill contractual obligations</li>
+      <li>To process payments and maintain billing records</li>
+      <li>To communicate with you about your engagement, questions, or support needs</li>
+      <li>To send marketing and educational content you have explicitly opted into</li>
+      <li>To analyze website performance and improve our user experience</li>
+      <li>To comply with legal obligations under applicable U.S. law</li>
+    </ul>
+    <div class="callout">
+      <strong>We do not sell your data. Ever.</strong> We do not rent, trade, share, or broker personal information to any third party for any marketing or commercial purpose, under any circumstances.
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>4. Third-Party Service Providers</h3>
+    <p>We share limited data only with the vendors necessary to operate our business. Each is bound by data processing agreements that restrict them to using your data solely on our behalf:</p>
+    <ul>
+      <li><strong>Stripe, Inc.</strong> — Payment processing. We do not store or access your full payment card details; Stripe handles all payment data directly. <a href="https://stripe.com/privacy">stripe.com/privacy</a></li>
+      <li><strong>Google LLC (Google Analytics)</strong> — Website analytics in pseudonymized form. No personally identifiable information is associated with analytics data. <a href="https://policies.google.com/privacy">policies.google.com/privacy</a></li>
+      <li><strong>Keap / Thryv</strong> — CRM and marketing automation. Contact records, form submissions, and opted-in communication history are stored in these platforms for service delivery and follow-up. Subject to their respective privacy policies.</li>
+      <li><strong>Formspree, Inc.</strong> — Web form processing. When you submit a contact or inquiry form on our website, your name, email address, and message content are transmitted through Formspree to deliver your submission to us. <a href="https://formspree.io/legal/privacy-policy">formspree.io/legal/privacy-policy</a></li>
+      <li><strong>Resend, Inc.</strong> — Transactional email delivery. When we send you automated email communications (confirmations, program updates, onboarding messages), those messages are routed through Resend. Your email address and message content are processed to deliver those communications. <a href="https://resend.com/legal/privacy-policy">resend.com/legal/privacy-policy</a></li>
+      <li><strong>Supabase, Inc.</strong> — Database and backend infrastructure. Certain personal information collected through our web applications — including form submissions, program enrollment records, and consent logs — is stored in Supabase-hosted databases. Data is stored in the United States and encrypted at rest and in transit. <a href="https://supabase.com/privacy">supabase.com/privacy</a></li>
+      <li><strong>Twilio, Inc.</strong> — SMS message delivery. When you opt into an Inward2Onward SMS program, your mobile phone number and the content of messages sent to you are processed through Twilio's platform. Twilio does not use this data for its own marketing purposes. <a href="https://www.twilio.com/en-us/legal/privacy">twilio.com/en-us/legal/privacy</a></li>
+      <li><strong>Cloudflare, Inc.</strong> — Network infrastructure, DNS, CDN, and DDoS protection. All web traffic to inward2onward.com is routed through Cloudflare's network. Cloudflare may process IP addresses, request metadata, and browser identifiers as part of delivering and securing our website. Cloudflare does not use this data for advertising. <a href="https://www.cloudflare.com/privacypolicy/">cloudflare.com/privacypolicy</a></li>
+    </ul>
+    <p>No other third parties receive your personal information. We do not use data brokers, advertising networks, or social media pixel tracking of any kind beyond what is disclosed above.</p>
+  </div>
+
+  <div class="section">
+    <h3>5. Data Retention</h3>
+    <p>We retain personal information only as long as it is necessary to fulfill the purpose for which it was collected, or as required by law. In practice:</p>
+    <ul>
+      <li>Client engagement records are retained for seven (7) years in compliance with standard business recordkeeping requirements under Arizona and federal law.</li>
+      <li>Marketing opt-in records are retained until you unsubscribe.</li>
+      <li>Analytics data is retained per Google Analytics' default retention settings (up to 14 months).</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>6. Your Privacy Rights</h3>
+    <p>Depending on where you are located, you may hold certain rights regarding your personal information. Regardless of your jurisdiction, we honor the following requests:</p>
+    <ul>
+      <li><strong>Access:</strong> Request a copy of the personal information we hold about you.</li>
+      <li><strong>Correction:</strong> Ask us to correct inaccurate or incomplete data.</li>
+      <li><strong>Deletion:</strong> Request that we delete your personal information, subject to legal retention obligations.</li>
+      <li><strong>Opt-Out:</strong> Unsubscribe from marketing communications at any time via the link in any email we send, or by contacting us directly.</li>
+      <li><strong>Portability:</strong> Request your data in a structured, machine-readable format where technically feasible.</li>
+    </ul>
+    <p>To exercise any of these rights, contact: <strong>privacy&#64;inward2onward.com</strong>. We will respond within 30 days.</p>
+    <div class="highlight-box">
+      <strong>California Residents (CCPA):</strong> You have the right to know what personal information we collect, the right to delete it, and the right to opt out of its sale. We do not sell personal information. To submit a rights request: privacy&#64;inward2onward.com.
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>7. Data Security</h3>
+    <p>We implement commercially reasonable technical and organizational safeguards to protect your personal information from unauthorized access, disclosure, alteration, or destruction. These include encrypted data transmission (TLS/HTTPS), access controls, and vendor security reviews. However, no system is entirely impenetrable. In the event of a data breach that poses risk to your rights or freedoms, we will notify affected individuals as required by applicable law.</p>
+  </div>
+
+  <div class="section">
+    <h3>8. International Users</h3>
+    <p>Our services are operated in the United States. If you are accessing our site from outside the U.S., please be aware that your information may be transferred to and processed in the U.S., where data protection laws may differ from those in your country. By using our services, you consent to this transfer.</p>
+  </div>
+
+  <div class="section">
+    <h3>9. Changes to This Policy</h3>
+    <p>We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. When we do, we will revise the "Effective Date" at the top of this page. Continued use of our services after any revision constitutes acceptance of the updated terms.</p>
+  </div>
+
+  <div class="contact-block">
+    <div class="label">Privacy Contact</div>
+    <p>Inward2Onward LLC &nbsp;·&nbsp; Glendale, Arizona, USA</p>
+    <p>Email: <a href="mailto:privacy&#64;inward2onward.com">privacy&#64;inward2onward.com</a></p>
+  </div>
+</div>
+
+<!-- ======================== COOKIE POLICY ======================== -->
+<div id="cookies" class="policy-panel">
+  <span class="effective-date">Effective: May 16, 2025 &nbsp;·&nbsp; Version 1.0</span>
+  <h2>Cookie Policy</h2>
+  <p class="intro">This Cookie Policy explains how Inward2Onward LLC uses cookies and similar tracking technologies on our website. We believe in transparency — this document tells you exactly what we use, why, and what control you have over it.</p>
+
+  <div class="section">
+    <h3>1. What Are Cookies?</h3>
+    <p>Cookies are small text files stored on your device (computer, tablet, phone) when you visit a website. They help websites remember your preferences, understand how you interact with a site, and sometimes deliver relevant communications. Some cookies are placed by us; others are placed by third-party services we use to operate the site.</p>
+  </div>
+
+  <div class="section">
+    <h3>2. What Cookies We Use</h3>
+    <p>We use the following categories of cookies on <strong>inward2onward.com</strong>:</p>
+    <table class="cookie-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Provider</th>
+          <th>Purpose</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Strictly Necessary</strong></td>
+          <td>Inward2Onward</td>
+          <td>Required for the site to function — session management, security, and form integrity.</td>
+          <td>Session</td>
+        </tr>
+        <tr>
+          <td><strong>Analytics</strong></td>
+          <td>Google Analytics</td>
+          <td>Tracks pseudonymized usage data — pages viewed, session duration, traffic sources — to help us improve the site. No personally identifiable information is associated.</td>
+          <td>Up to 2 years</td>
+        </tr>
+        <tr>
+          <td><strong>Functional / CRM</strong></td>
+          <td>Keap / Thryv</td>
+          <td>Supports form submissions and contact tracking for client relationship management purposes.</td>
+          <td>Up to 1 year</td>
+        </tr>
+        <tr>
+          <td><strong>Payment Security</strong></td>
+          <td>Stripe</td>
+          <td>Used during the checkout process to detect fraud and verify browser authenticity. Not used for advertising.</td>
+          <td>Session / Short-term</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <strong>What we do not use:</strong> We do not use advertising cookies, retargeting pixels, social media trackers, or cross-site behavioral tracking cookies of any kind.
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>3. Your Cookie Choices</h3>
+    <p>You have control. Here are your options:</p>
+    <ul>
+      <li><strong>Browser Settings:</strong> Most browsers allow you to refuse or delete cookies through their settings menus. Note that disabling strictly necessary cookies may impair site functionality.</li>
+      <li><strong>Google Analytics Opt-Out:</strong> Install the Google Analytics Opt-Out Browser Add-on at <a href="https://tools.google.com/dlpage/gaoptout">tools.google.com/dlpage/gaoptout</a>.</li>
+      <li><strong>Cookie Banner:</strong> When you first visit our site, you will be presented with a cookie consent notice. You may accept or decline non-essential cookies at that time. You may withdraw consent at any time by clearing cookies in your browser and revisiting the site.</li>
+    </ul>
+    <p>California residents may also submit opt-out requests per the CCPA by contacting <a href="mailto:privacy&#64;inward2onward.com">privacy&#64;inward2onward.com</a>.</p>
+  </div>
+
+  <div class="section">
+    <h3>4. Do Not Track</h3>
+    <p>Some browsers transmit "Do Not Track" (DNT) signals. Because there is no universally accepted standard for how websites should respond to DNT signals, our site does not currently alter its data collection practices in response to DNT signals. We will revisit this position as industry standards evolve.</p>
+  </div>
+
+  <div class="section">
+    <h3>5. Updates to This Policy</h3>
+    <p>We may update this Cookie Policy to reflect changes in the tools we use or legal requirements. The "Effective Date" at the top of this page will always indicate the most current version.</p>
+  </div>
+
+  <div class="contact-block">
+    <div class="label">Questions About Cookies?</div>
+    <p>Inward2Onward LLC &nbsp;·&nbsp; Glendale, Arizona, USA</p>
+    <p>Email: <a href="mailto:privacy&#64;inward2onward.com">privacy&#64;inward2onward.com</a></p>
+  </div>
+</div>
+
+<!-- ======================== TERMS & CONDITIONS ======================== -->
+<div id="terms" class="policy-panel">
+  <span class="effective-date">Effective: May 16, 2025 &nbsp;·&nbsp; Version 1.0</span>
+  <h2>Terms &amp; Conditions</h2>
+  <p class="intro">These Terms and Conditions ("Terms") govern your use of inward2onward.com and any services provided by Inward2Onward LLC ("Company," "we," "us"). By accessing our website or engaging our services, you agree to be bound by these Terms. Please read them carefully. If you do not agree, do not use our site or services.</p>
+
+  <div class="section">
+    <h3>1. Eligibility</h3>
+    <p>You must be at least 18 years of age to use our website or engage our services. By using this site, you represent and warrant that you are 18 or older and legally capable of entering into a binding agreement.</p>
+  </div>
+
+  <div class="section">
+    <h3>2. Services Provided</h3>
+    <p>Inward2Onward LLC provides AI strategy consulting, business advisory services, digital products, educational content, and related offerings. Specific deliverables, timelines, payment terms, and scope of work for consulting engagements will be defined in a separate written agreement (Statement of Work or Service Agreement) between the parties.</p>
+    <div class="callout">
+      <strong>Important:</strong> Nothing on this website constitutes legal, financial, tax, or professional advice of a licensed nature. Our consulting is strategic and advisory in character. Always consult qualified licensed professionals for legal, financial, or regulatory matters specific to your situation.
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>3. Payment Terms</h3>
+    <p>All pricing for services is communicated prior to engagement. Payment is processed securely through Stripe, Inc. By submitting payment, you authorize Inward2Onward LLC to charge the stated amount to your selected payment method.</p>
+    <ul>
+      <li>All fees are stated in U.S. dollars unless otherwise noted.</li>
+      <li>Digital products and completed consulting deliverables are generally non-refundable unless otherwise specified in your service agreement.</li>
+      <li>Recurring subscription or retainer payments are governed by the terms outlined in your individual service agreement.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>4. Intellectual Property</h3>
+    <p>All content on this website — including but not limited to text, graphics, frameworks, methodologies, video, and downloadable materials — is the intellectual property of Inward2Onward LLC and is protected by applicable U.S. and international copyright law.</p>
+    <ul>
+      <li>You may not reproduce, distribute, modify, or create derivative works from our content without prior written consent.</li>
+      <li>Content or frameworks delivered under a consulting engagement is licensed to the client for their internal business use unless the service agreement explicitly provides otherwise.</li>
+      <li>Nothing in these Terms transfers ownership of our intellectual property to you.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>5. Acceptable Use</h3>
+    <p>You agree to use this website and our services only for lawful purposes and in a manner that does not infringe the rights of others. You must not:</p>
+    <ul>
+      <li>Attempt to gain unauthorized access to any portion of our systems or services</li>
+      <li>Transmit malicious code, spam, or disruptive content</li>
+      <li>Misrepresent your identity or affiliation</li>
+      <li>Use our content or materials to compete with or harm our business</li>
+      <li>Reverse-engineer, scrape, or systematically extract content from our website</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>6. Confidentiality</h3>
+    <p>During the course of a consulting engagement, both parties may share confidential business information. Each party agrees to keep the other's confidential information strictly private and to use it only for the purpose of the engagement. This obligation survives the termination of any service agreement. Specific confidentiality terms may be further defined in a signed Non-Disclosure Agreement (NDA).</p>
+  </div>
+
+  <div class="section">
+    <h3>7. Disclaimer of Warranties</h3>
+    <p>Our website and services are provided on an "as is" and "as available" basis. Inward2Onward LLC makes no warranties, express or implied, regarding the accuracy, completeness, or fitness for a particular purpose of our content or services. We do not guarantee specific business outcomes, revenue increases, or results from the application of our consulting advice. Business results depend on many variables outside our control.</p>
+  </div>
+
+  <div class="section">
+    <h3>8. Limitation of Liability</h3>
+    <p>To the fullest extent permitted by applicable law, Inward2Onward LLC shall not be liable for any indirect, incidental, consequential, special, or punitive damages arising from your use of our website or services — including but not limited to loss of revenue, loss of data, or business interruption — even if we have been advised of the possibility of such damages.</p>
+    <p>Our total aggregate liability to you for any claim arising from your use of our services shall not exceed the total fees paid by you to Inward2Onward LLC in the three (3) months preceding the claim.</p>
+  </div>
+
+  <div class="section">
+    <h3>9. Indemnification</h3>
+    <p>You agree to indemnify, defend, and hold harmless Inward2Onward LLC, its members, officers, and contractors from any claims, liabilities, damages, and expenses (including reasonable legal fees) arising from your violation of these Terms or your use of our services in a manner not authorized by these Terms.</p>
+  </div>
+
+  <div class="section">
+    <h3>10. Governing Law &amp; Dispute Resolution</h3>
+    <p>These Terms are governed by the laws of the State of Arizona, without regard to conflict of law provisions. Any disputes arising from these Terms or your use of our services shall be resolved first through good-faith negotiation. If negotiation fails, disputes shall be submitted to binding arbitration in Maricopa County, Arizona, under the rules of the American Arbitration Association (AAA). You waive any right to a jury trial or class action proceeding.</p>
+  </div>
+
+  <div class="section">
+    <h3>11. Termination</h3>
+    <p>We reserve the right to terminate or suspend access to our website or services, at our sole discretion, without notice, for any conduct that we believe violates these Terms or is harmful to us, other users, or third parties.</p>
+  </div>
+
+  <div class="section">
+    <h3>12. Changes to These Terms</h3>
+    <p>We may update these Terms from time to time. When we do, we will update the "Effective Date" at the top of this page. Continued use of our website or services after any modification constitutes your acceptance of the revised Terms. We encourage you to review this page periodically.</p>
+  </div>
+
+  <div class="section">
+    <h3>13. Severability</h3>
+    <p>If any provision of these Terms is found to be unenforceable or invalid under applicable law, that provision will be modified to the minimum extent necessary to make it enforceable, or severed from these Terms, and the remaining provisions shall continue in full force and effect.</p>
+  </div>
+
+  <div class="contact-block">
+    <div class="label">Legal Contact</div>
+    <p>Inward2Onward LLC &nbsp;·&nbsp; Glendale, Arizona, USA</p>
+    <p>Email: <a href="mailto:privacy&#64;inward2onward.com">privacy&#64;inward2onward.com</a></p>
+  </div>
+</div>
+
+
+<!-- ======================== SMS TERMS ======================== -->
+<div id="sms" class="policy-panel">
+  <span class="effective-date">Effective: June 19, 2026 &nbsp;·&nbsp; Version 1.0</span>
+  <h2>SMS Terms &amp; Messaging Disclosure</h2>
+  <p class="intro">This page governs all SMS messaging programs operated by Inward2Onward LLC. By opting into any Inward2Onward SMS program, you agree to these terms. Please read them carefully — they explain exactly what you're consenting to, how messages are delivered, and how to stop them at any time.</p>
+
+  <div class="section">
+    <h3>1. Sender Information</h3>
+    <p><strong>Inward2Onward LLC</strong> is the operator of all SMS programs described in this disclosure. Our messaging number is <strong>(855) 971-1504</strong>, a toll-free number registered and verified with U.S. carriers.</p>
+    <ul>
+      <li><strong>Business name:</strong> Inward2Onward LLC</li>
+      <li><strong>Address:</strong> 4910 W Glenn Dr., Ste. 315, Glendale, AZ 85301</li>
+      <li><strong>Email:</strong> <a href="mailto:admin@inward2onward.com">admin@inward2onward.com</a></li>
+      <li><strong>Phone:</strong> 623.272.8066</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>2. Program Description</h3>
+    <p>Inward2Onward LLC may operate one or more SMS programs, including but not limited to daily motivational messages, coaching program updates, product announcements, event reminders, and other business communications. The specific program you enrolled in is identified at the point of opt-in.</p>
+    <p>Message types may include: motivational and mindset content, AI-generated insights, program enrollment confirmations, service updates, and promotional offers related to Inward2Onward services.</p>
+    <div class="callout">
+      <strong>Note:</strong> SMS programs are separate from our email marketing. Opting into an SMS program does not subscribe you to email marketing, and vice versa. Each channel requires its own consent.
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>3. How to Opt In</h3>
+    <p>You may only receive SMS messages from Inward2Onward LLC by providing your express written consent through an opt-in mechanism that clearly identifies the program, message type, and expected frequency. Current opt-in methods include:</p>
+    <ul>
+      <li>Submitting a web-based enrollment form on an Inward2Onward page and checking the consent checkbox</li>
+      <li>Any other mechanism that records your affirmative agreement and the date/time of consent</li>
+    </ul>
+    <p><strong>Consent is never assumed, implied, or inferred from a business relationship alone.</strong> We maintain records of all opt-in transactions, including the method, timestamp, and program enrolled in.</p>
+  </div>
+
+  <div class="section">
+    <h3>4. Message Frequency</h3>
+    <p>Message frequency varies by program and will be disclosed clearly at the point of opt-in before you submit your information. Inward2Onward LLC reserves the right to adjust messaging frequency and will notify enrolled subscribers in advance of any material change.</p>
+    <div class="highlight-box">
+      <strong>Example:</strong> The Karma SMS daily motivation program sends approximately one (1) message per day. Frequency for other programs will be stated on their respective enrollment pages.
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>5. How to Opt Out</h3>
+    <p>You may opt out of any Inward2Onward SMS program at any time — no questions asked — by replying with any of the following keywords to any message you receive:</p>
+    <table class="cookie-table">
+      <thead>
+        <tr>
+          <th>Keyword</th>
+          <th>Effect</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>STOP</strong></td>
+          <td>Immediately removes you from all active SMS programs. You will receive one final confirmation message and no further messages will be sent.</td>
+        </tr>
+        <tr>
+          <td><strong>CANCEL</strong></td>
+          <td>Same effect as STOP.</td>
+        </tr>
+        <tr>
+          <td><strong>END</strong></td>
+          <td>Same effect as STOP.</td>
+        </tr>
+        <tr>
+          <td><strong>QUIT</strong></td>
+          <td>Same effect as STOP.</td>
+        </tr>
+        <tr>
+          <td><strong>UNSUBSCRIBE</strong></td>
+          <td>Same effect as STOP.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>You may also request removal by contacting us directly at <a href="mailto:admin@inward2onward.com">admin@inward2onward.com</a> or calling 623.272.8066. We will process removal requests within one (1) business day.</p>
+    <p>To re-enroll after opting out, return to the original opt-in page and submit the enrollment form again.</p>
+  </div>
+
+  <div class="section">
+    <h3>6. How to Get Help</h3>
+    <p>Reply <strong>HELP</strong> or <strong>INFO</strong> to any message at any time. You will receive an automated response with the program name, sender contact details, and opt-out instructions. You can also reach us directly:</p>
+    <ul>
+      <li>Email: <a href="mailto:admin@inward2onward.com">admin@inward2onward.com</a></li>
+      <li>Phone: 623.272.8066</li>
+      <li>Mailing address: 4910 W Glenn Dr., Ste. 315, Glendale, AZ 85301</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>7. Message &amp; Data Rates</h3>
+    <p>Inward2Onward LLC does not charge a fee for SMS messages. However, <strong>message and data rates may apply</strong> based on your mobile carrier plan. Contact your carrier for details about your plan's SMS rates. We are not responsible for any charges your carrier assesses.</p>
+  </div>
+
+  <div class="section">
+    <h3>8. Consent Is Not a Condition of Purchase</h3>
+    <p>Your consent to receive SMS messages is entirely voluntary. You are not required to opt into any SMS program as a condition of purchasing, receiving, or accessing any product or service from Inward2Onward LLC.</p>
+  </div>
+
+  <div class="section">
+    <h3>9. Privacy &amp; Data Use</h3>
+    <p>We collect your name and mobile phone number for the sole purpose of delivering the SMS program you enrolled in. Your mobile number will not be sold, rented, or shared with any third party for their marketing purposes under any circumstances.</p>
+    <p>Message content may be generated or assisted by artificial intelligence and is reviewed for quality and appropriateness before delivery. For full details on how your personal information is collected, stored, and protected, see our <a href="#" onclick="showTab('privacy', document.querySelectorAll('.tab-btn')[0]); return false;">Privacy Policy</a>.</p>
+    <div class="callout">
+      <strong>We do not sell your mobile number. Ever.</strong> It is used exclusively to deliver the SMS program you signed up for and nothing else.
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>10. Supported Carriers</h3>
+    <p>Our SMS programs are compatible with major U.S. carriers including AT&amp;T, Verizon, T-Mobile, Sprint, Boost Mobile, Cricket Wireless, and most regional carriers. Carrier support and message delivery timelines are not guaranteed and may vary by region and plan type. Inward2Onward LLC is not liable for non-delivery caused by carrier network issues.</p>
+  </div>
+
+  <div class="section">
+    <h3>11. AI-Generated Content Disclosure</h3>
+    <p>Some message content delivered through Inward2Onward SMS programs is generated or assisted by artificial intelligence, including large language models. All AI-generated content is reviewed for quality, accuracy, and appropriateness before delivery. Recipients should understand that AI-generated content does not constitute professional legal, financial, medical, or therapeutic advice.</p>
+  </div>
+
+  <div class="section">
+    <h3>12. Program Modifications or Discontinuation</h3>
+    <p>Inward2Onward LLC reserves the right to modify, pause, or permanently discontinue any SMS program at any time. In the event of discontinuation, enrolled subscribers will receive advance notice via SMS prior to the program ending and will be automatically removed from the list.</p>
+  </div>
+
+  <div class="section">
+    <h3>13. Compliance</h3>
+    <p>All Inward2Onward SMS programs are operated in compliance with:</p>
+    <ul>
+      <li>The Telephone Consumer Protection Act (TCPA), 47 U.S.C. § 227</li>
+      <li>CTIA Messaging Principles and Best Practices</li>
+      <li>Applicable U.S. carrier messaging guidelines</li>
+      <li>The CAN-SPAM Act (for related email communications)</li>
+    </ul>
+    <p>We maintain records of all consent transactions for compliance and audit purposes.</p>
+  </div>
+
+  <div class="section">
+    <h3>14. Changes to These Terms</h3>
+    <p>We may update these SMS Terms from time to time. When we do, the "Effective Date" at the top of this section will be updated. Continued participation in any SMS program after an update constitutes acceptance of the revised terms. We encourage you to review this page periodically.</p>
+  </div>
+
+  <div class="contact-block">
+    <div class="label">SMS Program Contact</div>
+    <p>Inward2Onward LLC &nbsp;·&nbsp; 4910 W Glenn Dr., Ste. 315, Glendale, AZ 85301</p>
+    <p>Email: <a href="mailto:admin@inward2onward.com">admin@inward2onward.com</a></p>
+    <p>Phone: <a href="tel:6232728066">623.272.8066</a></p>
+    <p style="margin-top:12px; font-size:12px; color:rgba(255,255,255,0.45);">Msg &amp; data rates may apply. Reply STOP to cancel. Reply HELP for help.</p>
+  </div>
+</div>
+
+<script>
+// Wrapped in DOMContentLoaded — safe against CF Rocket Loader deferral
+document.addEventListener('DOMContentLoaded', function() {
+  window.showTab = function(id, btn) {
+    document.querySelectorAll('.policy-panel').forEach(function(p) { p.classList.remove('active'); });
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  };
+});
+</script>
+
+<!-- ── COOKIE CONSENT BANNER ── -->
+<div id="i2o-cookie-banner" role="dialog" aria-label="Cookie consent" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:#0d1424; border-top:1px solid #1e3a5f; padding:20px 32px; font-family:Inter,system-ui,sans-serif; font-size:13px; color:#94a3b8; flex-wrap:wrap; box-shadow:0 -4px 24px rgba(0,0,0,0.4); gap:24px; align-items:center; justify-content:space-between;">
+  <div style="flex:1; min-width:260px; line-height:1.6;">
+    <strong style="color:#f1f5f9; font-family:Barlow Condensed,sans-serif; font-size:14px; letter-spacing:0.04em; text-transform:uppercase;">We use cookies.</strong>
+    &nbsp;Strictly necessary cookies keep this site running. We also use Google Analytics (pseudonymized) to understand how visitors use our site. No advertising or tracking cookies.
+    <a href="/legal" style="color:#3B82F6; margin-left:4px; text-decoration:underline; text-underline-offset:2px;">Cookie Policy</a>
+  </div>
+  <div style="display:flex; gap:10px; flex-shrink:0; align-items:center;">
+    <button id="i2o-cookie-decline" onclick="i2oCookieChoice(false)" style="background:none; border:1px solid #1e3a5f; border-radius:6px; color:#475569; font-family:Inter,sans-serif; font-size:12px; padding:8px 16px; cursor:pointer;">Decline non-essential</button>
+    <button id="i2o-cookie-accept" onclick="i2oCookieChoice(true)" style="background:linear-gradient(135deg,#1D4ED8,#3B82F6); border:none; border-radius:6px; color:#fff; font-family:Barlow Condensed,sans-serif; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:9px 20px; cursor:pointer;">Accept all</button>
+  </div>
+</div>
+<script>
+(function(){
+  var b=document.getElementById("i2o-cookie-banner");
+  if(!localStorage.getItem("i2o_cookie_consent")){b.style.display="flex";}
+})();
+function i2oCookieChoice(accepted){
+  localStorage.setItem("i2o_cookie_consent", accepted?"accepted":"declined");
+  document.getElementById("i2o-cookie-banner").style.display="none";
+}
+</script>
+</body>
+</html>
