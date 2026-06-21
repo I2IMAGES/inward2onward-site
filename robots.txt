@@ -1,0 +1,8 @@
+# robots.txt — inward2onward.com
+# Inward2Onward LLC | Built Right. Accountable Throughout.
+# Updated: 2026-06-20
+
+User-agent: *
+Allow: /
+
+Sitemap: https://inward2onward.com/sitemap.xml
