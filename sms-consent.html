@@ -811,6 +811,10 @@
       if (val.length >= 6) val = '(' + val.slice(0,3) + ') ' + val.slice(3,6) + '-' + val.slice(6);
       else if (val.length >= 3) val = '(' + val.slice(0,3) + ') ' + val.slice(3);
       e.target.value = val;
+      // Visual feedback — green border when 10 digits complete
+      var digits = val.replace(/\D/g,'').length;
+      e.target.style.borderColor = digits === 10 ? '#10B981' : '';
+      e.target.style.boxShadow = digits === 10 ? '0 0 0 3px rgba(16,185,129,0.12)' : '';
     });
 
     // Form submission
@@ -819,9 +823,10 @@
       var phone = document.getElementById('phone').value.trim();
       var consent = document.getElementById('sms-consent-check').checked;
       var program = document.querySelector('input[name="program"]:checked');
+      var digitsOnly = phone.replace(/\D/g, '');
 
       if (!name) { alert('Please enter your first name.'); return; }
-      if (!phone) { alert('Please enter your mobile phone number.'); return; }
+      if (digitsOnly.length !== 10) { alert('Please enter a complete 10-digit U.S. mobile phone number.'); return; }
       if (!program) { alert('Please select an SMS program above.'); return; }
       if (!consent) { alert('Please check the consent box to continue.'); return; }
 
