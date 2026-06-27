@@ -579,10 +579,10 @@
               <p class="program-card-freq">Session reminders and program updates — 2–4 per week</p>
             </label>
 
-            <label class="program-card" id="card-cascalote" onclick="selectProgram('cascalote')">
-              <input type="radio" name="program" value="cascalote" id="prog-cascalote" />
-              <div class="program-card-check" id="check-cascalote"></div>
-              <p class="program-card-name">Cascalote Tech Alerts</p>
+            <label class="program-card" id="card-techalerts" onclick="selectProgram('techalerts')">
+              <input type="radio" name="program" value="techalerts" id="prog-techalerts" />
+              <div class="program-card-check" id="check-techalerts"></div>
+              <p class="program-card-name">Tech Alerts</p>
               <p class="program-card-freq">Smart home device alerts for residents — 1–4 per month</p>
             </label>
 
@@ -789,7 +789,7 @@
 
     // Program selection
     function selectProgram(id) {
-      ['karma','bridge','cascalote'].forEach(function(p) {
+      ['karma','bridge','techalerts'].forEach(function(p) {
         document.getElementById('card-' + p).classList.remove('selected');
         document.getElementById('check-' + p).classList.remove('selected');
       });
@@ -798,11 +798,10 @@
       toggleSubmit();
     }
 
-    // Enable submit only when consent checked
+    // Enable submit when consent is checked — program validated on submit
     function toggleSubmit() {
       var consent = document.getElementById('sms-consent-check').checked;
-      var program = document.querySelector('input[name="program"]:checked');
-      document.getElementById('submit-btn').disabled = !(consent && program);
+      document.getElementById('submit-btn').disabled = !consent;
     }
 
     // Phone formatting
@@ -821,10 +820,10 @@
       var consent = document.getElementById('sms-consent-check').checked;
       var program = document.querySelector('input[name="program"]:checked');
 
-      if (!name || !phone || !consent || !program) {
-        alert('Please complete all fields, select a program, and check the consent box.');
-        return;
-      }
+      if (!name) { alert('Please enter your first name.'); return; }
+      if (!phone) { alert('Please enter your mobile phone number.'); return; }
+      if (!program) { alert('Please select an SMS program above.'); return; }
+      if (!consent) { alert('Please check the consent box to continue.'); return; }
 
       document.getElementById('submit-btn').disabled = true;
       document.getElementById('submit-btn').textContent = 'Submitting...';
