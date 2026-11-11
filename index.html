@@ -18,10 +18,13 @@
       --i2o-blue:          #3B82F6;
       --i2o-blue-dark:     #1D4ED8;
       --i2o-blue-mid:      #2563EB;
+      /* Lighter blue for small text and the headline's second line, as on the nonprofit page. */
+      --i2o-blue-light:    #60A5FA;
       --i2o-indigo:        #6366F1;
       --i2o-indigo-dark:   #4F46E5;
-      --i2o-navy:          #0a0f1e;
-      --i2o-navy-2:        #0d1424;
+      /* Navy, navy-2 and border match the nonprofit page (i2o-nonprofits). */
+      --i2o-navy:          #0a1628;
+      --i2o-navy-2:        #0f2044;
       --i2o-navy-3:        #111827;
       --i2o-navy-4:        #0f1f3d;
       --i2o-s1:            #f1f5f9;
@@ -29,7 +32,7 @@
       /* Was #475569, about 2.4:1 on the navy background. #8b98ad is about 6.3:1 and still sits below s2. */
       --i2o-s3:            #8b98ad;
       --i2o-s4:            #1e293b;
-      --i2o-border:        #1e3a5f;
+      --i2o-border:        rgba(59, 130, 246, 0.15);
       --i2o-green:         #10B981;
       --i2o-amber:         #F59E0B;
       --i2o-red:           #EF4444;
@@ -127,11 +130,46 @@
     .site-nav-links { display: flex; gap: var(--i2o-space-6); align-items: center; flex-wrap: wrap; }
     .site-nav-links a { font-size: var(--i2o-text-sm); color: var(--i2o-s2); }
     .site-nav-links a:hover { color: var(--i2o-s1); opacity: 1; }
+    .site-nav-links a.nav-cta {
+      font-family: var(--i2o-font-display);
+      font-size: var(--i2o-text-md);
+      font-weight: var(--i2o-weight-bold);
+      letter-spacing: var(--i2o-tracking-wider);
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--i2o-gradient-primary);
+      border-radius: var(--i2o-radius-sm);
+      padding: 8px 16px;
+      line-height: 1;
+    }
+    .site-nav-links a.nav-cta:hover { color: #fff; opacity: 0.88; }
+    .site-nav-links a.nav-cta:focus-visible { outline: 2px solid var(--i2o-blue); outline-offset: 2px; }
 
     /* ── HERO ── */
     /* Split layout: big headline on the left, example workflow panel on the right. */
-    .hero { border-bottom: 1px solid var(--i2o-border); }
+    .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--i2o-border); }
+    /* Soft blue glow and light grid behind the hero, as on the nonprofit page. */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(80% 60% at 60% 40%, rgba(29, 78, 216, 0.18) 0%, transparent 70%),
+        radial-gradient(40% 40% at 20% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
     .hero-inner {
+      position: relative;
+      z-index: 1;
       max-width: 1120px;
       margin: 0 auto;
       padding: 96px var(--i2o-space-10) 72px;
@@ -146,7 +184,7 @@
       font-weight: var(--i2o-weight-semibold);
       letter-spacing: var(--i2o-tracking-eyebrow);
       text-transform: uppercase;
-      color: var(--i2o-blue);
+      color: var(--i2o-blue-light);
     }
     .hero-eyebrow { margin: 0 0 var(--i2o-space-5); }
     .hero-headline {
@@ -161,7 +199,7 @@
       text-wrap: balance;
     }
     .hero-headline .hero-line { display: block; }
-    .hero-headline .accent { display: block; color: var(--i2o-blue); }
+    .hero-headline .accent { display: block; color: var(--i2o-blue-light); }
     .hero-sub {
       font-size: var(--i2o-text-2xl);
       color: var(--i2o-s2);
@@ -283,7 +321,7 @@
       font-weight: var(--i2o-weight-bold);
       font-size: var(--i2o-text-xs);
       letter-spacing: var(--i2o-tracking-label);
-      color: var(--i2o-blue);
+      color: var(--i2o-blue-light);
       margin-bottom: var(--i2o-space-2);
     }
     .service-name {
@@ -389,7 +427,7 @@
     .cookie-banner.is-open { display: flex; }
     .cookie-text { flex: 1; min-width: 260px; line-height: 1.6; }
     .cookie-text strong { color: var(--i2o-s1); font-family: var(--i2o-font-display); font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; }
-    .cookie-text a { margin-left: 4px; text-decoration: underline; text-underline-offset: 2px; }
+    .cookie-text a { color: var(--i2o-blue-light); margin-left: 4px; text-decoration: underline; text-underline-offset: 2px; }
     .cookie-actions { display: flex; gap: 10px; flex-shrink: 0; align-items: center; }
     .cookie-decline { background: none; border: 1px solid var(--i2o-border); border-radius: 6px; color: var(--i2o-s3); font-family: var(--i2o-font-body); font-size: 12px; padding: 8px 16px; cursor: pointer; }
     .cookie-accept { background: var(--i2o-gradient-primary); border: none; border-radius: 6px; color: #fff; font-family: var(--i2o-font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 9px 20px; cursor: pointer; }
@@ -419,18 +457,19 @@
     <div class="site-nav-links">
       <a href="#services">Services</a>
       <a href="#contact">Contact</a>
-      <a href="mailto:admin@inward2onward.com" class="site-nav-contact">admin@inward2onward.com</a>
+      <a href="https://calendly.com/ej--33/ai-powered-workflows-automation" class="nav-cta" target="_blank" rel="noopener">Book a call</a>
     </div>
   </nav>
 
   <section class="hero">
+    <div class="hero-grid-lines" aria-hidden="true"></div>
     <div class="hero-inner">
       <div>
         <p class="i2o-eyebrow hero-eyebrow">AI Strategy &amp; Automation &nbsp;·&nbsp; Glendale, AZ</p>
         <h1 class="hero-headline"><span class="hero-line">We don't sell AI.</span><span class="accent">We install systems that work.</span></h1>
         <p class="hero-sub">AI strategy, automation and CRM builds for business owners and executives. Measured by what runs.</p>
         <div class="hero-actions">
-          <a href="mailto:admin@inward2onward.com" class="i2o-btn">Start a conversation &nbsp;→</a>
+          <a href="https://calendly.com/ej--33/ai-powered-workflows-automation" class="i2o-btn" target="_blank" rel="noopener">Book a call &nbsp;→</a>
           <a href="#services" class="i2o-btn ghost">See what we build</a>
         </div>
         <p class="hero-proof"><strong>350+</strong> CRM and automation implementations</p>
