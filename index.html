@@ -407,7 +407,7 @@
     .result-list { margin: 0; padding-left: 18px; display: grid; gap: var(--i2o-space-2); }
     .result-list li { font-size: var(--i2o-text-lg); color: var(--i2o-s1); line-height: var(--i2o-leading-relaxed); }
     .result-list li::marker { color: var(--i2o-blue-light); }
-    @media (min-width: 900px) { .result-card-wide { grid-row: span 2; } }
+    @media (min-width: 900px) { .results-grid { grid-template-columns: 1fr 1fr; } .result-card-wide { grid-row: span 2; } }
     .result-quote {
       margin-top: var(--i2o-space-3);
       padding-left: var(--i2o-space-3);
