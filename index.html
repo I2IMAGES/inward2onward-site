@@ -429,6 +429,33 @@
       line-height: 1.3;
     }
 
+    /* ── AGENTS, PROCESS, TESTIMONIALS, ABOUT ── */
+    .agents-grid, .steps-grid, .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--i2o-space-4);
+      margin-top: var(--i2o-space-6);
+    }
+    @media (min-width: 900px) { .steps-grid { grid-template-columns: repeat(4, 1fr); } .quotes-grid { grid-template-columns: repeat(3, 1fr); } }
+    .agent-bar { display: block; width: 40px; height: 4px; border-radius: 2px; margin-bottom: var(--i2o-space-4); }
+    .agent-blue { background: linear-gradient(90deg, #3B82F6, #6366F1); }
+    .agent-purple { background: linear-gradient(90deg, #A855F7, #DB2777); }
+    .agent-green { background: linear-gradient(90deg, #22C55E, #059669); }
+    .agent-red { background: linear-gradient(90deg, #EF4444, #EA580C); }
+    .card-title { font-family: var(--i2o-font-display); font-weight: var(--i2o-weight-bold); font-size: var(--i2o-text-4xl); color: var(--i2o-s1); line-height: var(--i2o-leading-tight); margin-bottom: var(--i2o-space-2); }
+    .card-text { font-size: var(--i2o-text-md); color: var(--i2o-s2); line-height: var(--i2o-leading-relaxed); }
+    .step-num { font-family: var(--i2o-font-display); font-weight: var(--i2o-weight-bold); font-size: var(--i2o-text-sm); letter-spacing: 0.12em; color: var(--i2o-blue-light); margin-bottom: var(--i2o-space-2); }
+    .steps-grid { list-style: none; padding: 0; }
+    .quote-card { margin: 0; display: flex; flex-direction: column; justify-content: space-between; gap: var(--i2o-space-5); }
+    .quote-text { font-size: var(--i2o-text-lg); color: var(--i2o-s1); line-height: var(--i2o-leading-relaxed); }
+    .quote-person { display: flex; align-items: center; gap: 12px; }
+    .quote-person img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1px solid rgba(96, 165, 250, 0.3); }
+    .quote-name { font-weight: var(--i2o-weight-bold); color: var(--i2o-s1); font-size: var(--i2o-text-md); line-height: 1.3; }
+    .quote-role { color: var(--i2o-s2); font-size: var(--i2o-text-sm); line-height: 1.4; }
+    .about-text { max-width: 68ch; margin-top: var(--i2o-space-5); font-size: var(--i2o-text-lg); color: var(--i2o-s1); line-height: var(--i2o-leading-relaxed); }
+    .about-cred { max-width: 68ch; margin-top: var(--i2o-space-4); font-size: var(--i2o-text-md); color: var(--i2o-s2); line-height: var(--i2o-leading-relaxed); }
+    .about-cred strong { color: var(--i2o-s1); }
+
     /* ── TAGLINE BAND ── */
     .tagline-band {
       border-top: 1px solid var(--i2o-border);
@@ -557,6 +584,7 @@
     <a href="/" class="i2o-logo">Inward<span>2</span>Onward</a>
     <div class="site-nav-links">
       <a href="#services">Services</a>
+      <a href="#about">About</a>
       <a href="#contact">Contact</a>
       <a href="https://calendly.com/ej--33/ai-powered-workflows-automation" class="nav-cta" target="_blank" rel="noopener">Book a call</a>
     </div>
@@ -656,6 +684,70 @@
     </div>
   </section>
 
+  <section class="proof" id="agents" aria-labelledby="agents-title">
+    <p class="i2o-eyebrow">AI agents</p>
+    <h2 class="proof-title" id="agents-title">The AI agents we build</h2>
+    <div class="agents-grid">
+      <div class="i2o-card">
+        <span class="agent-bar agent-blue" aria-hidden="true"></span>
+        <h3 class="card-title">Customer agents</h3>
+        <p class="card-text">They answer customer questions and resolve common issues, day and night. They work on your website, by phone, by email and by text.</p>
+      </div>
+      <div class="i2o-card">
+        <span class="agent-bar agent-blue" aria-hidden="true"></span>
+        <h3 class="card-title">Employee agents</h3>
+        <p class="card-text">They take repeat tasks off your team. They also track tasks and move work from one step to the next.</p>
+      </div>
+      <div class="i2o-card">
+        <span class="agent-bar agent-purple" aria-hidden="true"></span>
+        <h3 class="card-title">Creative agents</h3>
+        <p class="card-text">They draft content and support design work in your brand&rsquo;s style.</p>
+      </div>
+      <div class="i2o-card">
+        <span class="agent-bar agent-green" aria-hidden="true"></span>
+        <h3 class="card-title">Data agents</h3>
+        <p class="card-text">They analyze your data and report what it shows, to support your decisions.</p>
+      </div>
+      <div class="i2o-card">
+        <span class="agent-bar agent-blue" aria-hidden="true"></span>
+        <h3 class="card-title">Code agents</h3>
+        <p class="card-text">They write and test code to the standards you set.</p>
+      </div>
+      <div class="i2o-card">
+        <span class="agent-bar agent-red" aria-hidden="true"></span>
+        <h3 class="card-title">Security agents</h3>
+        <p class="card-text">They watch for threats around the clock and flag them to you.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof" id="process" aria-labelledby="process-title">
+    <p class="i2o-eyebrow">How we work</p>
+    <h2 class="proof-title" id="process-title">How a build runs</h2>
+    <ol class="steps-grid">
+      <li class="i2o-card">
+        <p class="step-num">STEP 1</p>
+        <h3 class="card-title">Discovery</h3>
+        <p class="card-text">We map how your work runs today. We pick the tasks an agent will handle and agree with you on how to measure success.</p>
+      </li>
+      <li class="i2o-card">
+        <p class="step-num">STEP 2</p>
+        <h3 class="card-title">Design</h3>
+        <p class="card-text">We plan how the agent works and how it connects to your systems. We set up tests for the agent.</p>
+      </li>
+      <li class="i2o-card">
+        <p class="step-num">STEP 3</p>
+        <h3 class="card-title">Deploy</h3>
+        <p class="card-text">We set up the agent, connect it and test it. Then we train your team and hand it over.</p>
+      </li>
+      <li class="i2o-card">
+        <p class="step-num">STEP 4</p>
+        <h3 class="card-title">Optimize</h3>
+        <p class="card-text">We track how the agent performs and tune it as it runs.</p>
+      </li>
+    </ol>
+  </section>
+
   <section class="proof" id="industries" aria-labelledby="industries-title">
     <p class="i2o-eyebrow">Who EJ has worked with</p>
     <h2 class="proof-title" id="industries-title">Industries and clients</h2>
@@ -720,6 +812,45 @@
           <blockquote class="result-quote"><p>&ldquo;It helped me do the proposition.&rdquo;</p></blockquote>
         </div>
     </div>
+  </section>
+
+  <section class="proof" id="testimonials" aria-labelledby="testimonials-title">
+    <p class="i2o-eyebrow">Clients</p>
+    <h2 class="proof-title" id="testimonials-title">What clients say</h2>
+    <div class="quotes-grid">
+      <figure class="i2o-card quote-card">
+        <blockquote class="quote-text"><p>&ldquo;EJ became an integral part of our business success. His thought-provoking approach and strategic insights revolutionized our creative workflows.&rdquo;</p></blockquote>
+        <figcaption class="quote-person">
+          <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=150" alt="" width="48" height="48" loading="lazy">
+          <span><span class="quote-name">Leisa Johnson</span><br><span class="quote-role">Creative Director, Lovely Studio Agency</span></span>
+        </figcaption>
+      </figure>
+      <figure class="i2o-card quote-card">
+        <blockquote class="quote-text"><p>&ldquo;EJ&rsquo;s automation strategy expertise transformed our client communications. His technical knowledge and strategic vision delivered exceptional ROI.&rdquo;</p></blockquote>
+        <figcaption class="quote-person">
+          <img src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=150" alt="" width="48" height="48" loading="lazy">
+          <span><span class="quote-name">Tara Mettler</span><br><span class="quote-role">Managing Partner, Consider Yourself Wealthy Strategy Group</span></span>
+        </figcaption>
+      </figure>
+      <figure class="i2o-card quote-card">
+        <blockquote class="quote-text"><p>&ldquo;EJ transformed our failed automation attempt into workflow excellence. His strategic approach completely reshaped our operations, and we&rsquo;re now AI-Automation Advocates.&rdquo;</p></blockquote>
+        <figcaption class="quote-person">
+          <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=150" alt="" width="48" height="48" loading="lazy">
+          <span><span class="quote-name">Kenyon Berry</span><br><span class="quote-role">President, Berry Swift Commercial Services</span></span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="proof" id="about" aria-labelledby="about-title">
+    <p class="i2o-eyebrow">About</p>
+    <h2 class="proof-title" id="about-title">EJ Steele</h2>
+    <p class="about-text">EJ Steele is an AI automation consultant and executive coach. He founded Inward2Onward. He wrote ATLAS and SIGNALS, two AI implementation frameworks. EJ plans an AI project with a client and builds it. He then trains the client&rsquo;s people to run it. His past clients include Toyota and Credit Karma. His work spans 350+ organizations and coaching clients across Inward2Onward and AmplifyAI. He is based in Glendale, Arizona.</p>
+    <p class="about-cred"><strong>Certification:</strong> AI-Powered Workflows &amp; Automation Certification, University of Arizona.</p>
+    <p class="industry-label">Tools EJ works with</p>
+    <ul class="chips">
+      <li>ChatGPT</li><li>Claude</li><li>Google Gemini</li><li>Perplexity</li><li>Make</li><li>Zapier</li><li>n8n</li><li>Airtable</li><li>Miro</li><li>Notion</li><li>Slack</li><li>GitHub Copilot</li><li>Microsoft 365</li><li>Hugging Face</li><li>Telegram</li><li>Supabase</li><li>GitHub</li><li>Bolt</li><li>Mailgun</li><li>Replit</li><li>Postman</li><li>Box</li><li>Magai</li><li>ElevenLabs</li><li>Canva</li><li>Apify</li>
+    </ul>
   </section>
 
   <div class="tagline-band">
@@ -867,7 +998,7 @@
 })();
 
 /* Card reveal: cards fade and rise in order as their section scrolls into view. */
-["services", "results"].forEach(function (id) {
+["services", "agents", "process", "results", "testimonials"].forEach(function (id) {
   var section = document.getElementById(id);
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!section || reduce || !window.IntersectionObserver) return;
