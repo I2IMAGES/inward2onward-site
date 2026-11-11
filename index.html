@@ -26,7 +26,8 @@
       --i2o-navy-4:        #0f1f3d;
       --i2o-s1:            #f1f5f9;
       --i2o-s2:            #94a3b8;
-      --i2o-s3:            #475569;
+      /* Was #475569, about 2.4:1 on the navy background. #8b98ad is about 6.3:1 and still sits below s2. */
+      --i2o-s3:            #8b98ad;
       --i2o-s4:            #1e293b;
       --i2o-border:        #1e3a5f;
       --i2o-green:         #10B981;
@@ -123,23 +124,21 @@
       transition: color 0.2s;
     }
     .site-nav-contact:hover { color: var(--i2o-s1); opacity: 1; }
+    .site-nav-links { display: flex; gap: var(--i2o-space-6); align-items: center; flex-wrap: wrap; }
+    .site-nav-links a { font-size: var(--i2o-text-sm); color: var(--i2o-s2); }
+    .site-nav-links a:hover { color: var(--i2o-s1); opacity: 1; }
 
     /* ── HERO ── */
-    .hero {
-      max-width: var(--i2o-max-admin);
+    /* Split layout: big headline on the left, example workflow panel on the right. */
+    .hero { border-bottom: 1px solid var(--i2o-border); }
+    .hero-inner {
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 96px var(--i2o-space-10) 80px;
-      text-align: center;
-    }
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--i2o-space-2);
-      margin-bottom: var(--i2o-space-7);
-    }
-    .hero-eyebrow-line {
-      width: 24px; height: 1px;
-      background: var(--i2o-blue);
+      padding: 96px var(--i2o-space-10) 72px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 56px;
+      align-items: end;
     }
     .i2o-eyebrow {
       font-family: var(--i2o-font-display);
@@ -149,28 +148,74 @@
       text-transform: uppercase;
       color: var(--i2o-blue);
     }
+    .hero-eyebrow { margin: 0 0 var(--i2o-space-5); }
     .hero-headline {
       font-family: var(--i2o-font-display);
       font-weight: var(--i2o-weight-bold);
-      font-size: clamp(2.8rem, 7vw, var(--i2o-text-9xl));
-      line-height: var(--i2o-leading-display);
+      font-size: clamp(3.5rem, 9vw, 7.5rem);
+      line-height: 0.88;
       letter-spacing: var(--i2o-tracking-tight);
+      text-transform: uppercase;
       color: var(--i2o-s1);
-      margin-bottom: var(--i2o-space-6);
+      margin: 0 0 var(--i2o-space-7);
+      text-wrap: balance;
     }
-    .hero-headline .grad {
-      background: linear-gradient(135deg, var(--i2o-blue), var(--i2o-indigo));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+    .hero-headline .accent { display: block; color: var(--i2o-blue); }
     .hero-sub {
-      font-size: var(--i2o-text-xl);
+      font-size: var(--i2o-text-2xl);
       color: var(--i2o-s2);
-      max-width: var(--i2o-max-body-text);
-      margin: 0 auto var(--i2o-space-12);
-      line-height: var(--i2o-leading-looser);
+      max-width: 46ch;
+      margin: 0 0 var(--i2o-space-7);
+      line-height: var(--i2o-leading-relaxed);
     }
+    .hero-actions { display: flex; gap: var(--i2o-space-3); flex-wrap: wrap; align-items: center; }
+    .hero-proof { margin: var(--i2o-space-7) 0 0; font-size: var(--i2o-text-md); color: var(--i2o-s3); }
+    .hero-proof strong { color: var(--i2o-s1); font-weight: var(--i2o-weight-medium); }
+
+    /* ── EXAMPLE WORKFLOW PANEL ── */
+    .flow-panel {
+      background: var(--i2o-navy-2);
+      border: 1px solid var(--i2o-border);
+      border-radius: var(--i2o-radius-lg);
+      padding: var(--i2o-space-5) var(--i2o-space-6);
+      min-width: 0;
+    }
+    .flow-head { display: flex; justify-content: space-between; gap: var(--i2o-space-3); font-size: var(--i2o-text-sm); color: var(--i2o-s3); margin-bottom: var(--i2o-space-4); }
+    .flow-live { display: inline-flex; align-items: center; gap: 6px; color: var(--i2o-green); }
+    .flow-live i { width: 7px; height: 7px; border-radius: 50%; background: var(--i2o-green); display: inline-block; }
+    .flow { list-style: none; margin: 0; padding: 0; }
+    .flow li { display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 12px 0; border-top: 1px solid var(--i2o-border); }
+    .flow li:first-child { border-top: none; }
+    .flow-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--i2o-blue); background: var(--i2o-navy-2); justify-self: center; }
+    .flow-step { font-size: var(--i2o-text-lg); color: var(--i2o-s1); }
+    .flow-tool { font-size: var(--i2o-text-sm); color: var(--i2o-s3); }
+    .flow-foot { margin: var(--i2o-space-3) 0 0; font-size: var(--i2o-text-sm); color: var(--i2o-s3); }
+    @media (prefers-reduced-motion: no-preference) {
+      .flow-dot { animation: i2o-run 6s infinite; }
+      .flow li:nth-child(2) .flow-dot { animation-delay: 1.5s; }
+      .flow li:nth-child(3) .flow-dot { animation-delay: 3s; }
+      .flow li:nth-child(4) .flow-dot { animation-delay: 4.5s; }
+      .flow-live i { animation: i2o-blink 2s infinite; }
+    }
+    @keyframes i2o-run {
+      0%, 22% { background: var(--i2o-blue); box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18); }
+      30%, 100% { background: var(--i2o-navy-2); box-shadow: none; }
+    }
+    @keyframes i2o-blink { 50% { opacity: 0.35; } }
+
+    /* ── TOOLS STRIP ── */
+    .tools-strip { border-bottom: 1px solid var(--i2o-border); }
+    .tools-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: var(--i2o-space-6) var(--i2o-space-10);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 32px;
+      align-items: baseline;
+    }
+    .tools-label { font-size: var(--i2o-text-sm); color: var(--i2o-s3); }
+    .tools-name { font-family: var(--i2o-font-display); font-weight: var(--i2o-weight-semibold); font-size: var(--i2o-text-4xl); color: var(--i2o-s2); }
 
     /* ── BUTTON ── */
     .i2o-btn {
@@ -191,6 +236,8 @@
       line-height: 1;
     }
     .i2o-btn:hover { opacity: 0.88; }
+    .i2o-btn.ghost { background: transparent; color: var(--i2o-s1); border: 1px solid var(--i2o-border); }
+    .i2o-btn:focus-visible { outline: 2px solid var(--i2o-blue); outline-offset: 2px; }
 
     /* ── DIVIDER ── */
     .full-rule { border: none; border-top: 1px solid var(--i2o-border); margin: 0; }
@@ -248,7 +295,7 @@
       font-weight: var(--i2o-weight-bold);
       font-size: clamp(1.6rem, 4vw, var(--i2o-text-6xl));
       letter-spacing: var(--i2o-tracking-tight);
-      color: rgba(241,245,249,0.1);
+      color: var(--i2o-s2);
       line-height: var(--i2o-leading-tight);
     }
     .tagline strong { color: var(--i2o-s1); }
@@ -302,14 +349,47 @@
     .site-footer-links a { font-size: var(--i2o-text-xs); color: var(--i2o-s3); text-decoration: none; transition: color 0.2s; }
     .site-footer-links a:hover { color: var(--i2o-s2); opacity: 1; }
 
+    /* ── COOKIE CONSENT BANNER ── */
+    /* Hidden by default. The script shows it only when no choice is saved. */
+    .cookie-banner {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 9999;
+      background: var(--i2o-navy-2);
+      border-top: 1px solid var(--i2o-border);
+      padding: 20px 32px;
+      font-family: var(--i2o-font-body);
+      font-size: 13px;
+      color: var(--i2o-s2);
+      flex-wrap: wrap;
+      box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.4);
+      gap: 24px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cookie-banner.is-open { display: flex; }
+    .cookie-text { flex: 1; min-width: 260px; line-height: 1.6; }
+    .cookie-text strong { color: var(--i2o-s1); font-family: var(--i2o-font-display); font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .cookie-text a { margin-left: 4px; text-decoration: underline; text-underline-offset: 2px; }
+    .cookie-actions { display: flex; gap: 10px; flex-shrink: 0; align-items: center; }
+    .cookie-decline { background: none; border: 1px solid var(--i2o-border); border-radius: 6px; color: var(--i2o-s3); font-family: var(--i2o-font-body); font-size: 12px; padding: 8px 16px; cursor: pointer; }
+    .cookie-accept { background: var(--i2o-gradient-primary); border: none; border-radius: 6px; color: #fff; font-family: var(--i2o-font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 9px 20px; cursor: pointer; }
+    .cookie-decline:focus-visible, .cookie-accept:focus-visible { outline: 2px solid var(--i2o-blue); outline-offset: 2px; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       .site-nav { padding: var(--i2o-space-5) var(--i2o-space-6); }
-      .hero { padding: 64px var(--i2o-space-6) var(--i2o-space-12); }
+      .hero-inner { grid-template-columns: minmax(0, 1fr); align-items: start; gap: var(--i2o-space-10); padding: 56px var(--i2o-space-6) var(--i2o-space-12); }
+      .tools-inner { padding: var(--i2o-space-5) var(--i2o-space-6); gap: 8px 20px; }
       .services { padding: var(--i2o-space-12) var(--i2o-space-6); }
       .tagline-band { padding: var(--i2o-space-10) var(--i2o-space-6); }
       .contact-section { flex-direction: column; padding: var(--i2o-space-12) var(--i2o-space-6); align-items: flex-start; }
       .site-footer { flex-direction: column; align-items: flex-start; padding: var(--i2o-space-6); }
+      .cookie-banner { padding: 16px 20px; }
+    }
+    @media (max-width: 860px) and (min-width: 641px) {
+      .hero-inner { grid-template-columns: minmax(0, 1fr); align-items: start; }
     }
     @media (prefers-reduced-motion: reduce) { .i2o-btn { transition: none; } }
   </style>
@@ -318,28 +398,51 @@
 
   <nav class="site-nav">
     <a href="/" class="i2o-logo">Inward<span>2</span>Onward</a>
-    <a href="mailto:admin@inward2onward.com" class="site-nav-contact">admin@inward2onward.com</a>
+    <div class="site-nav-links">
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+      <a href="mailto:admin@inward2onward.com" class="site-nav-contact">admin@inward2onward.com</a>
+    </div>
   </nav>
 
   <section class="hero">
-    <div class="hero-eyebrow">
-      <span class="hero-eyebrow-line"></span>
-      <span class="i2o-eyebrow">AI Strategy &amp; Automation &nbsp;·&nbsp; Glendale, AZ</span>
-      <span class="hero-eyebrow-line"></span>
+    <div class="hero-inner">
+      <div>
+        <p class="i2o-eyebrow hero-eyebrow">AI Strategy &amp; Automation &nbsp;·&nbsp; Glendale, AZ</p>
+        <h1 class="hero-headline">We don't sell AI.<span class="accent">We install systems that work.</span></h1>
+        <p class="hero-sub">AI strategy, automation and CRM builds for business owners and executives. Measured by what runs, not by what gets presented.</p>
+        <div class="hero-actions">
+          <a href="mailto:admin@inward2onward.com" class="i2o-btn">Start a conversation &nbsp;→</a>
+          <a href="#services" class="i2o-btn ghost">See what we build</a>
+        </div>
+        <p class="hero-proof"><strong>350+</strong> CRM and automation implementations</p>
+      </div>
+      <aside class="flow-panel" aria-label="Example workflow">
+        <div class="flow-head"><span>Example workflow</span><span class="flow-live"><i aria-hidden="true"></i>Running</span></div>
+        <ol class="flow">
+          <li><span class="flow-dot" aria-hidden="true"></span><span class="flow-step">New lead comes in</span><span class="flow-tool">Web form</span></li>
+          <li><span class="flow-dot" aria-hidden="true"></span><span class="flow-step">CRM record created</span><span class="flow-tool">Keap</span></li>
+          <li><span class="flow-dot" aria-hidden="true"></span><span class="flow-step">Follow-up sent</span><span class="flow-tool">Make</span></li>
+          <li><span class="flow-dot" aria-hidden="true"></span><span class="flow-step">Summary lands with you</span><span class="flow-tool">Email</span></li>
+        </ol>
+        <p class="flow-foot">Illustrative example, not a client record.</p>
+      </aside>
     </div>
-    <h1 class="hero-headline">
-      Built Right.<br>
-      <span class="grad">Accountable Throughout.</span>
-    </h1>
-    <p class="hero-sub">
-      Inward2Onward LLC partners with business owners and executives to design, build, and deploy AI automation systems that produce measurable results — not slide decks.
-    </p>
-    <a href="mailto:admin@inward2onward.com" class="i2o-btn">Start a conversation &nbsp;→</a>
   </section>
 
-  <hr class="full-rule" />
+  <section class="tools-strip" aria-label="Tools we build with">
+    <div class="tools-inner">
+      <span class="tools-label">Built with</span>
+      <span class="tools-name">Keap</span>
+      <span class="tools-name">GoHighLevel</span>
+      <span class="tools-name">Make</span>
+      <span class="tools-name">n8n</span>
+      <span class="tools-name">MindStudio</span>
+      <span class="tools-name">Claude</span>
+    </div>
+  </section>
 
-  <section class="services">
+  <section class="services" id="services">
     <span class="i2o-eyebrow">What we do</span>
     <div class="services-grid">
       <div class="i2o-card">
@@ -376,10 +479,10 @@
   </section>
 
   <div class="tagline-band">
-    <p class="tagline">325+ CRM and automation implementations. <strong>One standard: it has to work.</strong></p>
+    <p class="tagline"><strong>One standard: it has to work.</strong></p>
   </div>
 
-  <section class="contact-section">
+  <section class="contact-section" id="contact">
     <div>
       <h2 class="contact-heading">Ready to build something real?</h2>
       <p class="contact-sub">Based in Glendale, AZ. Serving clients nationally.</p>
@@ -412,26 +515,31 @@
 
 
 <!-- ── COOKIE CONSENT BANNER ── -->
-<div id="i2o-cookie-banner" role="dialog" aria-label="Cookie consent" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:#0d1424; border-top:1px solid #1e3a5f; padding:20px 32px; font-family:Inter,system-ui,sans-serif; font-size:13px; color:#94a3b8; flex-wrap:wrap; box-shadow:0 -4px 24px rgba(0,0,0,0.4); gap:24px; align-items:center; justify-content:space-between;">
-  <div style="flex:1; min-width:260px; line-height:1.6;">
-    <strong style="color:#f1f5f9; font-family:Barlow Condensed,sans-serif; font-size:14px; letter-spacing:0.04em; text-transform:uppercase;">We use cookies.</strong>
-    &nbsp;Strictly necessary cookies keep this site running. We also use Google Analytics (pseudonymized) to understand how visitors use our site. No advertising or tracking cookies.
-    <a href="https://legal.inward2onward.com/legal.html" style="color:#3B82F6; margin-left:4px; text-decoration:underline; text-underline-offset:2px;">Cookie Policy</a>
+<div id="i2o-cookie-banner" class="cookie-banner" role="dialog" aria-label="Cookie consent">
+  <div class="cookie-text">
+    <strong>We use cookies.</strong>
+    &nbsp;Strictly necessary cookies keep this site running. We use Cloudflare Web Analytics to understand how visitors use our site. It does not collect personal data. No advertising or tracking cookies.
+    <a href="https://legal.inward2onward.com/legal.html">Cookie Policy</a>
   </div>
-  <div style="display:flex; gap:10px; flex-shrink:0; align-items:center;">
-    <button id="i2o-cookie-decline" onclick="i2oCookieChoice(false)" style="background:none; border:1px solid #1e3a5f; border-radius:6px; color:#475569; font-family:Inter,sans-serif; font-size:12px; padding:8px 16px; cursor:pointer;">Decline non-essential</button>
-    <button id="i2o-cookie-accept" onclick="i2oCookieChoice(true)" style="background:linear-gradient(135deg,#1D4ED8,#3B82F6); border:none; border-radius:6px; color:#fff; font-family:Barlow Condensed,sans-serif; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:9px 20px; cursor:pointer;">Accept all</button>
+  <div class="cookie-actions">
+    <button type="button" id="i2o-cookie-decline" class="cookie-decline">Decline non-essential</button>
+    <button type="button" id="i2o-cookie-accept" class="cookie-accept">Accept all</button>
   </div>
 </div>
 <script>
-(function(){
-  var b=document.getElementById("i2o-cookie-banner");
-  if(!localStorage.getItem("i2o_cookie_consent")){b.style.display="flex";}
+(function () {
+  var KEY = "i2o_cookie_consent";
+  var banner = document.getElementById("i2o-cookie-banner");
+  function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function save(value) { try { localStorage.setItem(KEY, value); } catch (e) {} }
+  function choose(accepted) {
+    save(accepted ? "accepted" : "declined");
+    banner.classList.remove("is-open");
+  }
+  if (!read()) { banner.classList.add("is-open"); }
+  document.getElementById("i2o-cookie-accept").addEventListener("click", function () { choose(true); });
+  document.getElementById("i2o-cookie-decline").addEventListener("click", function () { choose(false); });
 })();
-function i2oCookieChoice(accepted){
-  localStorage.setItem("i2o_cookie_consent", accepted?"accepted":"declined");
-  document.getElementById("i2o-cookie-banner").style.display="none";
-}
 </script>
 </body>
 </html>
