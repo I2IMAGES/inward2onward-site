@@ -456,6 +456,60 @@
     .about-cred { max-width: 68ch; margin-top: var(--i2o-space-4); font-size: var(--i2o-text-md); color: var(--i2o-s2); line-height: var(--i2o-leading-relaxed); }
     .about-cred strong { color: var(--i2o-s1); }
 
+    /* ── FLOW: section heads, bands, icon tiles, marquee, FAQ ── */
+    .proof { padding-top: var(--i2o-space-16); }
+    .section-head { text-align: center; max-width: 760px; margin: 0 auto; }
+    .section-head .proof-note { margin-left: auto; margin-right: auto; }
+    .accent { color: var(--i2o-blue-light); }
+    .band { border-image: linear-gradient(to bottom, rgba(15, 32, 68, 0), rgba(15, 32, 68, 0.7) 14%, rgba(15, 32, 68, 0.7) 86%, rgba(15, 32, 68, 0)) fill 0 / / 0 100vmax; }
+    .band .i2o-card { background: #12285a; }
+    .centered-groups .industry-label { text-align: center; }
+    .centered-groups .chips { justify-content: center; }
+    .icon-tile { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: var(--i2o-space-4); box-shadow: 0 8px 18px -8px rgba(59, 130, 246, 0.6); }
+    .icon-tile svg { width: 22px; height: 22px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .tile-blue { background: linear-gradient(135deg, #3B82F6, #6366F1); }
+    .tile-purple { background: linear-gradient(135deg, #A855F7, #DB2777); }
+    .tile-green { background: linear-gradient(135deg, #22C55E, #059669); }
+    .tile-red { background: linear-gradient(135deg, #EF4444, #EA580C); }
+    .step-circle { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--i2o-font-display); font-weight: var(--i2o-weight-bold); color: #fff; background: linear-gradient(135deg, #3B82F6, #6366F1); margin-bottom: var(--i2o-space-4); }
+    .start-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--i2o-space-4); margin-top: var(--i2o-space-6); }
+    .start-card { margin: 0; }
+    .start-card blockquote { margin-top: var(--i2o-space-4); }
+    .start-cite { display: block; margin-top: var(--i2o-space-2); font-size: var(--i2o-text-sm); color: var(--i2o-s2); }
+    .start-here { margin-bottom: var(--i2o-space-8); padding: var(--i2o-space-5) var(--i2o-space-6); border: 1px solid var(--i2o-border); border-radius: var(--i2o-radius-lg); background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(99, 102, 241, 0.06)); }
+    .start-title { font-family: var(--i2o-font-display); font-weight: var(--i2o-weight-bold); font-size: var(--i2o-text-4xl); color: var(--i2o-s1); }
+    .start-here ul { list-style: none; padding: 0; margin: var(--i2o-space-3) 0 0; display: grid; gap: var(--i2o-space-2); }
+    .start-here a { color: var(--i2o-s1); text-decoration: underline; text-decoration-color: rgba(96, 165, 250, 0.6); text-underline-offset: 3px; font-size: var(--i2o-text-md); line-height: var(--i2o-leading-relaxed); }
+    .start-here a:hover { color: var(--i2o-blue-light); }
+    .service-get { margin-top: var(--i2o-space-3); font-size: var(--i2o-text-base); color: var(--i2o-s1); line-height: var(--i2o-leading-relaxed); }
+    .service-get strong { color: var(--i2o-blue-light); }
+    .marquee { overflow: hidden; margin-top: var(--i2o-space-6); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+    .marquee-inner { display: flex; width: max-content; animation: i2o-marquee 60s linear infinite; }
+    .marquee:hover .marquee-inner { animation-play-state: paused; }
+    .marquee .chips { flex-wrap: nowrap; margin: 0; padding-right: 8px; }
+    .marquee .chips li { white-space: nowrap; }
+    @keyframes i2o-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .quote-card::before { content: "\201C"; font-family: Georgia, serif; font-size: 56px; line-height: 0.6; color: var(--i2o-blue-light); display: block; height: 24px; }
+    .faq-list { max-width: 820px; margin: var(--i2o-space-6) auto 0; display: grid; gap: var(--i2o-space-3); }
+    .faq-item { background: var(--i2o-navy-2); border: 1px solid var(--i2o-border); border-radius: var(--i2o-radius-lg); padding: 0 var(--i2o-space-6); }
+    .band .faq-item { background: #12285a; }
+    .faq-item summary { cursor: pointer; list-style: none; padding: var(--i2o-space-5) 0; font-weight: var(--i2o-weight-bold); color: var(--i2o-s1); font-size: var(--i2o-text-lg); display: flex; justify-content: space-between; gap: 16px; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: "+"; color: var(--i2o-blue-light); font-size: 22px; line-height: 1; }
+    .faq-item[open] summary::after { content: "\2212"; }
+    .faq-item summary:focus-visible { outline: 2px solid var(--i2o-blue); outline-offset: 4px; border-radius: 4px; }
+    .faq-item p { padding-bottom: var(--i2o-space-5); color: var(--i2o-s2); font-size: var(--i2o-text-md); line-height: var(--i2o-leading-relaxed); }
+    .js-reveal .section-head:not(.is-in) { opacity: 0; }
+    .js-reveal .section-head.is-in { animation: i2o-rise 0.6s ease-out backwards; }
+    @media print { .js-reveal .section-head { opacity: 1 !important; } }
+    @media (min-width: 900px) { .results-grid.three { grid-template-columns: repeat(3, 1fr); } }
+    @media (prefers-reduced-motion: reduce) {
+      .marquee { -webkit-mask-image: none; mask-image: none; }
+      .marquee-inner { animation: none; width: auto; }
+      .marquee .chips { flex-wrap: wrap; justify-content: center; }
+      .marquee .chips[aria-hidden="true"] { display: none; }
+    }
+
     /* ── TAGLINE BAND ── */
     .tagline-band {
       border-top: 1px solid var(--i2o-border);
@@ -558,7 +612,8 @@
       .hero-inner { grid-template-columns: minmax(0, 1fr); align-items: start; gap: var(--i2o-space-10); padding: 56px var(--i2o-space-6) var(--i2o-space-12); }
       .tools-inner { padding: var(--i2o-space-5) var(--i2o-space-6); gap: 8px 20px; }
       .services { padding: var(--i2o-space-12) var(--i2o-space-6); }
-      .proof { padding: 0 var(--i2o-space-6) var(--i2o-space-12); }
+      .proof { padding: var(--i2o-space-12) var(--i2o-space-6); }
+      .start-here { padding: var(--i2o-space-5); }
       .hero-visual { min-height: 0; }
       .hero-dots { position: relative; inset: auto; width: 100%; height: 160px; margin-bottom: -24px; }
       .tagline-band { padding: var(--i2o-space-10) var(--i2o-space-6); }
@@ -585,6 +640,7 @@
     <div class="site-nav-links">
       <a href="#services">Services</a>
       <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
       <a href="https://calendly.com/ej--33/ai-powered-workflows-automation" class="nav-cta" target="_blank" rel="noopener">Book a call</a>
     </div>
@@ -631,24 +687,56 @@
     </div>
   </section>
 
+  <section class="proof band" id="start" aria-labelledby="start-title">
+    <div class="section-head">
+      <p class="i2o-eyebrow">Before the work</p>
+      <h2 class="proof-title" id="start-title">Problems clients <span class="accent">bring</span></h2>
+    </div>
+    <div class="start-grid">
+      <figure class="i2o-card start-card">
+        <h3 class="card-title">An automation that didn&rsquo;t work</h3>
+        <p class="card-text">We rebuild it, test it and train the people who will run it.</p>
+        <blockquote class="result-quote"><p>&ldquo;EJ transformed our failed automation attempt into workflow excellence.&rdquo;</p></blockquote>
+        <figcaption class="start-cite">Kenyon Berry, President, Berry Swift Commercial Services</figcaption>
+      </figure>
+      <figure class="i2o-card start-card">
+        <h3 class="card-title">No coding background</h3>
+        <p class="card-text">You don&rsquo;t need one. A ghostwriter EJ coached had no coding background and now takes on paid web work and uses AI to build it.</p>
+        <blockquote class="result-quote"><p>&ldquo;I technically have no coding skills, the AI does that, but I know how to work with the AI to do that.&rdquo;</p></blockquote>
+        <figcaption class="start-cite">A ghostwriter coached through AmplifyAI</figcaption>
+      </figure>
+    </div>
+  </section>
+
+
   <section class="services" id="services">
     <div class="services-layout">
     <h2 class="i2o-eyebrow services-label">What we do</h2>
     <div class="service-groups">
+      <div class="start-here">
+        <p class="start-title">Where to start</p>
+        <ul>
+          <li><a href="#svc-coaching">If you want to use AI yourself, start with AI coaching.</a></li>
+          <li><a href="#svc-automation">If your team repeats the same tasks, start with Automation and CRM.</a></li>
+          <li><a href="#svc-strategy">If you&rsquo;re not sure where AI fits, start with AI strategy.</a></li>
+          <li><a href="#svc-exec">If you lead a team, start with Executive coaching.</a></li>
+        </ul>
+      </div>
       <div class="service-group" aria-labelledby="group-coaching">
       <h3 class="service-group-title" id="group-coaching">AI Coaching</h3>
       <div class="services-grid">
-        <div class="i2o-card">
+        <div class="i2o-card" id="svc-coaching">
           <p class="service-num">01</p>
           <h4 class="service-name">AI coaching</h4>
           <p class="service-desc">One-on-one sessions with EJ Steele. You build your own AI assistant in Claude. We call this assistant your clone. You give it details about your work and your business. Then you use it to help with one part of your business at a time.</p>
+          <p class="service-get"><strong>What you get:</strong> your own AI assistant. You build it with EJ Steele, using your business details.</p>
         </div>
         <div class="i2o-card">
           <p class="service-num">02</p>
           <h4 class="service-name">Talk to Claude</h4>
           <p class="service-desc">We set up Claude so you can speak to it instead of typing.</p>
         </div>
-        <div class="i2o-card">
+        <div class="i2o-card" id="svc-exec">
           <p class="service-num">03</p>
           <h4 class="service-name">Executive coaching</h4>
           <p class="service-desc">EJ Steele coaches you one-on-one on leadership and decision-making.</p>
@@ -658,15 +746,17 @@
       <div class="service-group" aria-labelledby="group-consultancy">
       <h3 class="service-group-title" id="group-consultancy">Small Business Consultancy</h3>
       <div class="services-grid">
-        <div class="i2o-card">
+        <div class="i2o-card" id="svc-strategy">
           <p class="service-num">04</p>
           <h4 class="service-name">AI strategy</h4>
           <p class="service-desc">We write a plan for where AI can help your business. The plan is built on our ATLAS and SIGNALS frameworks.</p>
+          <p class="service-get"><strong>What you get:</strong> a written plan for where AI fits in your business.</p>
         </div>
-        <div class="i2o-card">
+        <div class="i2o-card" id="svc-automation">
           <p class="service-num">05</p>
           <h4 class="service-name">Automation and CRM</h4>
           <p class="service-desc">We set up a customer relationship management (CRM) system for you in Keap or GoHighLevel. We automate repeat tasks with Make, n8n or MindStudio. Then the CRM and the automations are yours to run.</p>
+          <p class="service-get"><strong>What you get:</strong> a CRM and automations your team can run.</p>
         </div>
         <div class="i2o-card">
           <p class="service-num">06</p>
@@ -684,37 +774,39 @@
     </div>
   </section>
 
-  <section class="proof" id="agents" aria-labelledby="agents-title">
-    <p class="i2o-eyebrow">AI agents</p>
-    <h2 class="proof-title" id="agents-title">The AI agents we build</h2>
+  <section class="proof band" id="agents" aria-labelledby="agents-title">
+    <div class="section-head">
+      <p class="i2o-eyebrow">AI agents</p>
+      <h2 class="proof-title" id="agents-title">The AI <span class="accent">agents</span> we build</h2>
+    </div>
     <div class="agents-grid">
       <div class="i2o-card">
-        <span class="agent-bar agent-blue" aria-hidden="true"></span>
+        <span class="icon-tile tile-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
         <h3 class="card-title">Customer agents</h3>
         <p class="card-text">They answer customer questions and resolve common issues, day and night. They work on your website, by phone, by email and by text.</p>
       </div>
       <div class="i2o-card">
-        <span class="agent-bar agent-blue" aria-hidden="true"></span>
+        <span class="icon-tile tile-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0-3-3.85"/></svg></span>
         <h3 class="card-title">Employee agents</h3>
         <p class="card-text">They take repeat tasks off your team. They also track tasks and move work from one step to the next.</p>
       </div>
       <div class="i2o-card">
-        <span class="agent-bar agent-purple" aria-hidden="true"></span>
+        <span class="icon-tile tile-purple" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span>
         <h3 class="card-title">Creative agents</h3>
         <p class="card-text">They draft content and support design work in your brand&rsquo;s style.</p>
       </div>
       <div class="i2o-card">
-        <span class="agent-bar agent-green" aria-hidden="true"></span>
+        <span class="icon-tile tile-green" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M8 17v-5"/><path d="M13 17V8"/><path d="M18 17v-9"/></svg></span>
         <h3 class="card-title">Data agents</h3>
         <p class="card-text">They analyze your data and report what it shows, to support your decisions.</p>
       </div>
       <div class="i2o-card">
-        <span class="agent-bar agent-blue" aria-hidden="true"></span>
+        <span class="icon-tile tile-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
         <h3 class="card-title">Code agents</h3>
         <p class="card-text">They write and test code to the standards you set.</p>
       </div>
       <div class="i2o-card">
-        <span class="agent-bar agent-red" aria-hidden="true"></span>
+        <span class="icon-tile tile-red" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
         <h3 class="card-title">Security agents</h3>
         <p class="card-text">They watch for threats around the clock and flag them to you.</p>
       </div>
@@ -722,35 +814,39 @@
   </section>
 
   <section class="proof" id="process" aria-labelledby="process-title">
-    <p class="i2o-eyebrow">How we work</p>
-    <h2 class="proof-title" id="process-title">How a build runs</h2>
+    <div class="section-head">
+      <p class="i2o-eyebrow">How we work</p>
+      <h2 class="proof-title" id="process-title">How a build <span class="accent">runs</span></h2>
+    </div>
     <ol class="steps-grid">
       <li class="i2o-card">
-        <p class="step-num">STEP 1</p>
+        <p class="step-circle" aria-label="Step 1">1</p>
         <h3 class="card-title">Discovery</h3>
         <p class="card-text">We map how your work runs today. We pick the tasks an agent will handle and agree with you on how to measure success.</p>
       </li>
       <li class="i2o-card">
-        <p class="step-num">STEP 2</p>
+        <p class="step-circle" aria-label="Step 2">2</p>
         <h3 class="card-title">Design</h3>
         <p class="card-text">We plan how the agent works and how it connects to your systems. We set up tests for the agent.</p>
       </li>
       <li class="i2o-card">
-        <p class="step-num">STEP 3</p>
+        <p class="step-circle" aria-label="Step 3">3</p>
         <h3 class="card-title">Deploy</h3>
         <p class="card-text">We set up the agent, connect it and test it. Then we train your team and hand it over.</p>
       </li>
       <li class="i2o-card">
-        <p class="step-num">STEP 4</p>
+        <p class="step-circle" aria-label="Step 4">4</p>
         <h3 class="card-title">Optimize</h3>
         <p class="card-text">We track how the agent performs and tune it as it runs.</p>
       </li>
     </ol>
   </section>
 
-  <section class="proof" id="industries" aria-labelledby="industries-title">
-    <p class="i2o-eyebrow">Who EJ has worked with</p>
-    <h2 class="proof-title" id="industries-title">Industries and clients</h2>
+  <section class="proof centered-groups" id="industries" aria-labelledby="industries-title">
+    <div class="section-head">
+      <p class="i2o-eyebrow">Who EJ has worked with</p>
+      <h2 class="proof-title" id="industries-title">Industries <span class="accent">and clients</span></h2>
+    </div>
     <div class="industry-group">
       <p class="industry-label">EJ&rsquo;s coaching clients through AmplifyAI</p>
       <ul class="chips">
@@ -787,20 +883,17 @@
     </div>
   </section>
 
-  <section class="proof" id="results" aria-labelledby="results-title">
-    <p class="i2o-eyebrow">Results</p>
-    <h2 class="proof-title" id="results-title">What EJ&rsquo;s coaching clients did</h2>
-    <p class="proof-note">From coaching clients through AmplifyAI. Names are left out.</p>
-    <div class="results-grid">
-        <div class="i2o-card result-card result-card-wide">
+  <section class="proof band" id="results" aria-labelledby="results-title">
+    <div class="section-head">
+      <p class="i2o-eyebrow">Results</p>
+      <h2 class="proof-title" id="results-title">What EJ&rsquo;s coaching clients <span class="accent">did</span></h2>
+      <p class="proof-note">From coaching clients through AmplifyAI. Names are left out.</p>
+    </div>
+    <div class="results-grid three">
+        <div class="i2o-card result-card">
           <p class="result-who">A ghostwriter moving into AI services</p>
-          <ul class="result-list">
-            <li>With no coding background, he took on paid web work for a local business owner. He used AI to do the build.</li>
-            <li>Read his fiction aloud at a public writers&rsquo; group, 11 days before his target date. He was the first to read.</li>
-            <li>Reached his goal of 15 LinkedIn posts, by his own count.</li>
-            <li>Emailed three new contacts within 24 hours of meeting them at a book signing. Two replied right away.</li>
-          </ul>
-          <blockquote class="result-quote"><p>&ldquo;I technically have no coding skills, the AI does that, but I know how to work with the AI to do that.&rdquo;</p></blockquote>
+          <p class="result-text">With no coding background, he took on paid web work for a local business owner. He used AI to do the build. He reports that the work saves the owner time.</p>
+          <blockquote class="result-quote"><p>&ldquo;That saves him a lot of time.&rdquo;</p></blockquote>
         </div>
         <div class="i2o-card result-card">
           <p class="result-who">The owner of a workplace investigations firm</p>
@@ -814,9 +907,24 @@
     </div>
   </section>
 
+  <section class="proof" id="tools" aria-labelledby="tools-title">
+    <div class="section-head">
+      <p class="i2o-eyebrow">Tools</p>
+      <h2 class="proof-title" id="tools-title">Tools we <span class="accent">work with</span></h2>
+    </div>
+    <div class="marquee">
+      <div class="marquee-inner">
+        <ul class="chips"><li>Keap</li><li>GoHighLevel</li><li>MindStudio</li><li>ChatGPT</li><li>Claude</li><li>Google Gemini</li><li>Perplexity</li><li>Make</li><li>Zapier</li><li>n8n</li><li>Airtable</li><li>Miro</li><li>Notion</li><li>Slack</li><li>GitHub Copilot</li><li>Microsoft 365</li><li>Hugging Face</li><li>Telegram</li><li>Supabase</li><li>GitHub</li><li>Bolt</li><li>Mailgun</li><li>Replit</li><li>Postman</li><li>Box</li><li>Magai</li><li>ElevenLabs</li><li>Canva</li><li>Apify</li></ul>
+        <ul class="chips" aria-hidden="true"><li>Keap</li><li>GoHighLevel</li><li>MindStudio</li><li>ChatGPT</li><li>Claude</li><li>Google Gemini</li><li>Perplexity</li><li>Make</li><li>Zapier</li><li>n8n</li><li>Airtable</li><li>Miro</li><li>Notion</li><li>Slack</li><li>GitHub Copilot</li><li>Microsoft 365</li><li>Hugging Face</li><li>Telegram</li><li>Supabase</li><li>GitHub</li><li>Bolt</li><li>Mailgun</li><li>Replit</li><li>Postman</li><li>Box</li><li>Magai</li><li>ElevenLabs</li><li>Canva</li><li>Apify</li></ul>
+      </div>
+    </div>
+  </section>
+
   <section class="proof" id="testimonials" aria-labelledby="testimonials-title">
-    <p class="i2o-eyebrow">Clients</p>
-    <h2 class="proof-title" id="testimonials-title">What clients say</h2>
+    <div class="section-head">
+      <p class="i2o-eyebrow">Clients</p>
+      <h2 class="proof-title" id="testimonials-title">What clients <span class="accent">say</span></h2>
+    </div>
     <div class="quotes-grid">
       <figure class="i2o-card quote-card">
         <blockquote class="quote-text"><p>&ldquo;EJ became an integral part of our business success. His thought-provoking approach and strategic insights revolutionized our creative workflows.&rdquo;</p></blockquote>
@@ -847,10 +955,96 @@
     <h2 class="proof-title" id="about-title">EJ Steele</h2>
     <p class="about-text">EJ Steele is an AI automation consultant and executive coach. He founded Inward2Onward. He wrote ATLAS and SIGNALS, two AI implementation frameworks. EJ plans an AI project with a client and builds it. He then trains the client&rsquo;s people to run it. His past clients include Toyota and Credit Karma. His work spans 350+ organizations and coaching clients across Inward2Onward and AmplifyAI. He is based in Glendale, Arizona.</p>
     <p class="about-cred"><strong>Certification:</strong> AI-Powered Workflows &amp; Automation Certification, University of Arizona.</p>
-    <p class="industry-label">Tools EJ works with</p>
-    <ul class="chips">
-      <li>ChatGPT</li><li>Claude</li><li>Google Gemini</li><li>Perplexity</li><li>Make</li><li>Zapier</li><li>n8n</li><li>Airtable</li><li>Miro</li><li>Notion</li><li>Slack</li><li>GitHub Copilot</li><li>Microsoft 365</li><li>Hugging Face</li><li>Telegram</li><li>Supabase</li><li>GitHub</li><li>Bolt</li><li>Mailgun</li><li>Replit</li><li>Postman</li><li>Box</li><li>Magai</li><li>ElevenLabs</li><li>Canva</li><li>Apify</li>
-    </ul>
+  </section>
+
+  <section class="proof band" id="faq" aria-labelledby="faq-title">
+    <div class="section-head">
+      <p class="i2o-eyebrow">FAQ</p>
+      <h2 class="proof-title" id="faq-title">Questions about <span class="accent">working with us</span></h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Do I need technical skills to work with you?</summary>
+        <p>No. In AI coaching, you build your own AI assistant in Claude with EJ Steele, one part of your business at a time. In a build, we set up the system for you.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What happens after you build a system?</summary>
+        <p>We test it, train the people who will run it and hand it over. The system is yours to run.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What is the difference between AI coaching and a build?</summary>
+        <p>In AI coaching, you build and use your own AI assistant, with EJ Steele in each session. In a build, we set up the system for you, then hand it over.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Which tools do you work with?</summary>
+        <p>We build CRMs in Keap and GoHighLevel and automate tasks with Make.com, n8n and MindStudio. We also work with Claude, ChatGPT and the other tools listed on this page.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What is the first call?</summary>
+        <p>A 30-minute online call with EJ Steele. You can book it from any Book a call button on this page.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Where are you based?</summary>
+        <p>Glendale, Arizona. We serve clients nationally.</p>
+      </details>
+      <!-- Pricing question held: waiting on EJ to say whether the FAQ shows starting points, the full schedule or no prices (source: The Floor). -->
+    </div>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need technical skills to work with you?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. In AI coaching, you build your own AI assistant in Claude with EJ Steele, one part of your business at a time. In a build, we set up the system for you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens after you build a system?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We test it, train the people who will run it and hand it over. The system is yours to run."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between AI coaching and a build?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In AI coaching, you build and use your own AI assistant, with EJ Steele in each session. In a build, we set up the system for you, then hand it over."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which tools do you work with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We build CRMs in Keap and GoHighLevel and automate tasks with Make.com, n8n and MindStudio. We also work with Claude, ChatGPT and the other tools listed on this page."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the first call?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A 30-minute online call with EJ Steele. You can book it from any Book a call button on this page."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where are you based?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Glendale, Arizona. We serve clients nationally."
+      }
+    }
+  ]
+}
+    </script>
   </section>
 
   <div class="tagline-band">
@@ -861,6 +1055,8 @@
     <div>
       <h2 class="contact-heading">Ready to build something real?</h2>
       <p class="contact-sub">Based in Glendale, AZ. Serving clients nationally.</p>
+      <p class="contact-sub">Book a call: a 30-minute online call with EJ Steele.</p>
+      <!-- Held for EJ: what the caller leaves with, and whether the call is free. -->
     </div>
     <div class="contact-list">
       <div class="contact-row">
@@ -998,11 +1194,11 @@
 })();
 
 /* Card reveal: cards fade and rise in order as their section scrolls into view. */
-["services", "agents", "process", "results", "testimonials"].forEach(function (id) {
+["start", "services", "agents", "process", "industries", "results", "tools", "testimonials", "faq"].forEach(function (id) {
   var section = document.getElementById(id);
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!section || reduce || !window.IntersectionObserver) return;
-  var cards = section.querySelectorAll(".i2o-card");
+  var cards = section.querySelectorAll(".section-head, .i2o-card");
   for (var i = 0; i < cards.length; i++) cards[i].style.setProperty("--reveal-delay", (i * 0.08) + "s");
   section.classList.add("js-reveal");
   var io = new IntersectionObserver(function (entries) {
