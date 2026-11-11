@@ -87,6 +87,9 @@
       --i2o-gradient-primary:  linear-gradient(135deg, #1D4ED8, #3B82F6);
       --i2o-gradient-indigo:   linear-gradient(135deg, #6366F1, #3B82F6);
       --i2o-gradient-header:   linear-gradient(135deg, #2563EB, #4F46E5);
+      /* Solid button fill. White text on #1D4ED8 is about 6.7:1; on the #2563EB hover about 5.2:1. */
+      --i2o-btn-bg:        #1D4ED8;
+      --i2o-btn-bg-hover:  #2563EB;
     }
 
     /* ── BASE ── */
@@ -137,12 +140,12 @@
       letter-spacing: var(--i2o-tracking-wider);
       text-transform: uppercase;
       color: #fff;
-      background: var(--i2o-gradient-primary);
+      background: var(--i2o-btn-bg);
       border-radius: var(--i2o-radius-sm);
       padding: 8px 16px;
       line-height: 1;
     }
-    .site-nav-links a.nav-cta:hover { color: #fff; opacity: 0.88; }
+    .site-nav-links a.nav-cta:hover { color: #fff; opacity: 1; background: var(--i2o-btn-bg-hover); }
     .site-nav-links a.nav-cta:focus-visible { outline: 2px solid var(--i2o-blue); outline-offset: 2px; }
 
     /* ── HERO ── */
@@ -281,18 +284,19 @@
       font-weight: var(--i2o-weight-bold);
       letter-spacing: var(--i2o-tracking-widest);
       text-transform: uppercase;
-      background: var(--i2o-gradient-primary);
+      background: var(--i2o-btn-bg);
       color: #fff;
       border: none;
       border-radius: var(--i2o-radius-md);
       padding: 13px 32px;
       cursor: pointer;
       text-decoration: none;
-      transition: opacity 0.2s;
+      transition: background 0.2s, border-color 0.2s;
       line-height: 1;
     }
-    .i2o-btn:hover { opacity: 0.88; }
+    .i2o-btn:hover { opacity: 1; background: var(--i2o-btn-bg-hover); }
     .i2o-btn.ghost { background: transparent; color: var(--i2o-s1); border: 1px solid var(--i2o-border); }
+    .i2o-btn.ghost:hover { background: transparent; border-color: var(--i2o-blue-light); }
     .i2o-btn:focus-visible { outline: 2px solid var(--i2o-blue); outline-offset: 2px; }
 
     /* ── DIVIDER ── */
@@ -430,7 +434,8 @@
     .cookie-text a { color: var(--i2o-blue-light); margin-left: 4px; text-decoration: underline; text-underline-offset: 2px; }
     .cookie-actions { display: flex; gap: 10px; flex-shrink: 0; align-items: center; }
     .cookie-decline { background: none; border: 1px solid var(--i2o-border); border-radius: 6px; color: var(--i2o-s3); font-family: var(--i2o-font-body); font-size: 12px; padding: 8px 16px; cursor: pointer; }
-    .cookie-accept { background: var(--i2o-gradient-primary); border: none; border-radius: 6px; color: #fff; font-family: var(--i2o-font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 9px 20px; cursor: pointer; }
+    .cookie-accept { background: var(--i2o-btn-bg); border: none; border-radius: 6px; color: #fff; font-family: var(--i2o-font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 9px 20px; cursor: pointer; }
+    .cookie-accept:hover { background: var(--i2o-btn-bg-hover); }
     .cookie-decline:focus-visible, .cookie-accept:focus-visible { outline: 2px solid var(--i2o-blue); outline-offset: 2px; }
 
     /* ── RESPONSIVE ── */
