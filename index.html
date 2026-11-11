@@ -214,6 +214,12 @@
     .hero-proof { margin: var(--i2o-space-7) 0 0; font-size: var(--i2o-text-md); color: var(--i2o-s3); }
     .hero-proof strong { color: var(--i2o-s1); font-weight: var(--i2o-weight-medium); }
 
+    /* ── HERO DOT FIELD ── */
+    /* Right column: a halftone dot field drawn on a canvas, with the workflow panel over its lower part. */
+    .hero-visual { position: relative; align-self: stretch; display: flex; flex-direction: column; justify-content: flex-end; min-width: 0; min-height: 420px; }
+    .hero-dots { position: absolute; inset: 0 -24px 40px; width: calc(100% + 48px); height: calc(100% - 40px); display: block; pointer-events: none; }
+    .hero-visual .flow-panel { position: relative; z-index: 1; }
+
     /* ── EXAMPLE WORKFLOW PANEL ── */
     .flow-panel {
       background: var(--i2o-navy-2);
@@ -256,7 +262,9 @@
       .hero-actions             { animation-delay: 0.60s; }
       .hero-proof               { animation-delay: 0.75s; }
       .flow-panel               { animation-delay: 0.90s; }
+      .hero-dots                { animation: i2o-fade 1.2s ease-out 0.3s both; }
     }
+    @keyframes i2o-fade { from { opacity: 0; } to { opacity: 1; } }
     @keyframes i2o-rise {
       from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: none; }
@@ -304,22 +312,45 @@
 
     /* ── SERVICES ── */
     .services {
-      max-width: var(--i2o-max-admin);
+      max-width: 1120px;
       margin: 0 auto;
       padding: var(--i2o-space-16) var(--i2o-space-10);
     }
+    .services-layout { display: block; }
+    .services-label { display: inline-block; }
+    .service-group + .service-group { margin-top: var(--i2o-space-12); }
+    .service-group-title {
+      font-family: var(--i2o-font-display);
+      font-weight: var(--i2o-weight-bold);
+      font-size: var(--i2o-text-6xl);
+      letter-spacing: var(--i2o-tracking-tight);
+      color: var(--i2o-s1);
+      line-height: var(--i2o-leading-tight);
+      margin-top: var(--i2o-space-8);
+    }
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-      gap: var(--i2o-space-3);
-      margin-top: var(--i2o-space-10);
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: var(--i2o-space-4);
+      margin-top: var(--i2o-space-5);
     }
     .i2o-card {
       background: var(--i2o-navy-2);
       border: 1px solid var(--i2o-border);
       border-radius: var(--i2o-radius-lg);
       padding: var(--i2o-space-5) var(--i2o-space-6);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 10px 24px -14px rgba(29, 78, 216, 0.45);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
+    .i2o-card:hover, .i2o-card:focus-within {
+      transform: translateY(-6px);
+      border-color: rgba(96, 165, 250, 0.5);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35), 0 22px 40px -16px rgba(59, 130, 246, 0.6);
+    }
+    /* Scroll reveal. The script adds .js-reveal only when it can run the effect, so cards are visible by default. */
+    .js-reveal .i2o-card:not(.is-in) { opacity: 0; }
+    .js-reveal .i2o-card.is-in { animation: i2o-rise 0.6s ease-out backwards; animation-delay: var(--reveal-delay, 0s); }
+    @media print { .js-reveal .i2o-card { opacity: 1 !important; } }
     .service-num {
       font-family: var(--i2o-font-display);
       font-weight: var(--i2o-weight-bold);
@@ -341,6 +372,12 @@
       font-size: var(--i2o-text-base);
       color: var(--i2o-s3);
       line-height: var(--i2o-leading-loose);
+    }
+    /* Desktop: the "What we do" label runs vertically beside the groups. */
+    @media (min-width: 1000px) {
+      .services-layout { display: grid; grid-template-columns: 28px minmax(0, 1fr); column-gap: var(--i2o-space-6); }
+      .services-label { writing-mode: vertical-rl; align-self: start; padding-top: var(--i2o-space-8); }
+      .service-group:first-child .service-group-title { margin-top: 0; }
     }
 
     /* ── TAGLINE BAND ── */
@@ -387,7 +424,7 @@
       letter-spacing: var(--i2o-tracking-label);
       text-transform: uppercase;
       color: var(--i2o-s3);
-      width: 56px;
+      min-width: 84px;
       flex-shrink: 0;
     }
     .contact-row a { color: var(--i2o-s2); text-decoration: none; transition: color 0.2s; }
@@ -444,6 +481,8 @@
       .hero-inner { grid-template-columns: minmax(0, 1fr); align-items: start; gap: var(--i2o-space-10); padding: 56px var(--i2o-space-6) var(--i2o-space-12); }
       .tools-inner { padding: var(--i2o-space-5) var(--i2o-space-6); gap: 8px 20px; }
       .services { padding: var(--i2o-space-12) var(--i2o-space-6); }
+      .hero-visual { min-height: 0; }
+      .hero-dots { position: relative; inset: auto; width: 100%; height: 160px; margin-bottom: -24px; }
       .tagline-band { padding: var(--i2o-space-10) var(--i2o-space-6); }
       .contact-section { flex-direction: column; padding: var(--i2o-space-12) var(--i2o-space-6); align-items: flex-start; }
       .site-footer { flex-direction: column; align-items: flex-start; padding: var(--i2o-space-6); }
@@ -451,8 +490,14 @@
     }
     @media (max-width: 860px) and (min-width: 641px) {
       .hero-inner { grid-template-columns: minmax(0, 1fr); align-items: start; }
+      .hero-visual { min-height: 0; }
+      .hero-dots { position: relative; inset: auto; width: 100%; height: 200px; margin-bottom: -24px; }
     }
-    @media (prefers-reduced-motion: reduce) { .i2o-btn { transition: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      .i2o-btn { transition: none; }
+      .i2o-card { transition: none; }
+      .i2o-card:hover, .i2o-card:focus-within { transform: none; }
+    }
   </style>
 </head>
 <body>
@@ -479,6 +524,8 @@
         </div>
         <p class="hero-proof"><strong>350+</strong> CRM and automation implementations</p>
       </div>
+      <div class="hero-visual">
+      <canvas class="hero-dots" aria-hidden="true"></canvas>
       <aside class="flow-panel" aria-label="Example workflow">
         <div class="flow-head"><span>Example workflow</span><span class="flow-live"><i aria-hidden="true"></i>Running</span></div>
         <ol class="flow">
@@ -489,6 +536,7 @@
         </ol>
         <p class="flow-foot">Illustrative example.</p>
       </aside>
+      </div>
     </div>
   </section>
 
@@ -505,38 +553,55 @@
   </section>
 
   <section class="services" id="services">
-    <span class="i2o-eyebrow">What we do</span>
-    <div class="services-grid">
-      <div class="i2o-card">
-        <p class="service-num">01</p>
-        <p class="service-name">AI Strategy</p>
-        <p class="service-desc">Assess your operations and build a roadmap that connects AI to actual business outcomes.</p>
+    <div class="services-layout">
+    <h2 class="i2o-eyebrow services-label">What we do</h2>
+    <div class="service-groups">
+      <div class="service-group" aria-labelledby="group-coaching">
+      <h3 class="service-group-title" id="group-coaching">AI Coaching</h3>
+      <div class="services-grid">
+        <div class="i2o-card">
+          <p class="service-num">01</p>
+          <h4 class="service-name">One-on-one AI coaching</h4>
+          <p class="service-desc">You build your own clone in Claude. You feed it how you work and how your business runs. Then you put it to work, one area at a time.</p>
+        </div>
+        <div class="i2o-card">
+          <p class="service-num">02</p>
+          <h4 class="service-name">Voice-first AI</h4>
+          <p class="service-desc">We set you up to talk to Claude instead of typing.</p>
+        </div>
+        <div class="i2o-card">
+          <p class="service-num">03</p>
+          <h4 class="service-name">Executive coaching</h4>
+          <p class="service-desc">One-on-one coaching with EJ Steele on leadership and decisions.</p>
+        </div>
       </div>
-      <div class="i2o-card">
-        <p class="service-num">02</p>
-        <p class="service-name">Workflow Automation</p>
-        <p class="service-desc">Design and deploy automated systems that eliminate manual work and scale with your business.</p>
       </div>
-      <div class="i2o-card">
-        <p class="service-num">03</p>
-        <p class="service-name">CRM Integration</p>
-        <p class="service-desc">Connect your CRM, communications, and client pipeline into a single system that runs itself.</p>
+      <div class="service-group" aria-labelledby="group-consultancy">
+      <h3 class="service-group-title" id="group-consultancy">Small Business Consultancy</h3>
+      <div class="services-grid">
+        <div class="i2o-card">
+          <p class="service-num">04</p>
+          <h4 class="service-name">AI strategy</h4>
+          <p class="service-desc">A roadmap that connects AI to your business outcomes. The roadmap is built on the ATLAS and SIGNALS frameworks.</p>
+        </div>
+        <div class="i2o-card">
+          <p class="service-num">05</p>
+          <h4 class="service-name">Automation and CRM</h4>
+          <p class="service-desc">CRM builds in Keap and GoHighLevel. Automations in Make, n8n and MindStudio. We build each one and hand it over.</p>
+        </div>
+        <div class="i2o-card">
+          <p class="service-num">06</p>
+          <h4 class="service-name">Agentic AI systems</h4>
+          <p class="service-desc">Purpose-built AI agents that research, decide, and execute on your behalf without babysitting. From grant research to client intake, we build the agent and hand you the keys.</p>
+        </div>
+        <div class="i2o-card">
+          <p class="service-num">07</p>
+          <h4 class="service-name">Fractional CMO</h4>
+          <p class="service-desc">Positioning, messaging and content strategy, led part-time by EJ Steele.</p>
+        </div>
       </div>
-      <div class="i2o-card">
-        <p class="service-num">04</p>
-        <p class="service-name">Executive Coaching</p>
-        <p class="service-desc">Work directly with EJ Steele to develop the leadership and decision-making frameworks your next stage requires.</p>
       </div>
-      <div class="i2o-card">
-        <p class="service-num">05</p>
-        <p class="service-name">Digital Marketing Strategy</p>
-        <p class="service-desc">Build the positioning, messaging, and channel strategy that puts your business in front of the right people, before your competitors figure out what hit them.</p>
-      </div>
-      <div class="i2o-card">
-        <p class="service-num">06</p>
-        <p class="service-name">Agentic AI Systems</p>
-        <p class="service-desc">Purpose-built AI agents that research, decide, and execute on your behalf without babysitting. From grant research to client intake, we build the agent and hand you the keys.</p>
-      </div>
+    </div>
     </div>
   </section>
 
@@ -601,6 +666,103 @@
   if (!read()) { banner.classList.add("is-open"); }
   document.getElementById("i2o-cookie-accept").addEventListener("click", function () { choose(true); });
   document.getElementById("i2o-cookie-decline").addEventListener("click", function () { choose(false); });
+})();
+</script>
+<script>
+/* Hero dot field: original halftone of a slow value-noise field. Decorative only; the page reads the same without it. */
+(function () {
+  var canvas = document.querySelector(".hero-dots");
+  if (!canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext("2d");
+  if (!ctx) return;
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var CELL = 8, w = 0, h = 0, dpr = 1, t = 0, last = 0, visible = true, raf = 0;
+
+  function hash(x, y, z) {
+    var n = x * 374761393 + y * 668265263 + z * 2147483647;
+    n = (n ^ (n >>> 13)) * 1274126177;
+    n = n ^ (n >>> 16);
+    return (n >>> 0) / 4294967295;
+  }
+  function smooth(a) { return a * a * (3 - 2 * a); }
+  function lerp(a, b, k) { return a + (b - a) * k; }
+  function noise(x, y, z) {
+    var xi = Math.floor(x), yi = Math.floor(y), zi = Math.floor(z);
+    var xf = smooth(x - xi), yf = smooth(y - yi), zf = smooth(z - zi);
+    function c(dx, dy, dz) { return hash(xi + dx, yi + dy, zi + dz); }
+    var x00 = lerp(c(0, 0, 0), c(1, 0, 0), xf), x10 = lerp(c(0, 1, 0), c(1, 1, 0), xf);
+    var x01 = lerp(c(0, 0, 1), c(1, 0, 1), xf), x11 = lerp(c(0, 1, 1), c(1, 1, 1), xf);
+    return lerp(lerp(x00, x10, yf), lerp(x01, x11, yf), zf);
+  }
+  function field(x, y, z) {
+    return noise(x, y, z) * 0.65 + noise(x * 2.1 + 17, y * 2.1 + 9, z * 1.3) * 0.35;
+  }
+  function resize() {
+    var r = canvas.getBoundingClientRect();
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = Math.max(1, Math.round(r.width)); h = Math.max(1, Math.round(r.height));
+    canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    draw();
+  }
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = "#60A5FA";
+    var cols = Math.ceil(w / CELL), rows = Math.ceil(h / CELL), s = 0.035;
+    for (var j = 0; j < rows; j++) {
+      for (var i = 0; i < cols; i++) {
+        var cx = i * CELL + CELL / 2, cy = j * CELL + CELL / 2;
+        var v = field(cx * s / 2.4, cy * s / 2.4, t);
+        var k = Math.min(1, Math.max(0, (v - 0.42) / 0.3));
+        if (k <= 0.02) continue;
+        var ex = Math.min(cx, w - cx) / (w * 0.18), ey = Math.min(cy, h - cy) / (h * 0.18);
+        var edge = Math.min(1, ex, ey);
+        if (edge <= 0) continue;
+        ctx.globalAlpha = (0.15 + 0.75 * k) * edge;
+        ctx.beginPath();
+        ctx.arc(cx, cy, Math.max(0.6, (CELL / 2 - 0.6) * k), 0, 6.2832);
+        ctx.fill();
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+  function frame(now) {
+    raf = 0;
+    if (!visible || document.hidden) return;
+    if (now - last >= 33) { t += 0.012; last = now; draw(); }
+    raf = requestAnimationFrame(frame);
+  }
+  function start() { if (!reduce && !raf && visible && !document.hidden) raf = requestAnimationFrame(frame); }
+  function stop() { if (raf) { cancelAnimationFrame(raf); raf = 0; } }
+
+  resize();
+  if (window.ResizeObserver) new ResizeObserver(resize).observe(canvas);
+  else window.addEventListener("resize", resize);
+  if (reduce) return;
+  if (window.IntersectionObserver) {
+    new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting;
+      if (visible) start(); else stop();
+    }).observe(canvas);
+  }
+  document.addEventListener("visibilitychange", function () { if (document.hidden) stop(); else start(); });
+  start();
+})();
+
+/* Services reveal: cards fade and rise in order as the section scrolls into view. */
+(function () {
+  var section = document.getElementById("services");
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!section || reduce || !window.IntersectionObserver) return;
+  var cards = section.querySelectorAll(".i2o-card");
+  for (var i = 0; i < cards.length; i++) cards[i].style.setProperty("--reveal-delay", (i * 0.08) + "s");
+  section.classList.add("js-reveal");
+  var io = new IntersectionObserver(function (entries) {
+    if (!entries[0].isIntersecting) return;
+    for (var k = 0; k < cards.length; k++) cards[k].classList.add("is-in");
+    io.disconnect();
+  }, { threshold: 0.12 });
+  io.observe(section);
 })();
 </script>
 </body>
