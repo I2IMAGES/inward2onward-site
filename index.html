@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inward2Onward LLC | AI Strategy &amp; Automation Consulting</title>
+  <script>
+    /* Preview only: ?theme=light shows the light (V1-style) body for comparison. Remove once a theme is chosen. */
+    try { if (new URLSearchParams(location.search).get("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}
+  </script>
   <meta name="description" content="Inward2Onward LLC is an AI strategy and automation consultancy based in Glendale, AZ. We install systems that work." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://inward2onward.com" />
@@ -18,17 +22,21 @@
       --i2o-blue:          #3B82F6;
       --i2o-blue-dark:     #1D4ED8;
       --i2o-blue-mid:      #2563EB;
+      /* Lighter blue for small text and the headline's second line, as on the nonprofit page. */
+      --i2o-blue-light:    #60A5FA;
       --i2o-indigo:        #6366F1;
       --i2o-indigo-dark:   #4F46E5;
-      --i2o-navy:          #0a0f1e;
-      --i2o-navy-2:        #0d1424;
+      /* Navy, navy-2 and border match the nonprofit page (i2o-nonprofits). */
+      --i2o-navy:          #0a1628;
+      --i2o-navy-2:        #0f2044;
       --i2o-navy-3:        #111827;
       --i2o-navy-4:        #0f1f3d;
       --i2o-s1:            #f1f5f9;
       --i2o-s2:            #94a3b8;
-      --i2o-s3:            #475569;
+      /* Was #475569, about 2.4:1 on the navy background. #8b98ad is about 6.3:1 and still sits below s2. */
+      --i2o-s3:            #8b98ad;
       --i2o-s4:            #1e293b;
-      --i2o-border:        #1e3a5f;
+      --i2o-border:        rgba(59, 130, 246, 0.15);
       --i2o-green:         #10B981;
       --i2o-amber:         #F59E0B;
       --i2o-red:           #EF4444;
@@ -83,6 +91,9 @@
       --i2o-gradient-primary:  linear-gradient(135deg, #1D4ED8, #3B82F6);
       --i2o-gradient-indigo:   linear-gradient(135deg, #6366F1, #3B82F6);
       --i2o-gradient-header:   linear-gradient(135deg, #2563EB, #4F46E5);
+      /* Solid button fill. White text on #1D4ED8 is about 6.7:1; on the #2563EB hover about 5.2:1. */
+      --i2o-btn-bg:        #1D4ED8;
+      --i2o-btn-bg-hover:  #2563EB;
     }
 
     /* ── BASE ── */
@@ -123,23 +134,56 @@
       transition: color 0.2s;
     }
     .site-nav-contact:hover { color: var(--i2o-s1); opacity: 1; }
+    .site-nav-links { display: flex; gap: var(--i2o-space-6); align-items: center; flex-wrap: wrap; }
+    .site-nav-links a { font-size: var(--i2o-text-sm); color: var(--i2o-s2); }
+    .site-nav-links a:hover { color: var(--i2o-s1); opacity: 1; }
+    .site-nav-links a.nav-cta {
+      font-family: var(--i2o-font-display);
+      font-size: var(--i2o-text-md);
+      font-weight: var(--i2o-weight-bold);
+      letter-spacing: var(--i2o-tracking-wider);
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--i2o-btn-bg);
+      border-radius: var(--i2o-radius-sm);
+      padding: 8px 16px;
+      line-height: 1;
+    }
+    .site-nav-links a.nav-cta:hover { color: #fff; opacity: 1; background: var(--i2o-btn-bg-hover); }
+    .site-nav-links a.nav-cta:focus-visible { outline: 2px solid var(--i2o-blue); outline-offset: 2px; }
 
     /* ── HERO ── */
-    .hero {
-      max-width: var(--i2o-max-admin);
+    /* Split layout: big headline on the left, example workflow panel on the right. */
+    .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--i2o-border); }
+    /* Soft blue glow and light grid behind the hero, as on the nonprofit page. */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(80% 60% at 60% 40%, rgba(29, 78, 216, 0.18) 0%, transparent 70%),
+        radial-gradient(40% 40% at 20% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 96px var(--i2o-space-10) 80px;
-      text-align: center;
-    }
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--i2o-space-2);
-      margin-bottom: var(--i2o-space-7);
-    }
-    .hero-eyebrow-line {
-      width: 24px; height: 1px;
-      background: var(--i2o-blue);
+      padding: 96px var(--i2o-space-10) 72px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 56px;
+      align-items: end;
     }
     .i2o-eyebrow {
       font-family: var(--i2o-font-display);
@@ -147,30 +191,102 @@
       font-weight: var(--i2o-weight-semibold);
       letter-spacing: var(--i2o-tracking-eyebrow);
       text-transform: uppercase;
-      color: var(--i2o-blue);
+      color: var(--i2o-blue-light);
     }
+    .hero-eyebrow { margin: 0 0 var(--i2o-space-5); }
     .hero-headline {
       font-family: var(--i2o-font-display);
       font-weight: var(--i2o-weight-bold);
-      font-size: clamp(2.8rem, 7vw, var(--i2o-text-9xl));
-      line-height: var(--i2o-leading-display);
+      font-size: clamp(3.5rem, 9vw, 7.5rem);
+      line-height: 0.88;
       letter-spacing: var(--i2o-tracking-tight);
+      text-transform: uppercase;
       color: var(--i2o-s1);
-      margin-bottom: var(--i2o-space-6);
+      margin: 0 0 var(--i2o-space-7);
+      text-wrap: balance;
     }
-    .hero-headline .grad {
-      background: linear-gradient(135deg, var(--i2o-blue), var(--i2o-indigo));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+    .hero-headline .hero-line { display: block; }
+    .hero-headline .accent { display: block; color: var(--i2o-blue-light); }
     .hero-sub {
-      font-size: var(--i2o-text-xl);
+      font-size: var(--i2o-text-2xl);
       color: var(--i2o-s2);
-      max-width: var(--i2o-max-body-text);
-      margin: 0 auto var(--i2o-space-12);
-      line-height: var(--i2o-leading-looser);
+      max-width: 46ch;
+      margin: 0 0 var(--i2o-space-7);
+      line-height: var(--i2o-leading-relaxed);
     }
+    .hero-actions { display: flex; gap: var(--i2o-space-3); flex-wrap: wrap; align-items: center; }
+    .hero-proof { margin: var(--i2o-space-7) 0 0; font-size: var(--i2o-text-md); color: var(--i2o-s3); }
+    .hero-proof strong { color: var(--i2o-s1); font-weight: var(--i2o-weight-medium); }
+
+    /* ── HERO DOT FIELD ── */
+    /* Right column: a halftone dot field drawn on a canvas, with the workflow panel over its lower part. */
+    .hero-visual { position: relative; align-self: stretch; display: flex; flex-direction: column; justify-content: flex-end; min-width: 0; min-height: 420px; }
+    .hero-dots { position: absolute; inset: 0 -24px 40px; width: calc(100% + 48px); height: calc(100% - 40px); display: block; pointer-events: none; }
+    .hero-visual .flow-panel { position: relative; z-index: 1; }
+
+    /* ── EXAMPLE WORKFLOW PANEL ── */
+    .flow-panel {
+      background: var(--i2o-navy-2);
+      border: 1px solid var(--i2o-border);
+      border-radius: var(--i2o-radius-lg);
+      padding: var(--i2o-space-5) var(--i2o-space-6);
+      min-width: 0;
+    }
+    .flow-head { display: flex; justify-content: space-between; gap: var(--i2o-space-3); font-size: var(--i2o-text-sm); color: var(--i2o-s3); margin-bottom: var(--i2o-space-4); }
+    .flow-live { display: inline-flex; align-items: center; gap: 6px; color: var(--i2o-green); }
+    .flow-live i { width: 7px; height: 7px; border-radius: 50%; background: var(--i2o-green); display: inline-block; }
+    .flow { list-style: none; margin: 0; padding: 0; }
+    .flow li { display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 12px 0; border-top: 1px solid var(--i2o-border); }
+    .flow li:first-child { border-top: none; }
+    .flow-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--i2o-blue); background: var(--i2o-navy-2); justify-self: center; }
+    .flow-step { font-size: var(--i2o-text-lg); color: var(--i2o-s1); }
+    .flow-tool { font-size: var(--i2o-text-sm); color: var(--i2o-s3); }
+    .flow-foot { margin: var(--i2o-space-3) 0 0; font-size: var(--i2o-text-sm); color: var(--i2o-s3); }
+    @media (prefers-reduced-motion: no-preference) {
+      .flow-dot { animation: i2o-run 6s infinite; }
+      .flow li:nth-child(2) .flow-dot { animation-delay: 1.5s; }
+      .flow li:nth-child(3) .flow-dot { animation-delay: 3s; }
+      .flow li:nth-child(4) .flow-dot { animation-delay: 4.5s; }
+      .flow-live i { animation: i2o-blink 2s infinite; }
+    }
+    @keyframes i2o-run {
+      0%, 22% { background: var(--i2o-blue); box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18); }
+      30%, 100% { background: var(--i2o-navy-2); box-shadow: none; }
+    }
+    @keyframes i2o-blink { 50% { opacity: 0.35; } }
+
+    /* Staged entrance: hero parts fade and rise in order on load. Visitors with reduced motion get the static page. */
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-eyebrow, .hero-headline .hero-line, .hero-headline .accent, .hero-sub, .hero-actions, .hero-proof, .flow-panel {
+        animation: i2o-rise 0.6s ease-out both;
+      }
+      .hero-headline .hero-line { animation-delay: 0.15s; }
+      .hero-headline .accent    { animation-delay: 0.30s; }
+      .hero-sub                 { animation-delay: 0.45s; }
+      .hero-actions             { animation-delay: 0.60s; }
+      .hero-proof               { animation-delay: 0.75s; }
+      .flow-panel               { animation-delay: 0.90s; }
+      .hero-dots                { animation: i2o-fade 1.2s ease-out 0.3s both; }
+    }
+    @keyframes i2o-fade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes i2o-rise {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* ── TOOLS STRIP ── */
+    .tools-strip { border-bottom: 1px solid var(--i2o-border); }
+    .tools-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: var(--i2o-space-6) var(--i2o-space-10);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 32px;
+      align-items: baseline;
+    }
+    .tools-label { font-size: var(--i2o-text-sm); color: var(--i2o-s3); }
+    .tools-name { font-family: var(--i2o-font-display); font-weight: var(--i2o-weight-semibold); font-size: var(--i2o-text-4xl); color: var(--i2o-s2); }
 
     /* ── BUTTON ── */
     .i2o-btn {
@@ -180,45 +296,71 @@
       font-weight: var(--i2o-weight-bold);
       letter-spacing: var(--i2o-tracking-widest);
       text-transform: uppercase;
-      background: var(--i2o-gradient-primary);
+      background: var(--i2o-btn-bg);
       color: #fff;
       border: none;
       border-radius: var(--i2o-radius-md);
       padding: 13px 32px;
       cursor: pointer;
       text-decoration: none;
-      transition: opacity 0.2s;
+      transition: background 0.2s, border-color 0.2s;
       line-height: 1;
     }
-    .i2o-btn:hover { opacity: 0.88; }
+    .i2o-btn:hover { opacity: 1; background: var(--i2o-btn-bg-hover); }
+    .i2o-btn.ghost { background: transparent; color: var(--i2o-s1); border: 1px solid var(--i2o-border); }
+    .i2o-btn.ghost:hover { background: transparent; border-color: var(--i2o-blue-light); }
+    .i2o-btn:focus-visible { outline: 2px solid var(--i2o-blue); outline-offset: 2px; }
 
     /* ── DIVIDER ── */
     .full-rule { border: none; border-top: 1px solid var(--i2o-border); margin: 0; }
 
     /* ── SERVICES ── */
     .services {
-      max-width: var(--i2o-max-admin);
+      max-width: 1120px;
       margin: 0 auto;
       padding: var(--i2o-space-16) var(--i2o-space-10);
     }
+    .services-layout { display: block; }
+    .services-label { display: inline-block; }
+    .service-group + .service-group { margin-top: var(--i2o-space-12); }
+    .service-group-title {
+      font-family: var(--i2o-font-display);
+      font-weight: var(--i2o-weight-bold);
+      font-size: var(--i2o-text-6xl);
+      letter-spacing: var(--i2o-tracking-tight);
+      color: var(--i2o-s1);
+      line-height: var(--i2o-leading-tight);
+      margin-top: var(--i2o-space-8);
+    }
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-      gap: var(--i2o-space-3);
-      margin-top: var(--i2o-space-10);
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: var(--i2o-space-4);
+      margin-top: var(--i2o-space-5);
     }
     .i2o-card {
       background: var(--i2o-navy-2);
       border: 1px solid var(--i2o-border);
       border-radius: var(--i2o-radius-lg);
       padding: var(--i2o-space-5) var(--i2o-space-6);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 10px 24px -14px rgba(29, 78, 216, 0.45);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
+    .i2o-card:hover, .i2o-card:focus-within {
+      transform: translateY(-6px);
+      border-color: rgba(96, 165, 250, 0.5);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35), 0 22px 40px -16px rgba(59, 130, 246, 0.6);
+    }
+    /* Scroll reveal. The script adds .js-reveal only when it can run the effect, so cards are visible by default. */
+    .js-reveal .i2o-card:not(.is-in) { opacity: 0; }
+    .js-reveal .i2o-card.is-in { animation: i2o-rise 0.6s ease-out backwards; animation-delay: var(--reveal-delay, 0s); }
+    @media print { .js-reveal .i2o-card { opacity: 1 !important; } }
     .service-num {
       font-family: var(--i2o-font-display);
       font-weight: var(--i2o-weight-bold);
       font-size: var(--i2o-text-xs);
       letter-spacing: var(--i2o-tracking-label);
-      color: var(--i2o-blue);
+      color: var(--i2o-blue-light);
       margin-bottom: var(--i2o-space-2);
     }
     .service-name {
@@ -235,6 +377,162 @@
       color: var(--i2o-s3);
       line-height: var(--i2o-leading-loose);
     }
+    /* Desktop: the "What we do" label runs vertically beside the groups. */
+    @media (min-width: 1000px) {
+      .services-layout { display: grid; grid-template-columns: 28px minmax(0, 1fr); column-gap: var(--i2o-space-6); }
+      .services-label { writing-mode: vertical-rl; align-self: start; padding-top: var(--i2o-space-8); }
+      .service-group:first-child .service-group-title { margin-top: 0; }
+    }
+
+    /* ── RESULTS AND INDUSTRIES ── */
+    .proof {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 var(--i2o-space-10) var(--i2o-space-16);
+    }
+    .proof-title {
+      font-family: var(--i2o-font-display);
+      font-weight: var(--i2o-weight-bold);
+      font-size: var(--i2o-text-6xl);
+      letter-spacing: var(--i2o-tracking-tight);
+      color: var(--i2o-s1);
+      line-height: var(--i2o-leading-tight);
+      margin-top: var(--i2o-space-3);
+    }
+    .proof-note { font-size: var(--i2o-text-md); color: var(--i2o-s2); margin-top: var(--i2o-space-2); max-width: 60ch; }
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--i2o-space-4);
+      margin-top: var(--i2o-space-6);
+    }
+    .result-text { font-size: var(--i2o-text-lg); color: var(--i2o-s1); line-height: var(--i2o-leading-relaxed); }
+    .result-who { font-family: var(--i2o-font-display); font-weight: var(--i2o-weight-bold); font-size: var(--i2o-text-4xl); color: var(--i2o-s1); line-height: var(--i2o-leading-tight); margin-bottom: var(--i2o-space-3); }
+    .result-list { margin: 0; padding-left: 18px; display: grid; gap: var(--i2o-space-2); }
+    .result-list li { font-size: var(--i2o-text-lg); color: var(--i2o-s1); line-height: var(--i2o-leading-relaxed); }
+    .result-list li::marker { color: var(--i2o-blue-light); }
+    @media (min-width: 900px) { .results-grid { grid-template-columns: 1fr 1fr; } .result-card-wide { grid-row: span 2; } }
+    .result-quote {
+      margin-top: var(--i2o-space-3);
+      padding-left: var(--i2o-space-3);
+      border-left: 2px solid var(--i2o-blue-light);
+      font-size: var(--i2o-text-md);
+      color: var(--i2o-s2);
+      line-height: var(--i2o-leading-relaxed);
+    }
+    .industry-group + .industry-group { margin-top: var(--i2o-space-6); }
+    .industry-label { font-size: var(--i2o-text-md); color: var(--i2o-s2); margin-top: var(--i2o-space-8); }
+    .chips { list-style: none; margin: var(--i2o-space-3) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+    .chips li {
+      font-size: var(--i2o-text-md);
+      color: var(--i2o-s1);
+      background: var(--i2o-navy-2);
+      border: 1px solid rgba(96, 165, 250, 0.3);
+      border-radius: 999px;
+      padding: 6px 14px;
+      line-height: 1.3;
+    }
+
+    /* ── AGENTS, PROCESS, TESTIMONIALS, ABOUT ── */
+    .agents-grid, .steps-grid, .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--i2o-space-4);
+      margin-top: var(--i2o-space-6);
+    }
+    @media (min-width: 900px) { .steps-grid { grid-template-columns: repeat(4, 1fr); } .quotes-grid { grid-template-columns: repeat(3, 1fr); } }
+    .agent-bar { display: block; width: 40px; height: 4px; border-radius: 2px; margin-bottom: var(--i2o-space-4); }
+    .agent-blue { background: linear-gradient(90deg, #3B82F6, #6366F1); }
+    .agent-purple { background: linear-gradient(90deg, #A855F7, #DB2777); }
+    .agent-green { background: linear-gradient(90deg, #22C55E, #059669); }
+    .agent-red { background: linear-gradient(90deg, #EF4444, #EA580C); }
+    .card-title { font-family: var(--i2o-font-display); font-weight: var(--i2o-weight-bold); font-size: var(--i2o-text-4xl); color: var(--i2o-s1); line-height: var(--i2o-leading-tight); margin-bottom: var(--i2o-space-2); }
+    .card-text { font-size: var(--i2o-text-md); color: var(--i2o-s2); line-height: var(--i2o-leading-relaxed); }
+    .step-num { font-family: var(--i2o-font-display); font-weight: var(--i2o-weight-bold); font-size: var(--i2o-text-sm); letter-spacing: 0.12em; color: var(--i2o-blue-light); margin-bottom: var(--i2o-space-2); }
+    .steps-grid { list-style: none; padding: 0; }
+    .quote-card { margin: 0; display: flex; flex-direction: column; justify-content: space-between; gap: var(--i2o-space-5); }
+    .quote-text { font-size: var(--i2o-text-lg); color: var(--i2o-s1); line-height: var(--i2o-leading-relaxed); }
+    .quote-person { display: flex; align-items: center; gap: 12px; }
+    .quote-person img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1px solid rgba(96, 165, 250, 0.3); }
+    .quote-name { font-weight: var(--i2o-weight-bold); color: var(--i2o-s1); font-size: var(--i2o-text-md); line-height: 1.3; }
+    .quote-role { color: var(--i2o-s2); font-size: var(--i2o-text-sm); line-height: 1.4; }
+    .about-text { max-width: 68ch; margin-top: var(--i2o-space-5); font-size: var(--i2o-text-lg); color: var(--i2o-s1); line-height: var(--i2o-leading-relaxed); }
+    .about-cred { max-width: 68ch; margin-top: var(--i2o-space-4); font-size: var(--i2o-text-md); color: var(--i2o-s2); line-height: var(--i2o-leading-relaxed); }
+    .about-cred strong { color: var(--i2o-s1); }
+
+    /* ── FLOW: section heads, bands, icon tiles, marquee, FAQ ── */
+    .proof { padding-top: var(--i2o-space-16); }
+    .section-head { text-align: center; max-width: 760px; margin: 0 auto; }
+    .section-head .proof-note { margin-left: auto; margin-right: auto; }
+    .accent { color: var(--i2o-blue-light); }
+    .band { border-image: linear-gradient(to bottom, rgba(22, 44, 92, 0), rgba(22, 44, 92, 0.75) 14%, rgba(22, 44, 92, 0.75) 86%, rgba(22, 44, 92, 0)) fill 0 / / 0 100vmax; }
+    .band .i2o-card { background: #12285a; }
+    .centered-groups .industry-label { text-align: center; }
+    .centered-groups .chips { justify-content: center; }
+    .icon-tile { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: var(--i2o-space-4); box-shadow: 0 8px 18px -8px rgba(59, 130, 246, 0.6); }
+    .icon-tile svg { width: 22px; height: 22px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .tile-blue { background: linear-gradient(135deg, #3B82F6, #6366F1); }
+    .tile-purple { background: linear-gradient(135deg, #A855F7, #DB2777); }
+    .tile-green { background: linear-gradient(135deg, #22C55E, #059669); }
+    .tile-red { background: linear-gradient(135deg, #EF4444, #EA580C); }
+    .step-circle { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--i2o-font-display); font-weight: var(--i2o-weight-bold); color: #fff; background: linear-gradient(135deg, #3B82F6, #6366F1); margin-bottom: var(--i2o-space-4); }
+    .start-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--i2o-space-4); margin: var(--i2o-space-6) auto 0; max-width: 880px; }
+    .start-card { margin: 0; }
+    .start-card blockquote { margin-top: var(--i2o-space-4); }
+    .start-cite { display: block; margin-top: var(--i2o-space-2); font-size: var(--i2o-text-sm); color: var(--i2o-s2); }
+    .start-here { margin-bottom: var(--i2o-space-8); padding: var(--i2o-space-5) var(--i2o-space-6); border: 1px solid var(--i2o-border); border-radius: var(--i2o-radius-lg); background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(99, 102, 241, 0.06)); }
+    .start-title { font-family: var(--i2o-font-display); font-weight: var(--i2o-weight-bold); font-size: var(--i2o-text-4xl); color: var(--i2o-s1); }
+    .start-here ul { list-style: none; padding: 0; margin: var(--i2o-space-3) 0 0; display: grid; gap: var(--i2o-space-2); }
+    .start-here a { color: var(--i2o-s1); text-decoration: underline; text-decoration-color: rgba(96, 165, 250, 0.6); text-underline-offset: 3px; font-size: var(--i2o-text-md); line-height: var(--i2o-leading-relaxed); }
+    .start-here a:hover { color: var(--i2o-blue-light); }
+    .service-get { margin-top: var(--i2o-space-3); font-size: var(--i2o-text-base); color: var(--i2o-s1); line-height: var(--i2o-leading-relaxed); }
+    .service-get strong { color: var(--i2o-blue-light); }
+    .marquee { overflow: hidden; margin-top: var(--i2o-space-6); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+    .marquee-inner { display: flex; width: max-content; animation: i2o-marquee 60s linear infinite; }
+    .marquee:hover .marquee-inner { animation-play-state: paused; }
+    .marquee .chips { flex-wrap: nowrap; margin: 0; padding-right: 8px; }
+    .marquee .chips li { white-space: nowrap; }
+    @keyframes i2o-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .quote-card::before { content: "\201C"; font-family: Georgia, serif; font-size: 56px; line-height: 0.6; color: var(--i2o-blue-light); display: block; height: 24px; }
+    .faq-list { max-width: 820px; margin: var(--i2o-space-6) auto 0; display: grid; gap: var(--i2o-space-3); }
+    .faq-item { background: var(--i2o-navy-2); border: 1px solid var(--i2o-border); border-radius: var(--i2o-radius-lg); padding: 0 var(--i2o-space-6); }
+    .band .faq-item { background: #12285a; }
+    .faq-item summary { cursor: pointer; list-style: none; padding: var(--i2o-space-5) 0; font-weight: var(--i2o-weight-bold); color: var(--i2o-s1); font-size: var(--i2o-text-lg); display: flex; justify-content: space-between; gap: 16px; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: "+"; color: var(--i2o-blue-light); font-size: 22px; line-height: 1; }
+    .faq-item[open] summary::after { content: "\2212"; }
+    .faq-item summary:focus-visible { outline: 2px solid var(--i2o-blue); outline-offset: 4px; border-radius: 4px; }
+    .faq-item p { padding-bottom: var(--i2o-space-5); color: var(--i2o-s2); font-size: var(--i2o-text-md); line-height: var(--i2o-leading-relaxed); }
+    .js-reveal .section-head:not(.is-in) { opacity: 0; }
+    .js-reveal .section-head.is-in { animation: i2o-rise 0.6s ease-out backwards; }
+    @media print { .js-reveal .section-head { opacity: 1 !important; } }
+    @media (min-width: 900px) { .results-grid.three { grid-template-columns: repeat(3, 1fr); } }
+    @media (prefers-reduced-motion: reduce) {
+      .marquee { -webkit-mask-image: none; mask-image: none; }
+      .marquee-inner { animation: none; width: auto; }
+      .marquee .chips { flex-wrap: wrap; justify-content: center; }
+      .marquee .chips[aria-hidden="true"] { display: none; }
+    }
+
+    /* ── LIGHT THEME (preview, ?theme=light): white body like V1, dark nav, hero and footer ── */
+    html[data-theme="light"] {
+      --i2o-navy: #F8FAFC; --i2o-navy-2: #FFFFFF;
+      --i2o-s1: #1E293B; --i2o-s2: #4B5563; --i2o-s3: #4B5563;
+      --i2o-border: #E2E8F0; --i2o-blue-light: #1D4ED8; --i2o-blue: #1D4ED8;
+    }
+    html[data-theme="light"] .site-nav, html[data-theme="light"] .hero, html[data-theme="light"] .site-footer, html[data-theme="light"] .cookie-banner {
+      --i2o-navy: #0a1628; --i2o-navy-2: #0f2044;
+      --i2o-s1: #f1f5f9; --i2o-s2: #94a3b8; --i2o-s3: #8b98ad;
+      --i2o-border: rgba(59, 130, 246, 0.15); --i2o-blue-light: #60A5FA; --i2o-blue: #3B82F6;
+    }
+    html[data-theme="light"] .site-nav, html[data-theme="light"] .hero { background: #0a1628; }
+    html[data-theme="light"] .site-footer { background: #1E293B; }
+    html[data-theme="light"] .band { border-image: linear-gradient(to bottom, rgba(219, 234, 254, 0), rgba(219, 234, 254, 0.7) 14%, rgba(219, 234, 254, 0.7) 86%, rgba(219, 234, 254, 0)) fill 0 / / 0 100vmax; }
+    html[data-theme="light"] .band .i2o-card, html[data-theme="light"] .band .faq-item { background: #FFFFFF; }
+    html[data-theme="light"] .i2o-card { box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 12px 28px -16px rgba(30, 64, 175, 0.25); }
+    html[data-theme="light"] .i2o-card:hover, html[data-theme="light"] .i2o-card:focus-within { box-shadow: 0 2px 4px rgba(15, 23, 42, 0.08), 0 22px 40px -18px rgba(30, 64, 175, 0.35); }
+    html[data-theme="light"] .chips li { border-color: #BFDBFE; }
+    html[data-theme="light"] .tagline-band { background: #EFF6FF; }
 
     /* ── TAGLINE BAND ── */
     .tagline-band {
@@ -248,7 +546,7 @@
       font-weight: var(--i2o-weight-bold);
       font-size: clamp(1.6rem, 4vw, var(--i2o-text-6xl));
       letter-spacing: var(--i2o-tracking-tight);
-      color: rgba(241,245,249,0.1);
+      color: var(--i2o-s2);
       line-height: var(--i2o-leading-tight);
     }
     .tagline strong { color: var(--i2o-s1); }
@@ -280,7 +578,7 @@
       letter-spacing: var(--i2o-tracking-label);
       text-transform: uppercase;
       color: var(--i2o-s3);
-      width: 56px;
+      min-width: 84px;
       flex-shrink: 0;
     }
     .contact-row a { color: var(--i2o-s2); text-decoration: none; transition: color 0.2s; }
@@ -302,87 +600,498 @@
     .site-footer-links a { font-size: var(--i2o-text-xs); color: var(--i2o-s3); text-decoration: none; transition: color 0.2s; }
     .site-footer-links a:hover { color: var(--i2o-s2); opacity: 1; }
 
+    /* ── COOKIE CONSENT BANNER ── */
+    /* Hidden by default. The script shows it only when no choice is saved. */
+    .cookie-banner {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 9999;
+      background: var(--i2o-navy-2);
+      border-top: 1px solid var(--i2o-border);
+      padding: 20px 32px;
+      font-family: var(--i2o-font-body);
+      font-size: 13px;
+      color: var(--i2o-s2);
+      flex-wrap: wrap;
+      box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.4);
+      gap: 24px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cookie-banner.is-open { display: flex; }
+    .cookie-text { flex: 1; min-width: 260px; line-height: 1.6; }
+    .cookie-text strong { color: var(--i2o-s1); font-family: var(--i2o-font-display); font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .cookie-text a { color: var(--i2o-blue-light); margin-left: 4px; text-decoration: underline; text-underline-offset: 2px; }
+    .cookie-actions { display: flex; gap: 10px; flex-shrink: 0; align-items: center; }
+    .cookie-decline { background: none; border: 1px solid var(--i2o-border); border-radius: 6px; color: var(--i2o-s3); font-family: var(--i2o-font-body); font-size: 12px; padding: 8px 16px; cursor: pointer; }
+    .cookie-accept { background: var(--i2o-btn-bg); border: none; border-radius: 6px; color: #fff; font-family: var(--i2o-font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 9px 20px; cursor: pointer; }
+    .cookie-accept:hover { background: var(--i2o-btn-bg-hover); }
+    .cookie-decline:focus-visible, .cookie-accept:focus-visible { outline: 2px solid var(--i2o-blue); outline-offset: 2px; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       .site-nav { padding: var(--i2o-space-5) var(--i2o-space-6); }
-      .hero { padding: 64px var(--i2o-space-6) var(--i2o-space-12); }
+      .site-nav-links a:not(.nav-cta) { display: none; }
+      .hero-inner { grid-template-columns: minmax(0, 1fr); align-items: start; gap: var(--i2o-space-10); padding: 56px var(--i2o-space-6) var(--i2o-space-12); }
+      .tools-inner { padding: var(--i2o-space-5) var(--i2o-space-6); gap: 8px 20px; }
       .services { padding: var(--i2o-space-12) var(--i2o-space-6); }
+      .proof { padding: var(--i2o-space-12) var(--i2o-space-6); }
+      .start-here { padding: var(--i2o-space-5); }
+      .hero-visual { min-height: 0; }
+      .hero-dots { position: relative; inset: auto; width: 100%; height: 160px; margin-bottom: -24px; }
       .tagline-band { padding: var(--i2o-space-10) var(--i2o-space-6); }
       .contact-section { flex-direction: column; padding: var(--i2o-space-12) var(--i2o-space-6); align-items: flex-start; }
       .site-footer { flex-direction: column; align-items: flex-start; padding: var(--i2o-space-6); }
+      .cookie-banner { padding: 16px 20px; }
     }
-    @media (prefers-reduced-motion: reduce) { .i2o-btn { transition: none; } }
+    @media (max-width: 860px) and (min-width: 641px) {
+      .hero-inner { grid-template-columns: minmax(0, 1fr); align-items: start; }
+      .hero-visual { min-height: 0; }
+      .hero-dots { position: relative; inset: auto; width: 100%; height: 200px; margin-bottom: -24px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .i2o-btn { transition: none; }
+      .i2o-card { transition: none; }
+      .i2o-card:hover, .i2o-card:focus-within { transform: none; }
+    }
   </style>
 </head>
 <body>
 
   <nav class="site-nav">
     <a href="/" class="i2o-logo">Inward<span>2</span>Onward</a>
-    <a href="mailto:admin@inward2onward.com" class="site-nav-contact">admin@inward2onward.com</a>
+    <div class="site-nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a href="https://calendly.com/ej--33/ai-powered-workflows-automation" class="nav-cta" target="_blank" rel="noopener">Book a call</a>
+    </div>
   </nav>
 
   <section class="hero">
-    <div class="hero-eyebrow">
-      <span class="hero-eyebrow-line"></span>
-      <span class="i2o-eyebrow">AI Strategy &amp; Automation &nbsp;·&nbsp; Glendale, AZ</span>
-      <span class="hero-eyebrow-line"></span>
+    <div class="hero-grid-lines" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div>
+        <p class="i2o-eyebrow hero-eyebrow">AI Strategy &amp; Automation &nbsp;·&nbsp; Glendale, AZ</p>
+        <h1 class="hero-headline"><span class="hero-line">We don't sell AI.</span><span class="accent">We install systems that work.</span></h1>
+        <p class="hero-sub">AI strategy, automation and CRM builds for business owners and executives. Measured by what runs.</p>
+        <div class="hero-actions">
+          <a href="https://calendly.com/ej--33/ai-powered-workflows-automation" class="i2o-btn" target="_blank" rel="noopener">Book a call &nbsp;→</a>
+          <a href="#services" class="i2o-btn ghost">See what we build</a>
+        </div>
+        <p class="hero-proof"><strong>350+</strong> CRM and automation implementations</p>
+      </div>
+      <div class="hero-visual">
+      <canvas class="hero-dots" aria-hidden="true"></canvas>
+      <aside class="flow-panel" aria-label="Example workflow">
+        <div class="flow-head"><span>Example workflow</span><span class="flow-live"><i aria-hidden="true"></i>Running</span></div>
+        <ol class="flow">
+          <li><span class="flow-dot" aria-hidden="true"></span><span class="flow-step">New lead comes in</span><span class="flow-tool">Web form</span></li>
+          <li><span class="flow-dot" aria-hidden="true"></span><span class="flow-step">CRM record created</span><span class="flow-tool">Keap</span></li>
+          <li><span class="flow-dot" aria-hidden="true"></span><span class="flow-step">Follow-up sent</span><span class="flow-tool">Make</span></li>
+          <li><span class="flow-dot" aria-hidden="true"></span><span class="flow-step">Summary lands with you</span><span class="flow-tool">Email</span></li>
+        </ol>
+        <p class="flow-foot">Illustrative example.</p>
+      </aside>
+      </div>
     </div>
-    <h1 class="hero-headline">
-      Built Right.<br>
-      <span class="grad">Accountable Throughout.</span>
-    </h1>
-    <p class="hero-sub">
-      Inward2Onward LLC partners with business owners and executives to design, build, and deploy AI automation systems that produce measurable results — not slide decks.
-    </p>
-    <a href="mailto:admin@inward2onward.com" class="i2o-btn">Start a conversation &nbsp;→</a>
   </section>
 
-  <hr class="full-rule" />
+  <section class="tools-strip" aria-label="Tools we build with">
+    <div class="tools-inner">
+      <span class="tools-label">Built with</span>
+      <span class="tools-name">Keap</span>
+      <span class="tools-name">GoHighLevel</span>
+      <span class="tools-name">Make</span>
+      <span class="tools-name">n8n</span>
+      <span class="tools-name">MindStudio</span>
+      <span class="tools-name">Claude</span>
+    </div>
+  </section>
 
-  <section class="services">
-    <span class="i2o-eyebrow">What we do</span>
-    <div class="services-grid">
-      <div class="i2o-card">
-        <p class="service-num">01</p>
-        <p class="service-name">AI Strategy</p>
-        <p class="service-desc">Assess your operations and build a roadmap that connects AI to actual business outcomes.</p>
+  <section class="proof band" id="start" aria-labelledby="start-title">
+    <div class="section-head">
+      <p class="i2o-eyebrow">Before the work</p>
+      <h2 class="proof-title" id="start-title">Problems clients <span class="accent">bring</span></h2>
+    </div>
+    <div class="start-grid">
+      <figure class="i2o-card start-card">
+        <h3 class="card-title">An automation that didn&rsquo;t work</h3>
+        <p class="card-text">We rebuild it, test it and train the people who will run it.</p>
+        <blockquote class="result-quote"><p>&ldquo;EJ transformed our failed automation attempt into workflow excellence.&rdquo;</p></blockquote>
+        <figcaption class="start-cite">Kenyon Berry, President, Berry Swift Commercial Services</figcaption>
+      </figure>
+      <figure class="i2o-card start-card">
+        <h3 class="card-title">No coding background</h3>
+        <p class="card-text">You don&rsquo;t need one. A ghostwriter EJ coached had no coding background and now takes on paid web work and uses AI to build it.</p>
+        <blockquote class="result-quote"><p>&ldquo;I technically have no coding skills, the AI does that, but I know how to work with the AI to do that.&rdquo;</p></blockquote>
+        <figcaption class="start-cite">A ghostwriter coached through AmplifyAI</figcaption>
+      </figure>
+    </div>
+  </section>
+
+
+  <section class="services" id="services">
+    <div class="services-layout">
+    <h2 class="i2o-eyebrow services-label">What we do</h2>
+    <div class="service-groups">
+      <div class="start-here">
+        <p class="start-title">Where to start</p>
+        <ul>
+          <li><a href="#svc-coaching">If you want to use AI yourself, start with AI coaching.</a></li>
+          <li><a href="#svc-automation">If your team repeats the same tasks, start with Automation and CRM.</a></li>
+          <li><a href="#svc-strategy">If you&rsquo;re not sure where AI fits, start with AI strategy.</a></li>
+          <li><a href="#svc-exec">If you lead a team, start with Executive coaching.</a></li>
+        </ul>
       </div>
-      <div class="i2o-card">
-        <p class="service-num">02</p>
-        <p class="service-name">Workflow Automation</p>
-        <p class="service-desc">Design and deploy automated systems that eliminate manual work and scale with your business.</p>
+      <div class="service-group" aria-labelledby="group-coaching">
+      <h3 class="service-group-title" id="group-coaching">AI Coaching</h3>
+      <div class="services-grid">
+        <div class="i2o-card" id="svc-coaching">
+          <p class="service-num">01</p>
+          <h4 class="service-name">AI coaching</h4>
+          <p class="service-desc">One-on-one sessions with EJ Steele. You build your own AI assistant in Claude. We call this assistant your clone. You give it details about your work and your business. Then you use it to help with one part of your business at a time.</p>
+          <p class="service-get"><strong>What you get:</strong> your own AI assistant. You build it with EJ Steele, using your business details.</p>
+        </div>
+        <div class="i2o-card">
+          <p class="service-num">02</p>
+          <h4 class="service-name">Talk to Claude</h4>
+          <p class="service-desc">We set up Claude so you can speak to it instead of typing.</p>
+        </div>
+        <div class="i2o-card" id="svc-exec">
+          <p class="service-num">03</p>
+          <h4 class="service-name">Executive coaching</h4>
+          <p class="service-desc">EJ Steele coaches you one-on-one on leadership and decision-making.</p>
+        </div>
       </div>
-      <div class="i2o-card">
-        <p class="service-num">03</p>
-        <p class="service-name">CRM Integration</p>
-        <p class="service-desc">Connect your CRM, communications, and client pipeline into a single system that runs itself.</p>
       </div>
-      <div class="i2o-card">
-        <p class="service-num">04</p>
-        <p class="service-name">Executive Coaching</p>
-        <p class="service-desc">Work directly with EJ Steele to develop the leadership and decision-making frameworks your next stage requires.</p>
+      <div class="service-group" aria-labelledby="group-consultancy">
+      <h3 class="service-group-title" id="group-consultancy">Small Business Consultancy</h3>
+      <div class="services-grid">
+        <div class="i2o-card" id="svc-strategy">
+          <p class="service-num">04</p>
+          <h4 class="service-name">AI strategy</h4>
+          <p class="service-desc">We write a plan for where AI can help your business. The plan is built on our ATLAS and SIGNALS frameworks.</p>
+          <p class="service-get"><strong>What you get:</strong> a written plan for where AI fits in your business.</p>
+        </div>
+        <div class="i2o-card" id="svc-automation">
+          <p class="service-num">05</p>
+          <h4 class="service-name">Automation and CRM</h4>
+          <p class="service-desc">We set up a customer relationship management (CRM) system for you in Keap or GoHighLevel. We automate repeat tasks with Make, n8n or MindStudio. Then the CRM and the automations are yours to run.</p>
+          <p class="service-get"><strong>What you get:</strong> a CRM and automations your team can run.</p>
+        </div>
+        <div class="i2o-card">
+          <p class="service-num">06</p>
+          <h4 class="service-name">Agentic AI systems</h4>
+          <p class="service-desc">Purpose-built AI agents that research, decide, and execute on your behalf without babysitting. From grant research to client intake, we build the agent and hand you the keys.</p>
+        </div>
+        <div class="i2o-card">
+          <p class="service-num">07</p>
+          <h4 class="service-name">Fractional CMO</h4>
+          <p class="service-desc">EJ Steele works part-time as your head of marketing. The work covers positioning, messaging and content strategy.</p>
+        </div>
       </div>
-      <div class="i2o-card">
-        <p class="service-num">05</p>
-        <p class="service-name">Digital Marketing Strategy</p>
-        <p class="service-desc">Build the positioning, messaging, and channel strategy that puts your business in front of the right people — before your competitors figure out what hit them.</p>
-      </div>
-      <div class="i2o-card">
-        <p class="service-num">06</p>
-        <p class="service-name">Agentic AI Systems</p>
-        <p class="service-desc">Purpose-built AI agents that research, decide, and execute on your behalf — without babysitting. From grant research to client intake, we build the agent and hand you the keys.</p>
       </div>
     </div>
+    </div>
+  </section>
+
+  <section class="proof band" id="agents" aria-labelledby="agents-title">
+    <div class="section-head">
+      <p class="i2o-eyebrow">AI agents</p>
+      <h2 class="proof-title" id="agents-title">The AI <span class="accent">agents</span> we build</h2>
+    </div>
+    <div class="agents-grid">
+      <div class="i2o-card">
+        <span class="icon-tile tile-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+        <h3 class="card-title">Customer agents</h3>
+        <p class="card-text">They answer customer questions and resolve common issues, day and night. They work on your website, by phone, by email and by text.</p>
+      </div>
+      <div class="i2o-card">
+        <span class="icon-tile tile-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0-3-3.85"/></svg></span>
+        <h3 class="card-title">Employee agents</h3>
+        <p class="card-text">They take repeat tasks off your team. They also track tasks and move work from one step to the next.</p>
+      </div>
+      <div class="i2o-card">
+        <span class="icon-tile tile-purple" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span>
+        <h3 class="card-title">Creative agents</h3>
+        <p class="card-text">They draft content and support design work in your brand&rsquo;s style.</p>
+      </div>
+      <div class="i2o-card">
+        <span class="icon-tile tile-green" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M8 17v-5"/><path d="M13 17V8"/><path d="M18 17v-9"/></svg></span>
+        <h3 class="card-title">Data agents</h3>
+        <p class="card-text">They analyze your data and report what it shows, to support your decisions.</p>
+      </div>
+      <div class="i2o-card">
+        <span class="icon-tile tile-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+        <h3 class="card-title">Code agents</h3>
+        <p class="card-text">They write and test code to the standards you set.</p>
+      </div>
+      <div class="i2o-card">
+        <span class="icon-tile tile-red" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+        <h3 class="card-title">Security agents</h3>
+        <p class="card-text">They watch for threats around the clock and flag them to you.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof" id="process" aria-labelledby="process-title">
+    <div class="section-head">
+      <p class="i2o-eyebrow">How we work</p>
+      <h2 class="proof-title" id="process-title">How a build <span class="accent">runs</span></h2>
+    </div>
+    <ol class="steps-grid">
+      <li class="i2o-card">
+        <p class="step-circle" aria-label="Step 1">1</p>
+        <h3 class="card-title">Discovery</h3>
+        <p class="card-text">We map how your work runs today. We pick the tasks an agent will handle and agree with you on how to measure success.</p>
+      </li>
+      <li class="i2o-card">
+        <p class="step-circle" aria-label="Step 2">2</p>
+        <h3 class="card-title">Design</h3>
+        <p class="card-text">We plan how the agent works and how it connects to your systems. We set up tests for the agent.</p>
+      </li>
+      <li class="i2o-card">
+        <p class="step-circle" aria-label="Step 3">3</p>
+        <h3 class="card-title">Deploy</h3>
+        <p class="card-text">We set up the agent, connect it and test it. Then we train your team and hand it over.</p>
+      </li>
+      <li class="i2o-card">
+        <p class="step-circle" aria-label="Step 4">4</p>
+        <h3 class="card-title">Optimize</h3>
+        <p class="card-text">We track how the agent performs and tune it as it runs.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="proof centered-groups" id="industries" aria-labelledby="industries-title">
+    <div class="section-head">
+      <p class="i2o-eyebrow">Who EJ has worked with</p>
+      <h2 class="proof-title" id="industries-title">Industries <span class="accent">and clients</span></h2>
+    </div>
+    <div class="industry-group">
+      <p class="industry-label">EJ&rsquo;s coaching clients through AmplifyAI</p>
+      <ul class="chips">
+          <li>Legal</li>
+          <li>Workplace investigations</li>
+          <li>Real estate</li>
+          <li>Roofing</li>
+          <li>Behavioral health</li>
+          <li>Aesthetic medicine</li>
+          <li>Teleradiology</li>
+          <li>Foot care</li>
+          <li>Payment processing</li>
+          <li>Hospitality</li>
+          <li>Safety training</li>
+          <li>Publishing</li>
+          <li>AI education</li>
+          <li>Network marketing</li>
+      </ul>
+    </div>
+    <div class="industry-group">
+      <p class="industry-label">Inward2Onward clients</p>
+      <ul class="chips">
+          <li>Non-emergency medical transportation</li>
+          <li>Fine art and interior design</li>
+      </ul>
+    </div>
+    <div class="industry-group">
+      <p class="industry-label">Clients of Task At Hand Consulting, EJ Steele&rsquo;s other firm</p>
+      <ul class="chips">
+          <li>Toyota</li>
+          <li>Clear Channel Outdoor</li>
+          <li>Credit Karma</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="proof band" id="results" aria-labelledby="results-title">
+    <div class="section-head">
+      <p class="i2o-eyebrow">Results</p>
+      <h2 class="proof-title" id="results-title">What EJ&rsquo;s coaching clients <span class="accent">did</span></h2>
+      <p class="proof-note">From coaching clients through AmplifyAI. Names are left out.</p>
+    </div>
+    <div class="results-grid three">
+        <div class="i2o-card result-card">
+          <p class="result-who">A ghostwriter moving into AI services</p>
+          <p class="result-text">With no coding background, he took on paid web work for a local business owner. He used AI to do the build. He reports that the work saves the owner time.</p>
+          <blockquote class="result-quote"><p>&ldquo;That saves him a lot of time.&rdquo;</p></blockquote>
+        </div>
+        <div class="i2o-card result-card">
+          <p class="result-who">The owner of a workplace investigations firm</p>
+          <blockquote class="result-quote"><p>&ldquo;&hellip;the actual products for my clients are way better.&rdquo;</p></blockquote>
+        </div>
+        <div class="i2o-card result-card">
+          <p class="result-who">A real estate broker</p>
+          <p class="result-text">Used AI to write a proposal that split the price of a complex property-title problem into stages. Then sent it to a manager and a lawyer for review.</p>
+          <blockquote class="result-quote"><p>&ldquo;It helped me do the proposition.&rdquo;</p></blockquote>
+        </div>
+    </div>
+  </section>
+
+  <section class="proof" id="tools" aria-labelledby="tools-title">
+    <div class="section-head">
+      <p class="i2o-eyebrow">Tools</p>
+      <h2 class="proof-title" id="tools-title">Tools we <span class="accent">work with</span></h2>
+    </div>
+    <div class="marquee">
+      <div class="marquee-inner">
+        <ul class="chips"><li>Keap</li><li>GoHighLevel</li><li>MindStudio</li><li>ChatGPT</li><li>Claude</li><li>Google Gemini</li><li>Perplexity</li><li>Make</li><li>Zapier</li><li>n8n</li><li>Airtable</li><li>Miro</li><li>Notion</li><li>Slack</li><li>GitHub Copilot</li><li>Microsoft 365</li><li>Hugging Face</li><li>Telegram</li><li>Supabase</li><li>GitHub</li><li>Bolt</li><li>Mailgun</li><li>Replit</li><li>Postman</li><li>Box</li><li>Magai</li><li>ElevenLabs</li><li>Canva</li><li>Apify</li></ul>
+        <ul class="chips" aria-hidden="true"><li>Keap</li><li>GoHighLevel</li><li>MindStudio</li><li>ChatGPT</li><li>Claude</li><li>Google Gemini</li><li>Perplexity</li><li>Make</li><li>Zapier</li><li>n8n</li><li>Airtable</li><li>Miro</li><li>Notion</li><li>Slack</li><li>GitHub Copilot</li><li>Microsoft 365</li><li>Hugging Face</li><li>Telegram</li><li>Supabase</li><li>GitHub</li><li>Bolt</li><li>Mailgun</li><li>Replit</li><li>Postman</li><li>Box</li><li>Magai</li><li>ElevenLabs</li><li>Canva</li><li>Apify</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof" id="testimonials" aria-labelledby="testimonials-title">
+    <div class="section-head">
+      <p class="i2o-eyebrow">Clients</p>
+      <h2 class="proof-title" id="testimonials-title">What clients <span class="accent">say</span></h2>
+    </div>
+    <div class="quotes-grid">
+      <figure class="i2o-card quote-card">
+        <blockquote class="quote-text"><p>&ldquo;EJ became an integral part of our business success. His thought-provoking approach and strategic insights revolutionized our creative workflows.&rdquo;</p></blockquote>
+        <figcaption class="quote-person">
+          <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=150" alt="" width="48" height="48" loading="lazy">
+          <span><span class="quote-name">Leisa Johnson</span><br><span class="quote-role">Creative Director, Lovely Studio Agency</span></span>
+        </figcaption>
+      </figure>
+      <figure class="i2o-card quote-card">
+        <blockquote class="quote-text"><p>&ldquo;EJ&rsquo;s automation strategy expertise transformed our client communications. His technical knowledge and strategic vision delivered exceptional ROI.&rdquo;</p></blockquote>
+        <figcaption class="quote-person">
+          <img src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=150" alt="" width="48" height="48" loading="lazy">
+          <span><span class="quote-name">Tara Mettler</span><br><span class="quote-role">Managing Partner, Consider Yourself Wealthy Strategy Group</span></span>
+        </figcaption>
+      </figure>
+      <figure class="i2o-card quote-card">
+        <blockquote class="quote-text"><p>&ldquo;EJ transformed our failed automation attempt into workflow excellence. His strategic approach completely reshaped our operations, and we&rsquo;re now AI-Automation Advocates.&rdquo;</p></blockquote>
+        <figcaption class="quote-person">
+          <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=150" alt="" width="48" height="48" loading="lazy">
+          <span><span class="quote-name">Kenyon Berry</span><br><span class="quote-role">President, Berry Swift Commercial Services</span></span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="proof" id="about" aria-labelledby="about-title">
+    <p class="i2o-eyebrow">About</p>
+    <h2 class="proof-title" id="about-title">EJ Steele</h2>
+    <p class="about-text">EJ Steele is an AI automation consultant and executive coach. He founded Inward2Onward. He wrote ATLAS and SIGNALS, two AI implementation frameworks. EJ plans an AI project with a client and builds it. He then trains the client&rsquo;s people to run it. His past clients include Toyota and Credit Karma. His work spans 350+ organizations and coaching clients across Inward2Onward and AmplifyAI. He is based in Glendale, Arizona.</p>
+    <p class="about-cred"><strong>Certification:</strong> AI-Powered Workflows &amp; Automation Certification, University of Arizona.</p>
+  </section>
+
+  <section class="proof band" id="faq" aria-labelledby="faq-title">
+    <div class="section-head">
+      <p class="i2o-eyebrow">FAQ</p>
+      <h2 class="proof-title" id="faq-title">Questions about <span class="accent">working with us</span></h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Do I need technical skills to work with you?</summary>
+        <p>No. In AI coaching, you build your own AI assistant in Claude with EJ Steele, one part of your business at a time. In a build, we set up the system for you.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What happens after you build a system?</summary>
+        <p>We test it, train the people who will run it and hand it over. The system is yours to run.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What is the difference between AI coaching and a build?</summary>
+        <p>In AI coaching, you build and use your own AI assistant, with EJ Steele in each session. In a build, we set up the system for you, then hand it over.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Which tools do you work with?</summary>
+        <p>We build CRMs in Keap and GoHighLevel and automate tasks with Make.com, n8n and MindStudio. We also work with Claude, ChatGPT and the other tools listed on this page.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What is the first call?</summary>
+        <p>A 30-minute online call with EJ Steele. We walk through what Scout, our SIGNALS diagnostic, covers and whether it fits your business. You can book it from any Book a call button on this page.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How much does it cost?</summary>
+        <p>Work starts with Scout, our $1,500 SIGNALS diagnostic. Scout is credited in full against a build that starts within 30 days of the first milestone. Builds, called Command, start at $5,000. An implementation retainer starts at $2,000 a month, with a three-month minimum. Build scope and price are set in a written agreement.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Where are you based?</summary>
+        <p>Glendale, Arizona. We serve clients nationally.</p>
+      </details>
+    </div>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need technical skills to work with you?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. In AI coaching, you build your own AI assistant in Claude with EJ Steele, one part of your business at a time. In a build, we set up the system for you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens after you build a system?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We test it, train the people who will run it and hand it over. The system is yours to run."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between AI coaching and a build?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In AI coaching, you build and use your own AI assistant, with EJ Steele in each session. In a build, we set up the system for you, then hand it over."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which tools do you work with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We build CRMs in Keap and GoHighLevel and automate tasks with Make.com, n8n and MindStudio. We also work with Claude, ChatGPT and the other tools listed on this page."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the first call?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A 30-minute online call with EJ Steele. We walk through what Scout, our SIGNALS diagnostic, covers and whether it fits your business. You can book it from any Book a call button on this page."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does it cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Work starts with Scout, our $1,500 SIGNALS diagnostic. Scout is credited in full against a build that starts within 30 days of the first milestone. Builds, called Command, start at $5,000. An implementation retainer starts at $2,000 a month, with a three-month minimum. Build scope and price are set in a written agreement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where are you based?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Glendale, Arizona. We serve clients nationally."
+      }
+    }
+  ]
+}
+    </script>
   </section>
 
   <div class="tagline-band">
-    <p class="tagline">325+ CRM and automation implementations. <strong>One standard: it has to work.</strong></p>
+    <p class="tagline"><strong>One standard: it has to work.</strong></p>
   </div>
 
-  <section class="contact-section">
+  <section class="contact-section" id="contact">
     <div>
       <h2 class="contact-heading">Ready to build something real?</h2>
       <p class="contact-sub">Based in Glendale, AZ. Serving clients nationally.</p>
+      <p class="contact-sub">Book a call: a 30-minute online call with EJ Steele.</p>
+      <!-- Held for EJ: what the first call costs and what the caller leaves with. -->
     </div>
     <div class="contact-list">
       <div class="contact-row">
@@ -412,26 +1121,128 @@
 
 
 <!-- ── COOKIE CONSENT BANNER ── -->
-<div id="i2o-cookie-banner" role="dialog" aria-label="Cookie consent" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:#0d1424; border-top:1px solid #1e3a5f; padding:20px 32px; font-family:Inter,system-ui,sans-serif; font-size:13px; color:#94a3b8; flex-wrap:wrap; box-shadow:0 -4px 24px rgba(0,0,0,0.4); gap:24px; align-items:center; justify-content:space-between;">
-  <div style="flex:1; min-width:260px; line-height:1.6;">
-    <strong style="color:#f1f5f9; font-family:Barlow Condensed,sans-serif; font-size:14px; letter-spacing:0.04em; text-transform:uppercase;">We use cookies.</strong>
-    &nbsp;Strictly necessary cookies keep this site running. We also use Google Analytics (pseudonymized) to understand how visitors use our site. No advertising or tracking cookies.
-    <a href="https://legal.inward2onward.com/legal.html" style="color:#3B82F6; margin-left:4px; text-decoration:underline; text-underline-offset:2px;">Cookie Policy</a>
+<div id="i2o-cookie-banner" class="cookie-banner" role="dialog" aria-label="Cookie consent">
+  <div class="cookie-text">
+    <strong>We use cookies.</strong>
+    &nbsp;Strictly necessary cookies keep this site running. We use Cloudflare Web Analytics to understand how visitors use our site. It does not collect personal data. No advertising or tracking cookies.
+    <a href="https://legal.inward2onward.com/legal.html">Cookie Policy</a>
   </div>
-  <div style="display:flex; gap:10px; flex-shrink:0; align-items:center;">
-    <button id="i2o-cookie-decline" onclick="i2oCookieChoice(false)" style="background:none; border:1px solid #1e3a5f; border-radius:6px; color:#475569; font-family:Inter,sans-serif; font-size:12px; padding:8px 16px; cursor:pointer;">Decline non-essential</button>
-    <button id="i2o-cookie-accept" onclick="i2oCookieChoice(true)" style="background:linear-gradient(135deg,#1D4ED8,#3B82F6); border:none; border-radius:6px; color:#fff; font-family:Barlow Condensed,sans-serif; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:9px 20px; cursor:pointer;">Accept all</button>
+  <div class="cookie-actions">
+    <button type="button" id="i2o-cookie-decline" class="cookie-decline">Decline non-essential</button>
+    <button type="button" id="i2o-cookie-accept" class="cookie-accept">Accept all</button>
   </div>
 </div>
 <script>
-(function(){
-  var b=document.getElementById("i2o-cookie-banner");
-  if(!localStorage.getItem("i2o_cookie_consent")){b.style.display="flex";}
+(function () {
+  var KEY = "i2o_cookie_consent";
+  var banner = document.getElementById("i2o-cookie-banner");
+  function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function save(value) { try { localStorage.setItem(KEY, value); } catch (e) {} }
+  function choose(accepted) {
+    save(accepted ? "accepted" : "declined");
+    banner.classList.remove("is-open");
+  }
+  if (!read()) { banner.classList.add("is-open"); }
+  document.getElementById("i2o-cookie-accept").addEventListener("click", function () { choose(true); });
+  document.getElementById("i2o-cookie-decline").addEventListener("click", function () { choose(false); });
 })();
-function i2oCookieChoice(accepted){
-  localStorage.setItem("i2o_cookie_consent", accepted?"accepted":"declined");
-  document.getElementById("i2o-cookie-banner").style.display="none";
-}
+</script>
+<script>
+/* Hero dot field: original halftone of a slow value-noise field. Decorative only; the page reads the same without it. */
+(function () {
+  var canvas = document.querySelector(".hero-dots");
+  if (!canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext("2d");
+  if (!ctx) return;
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var CELL = 8, w = 0, h = 0, dpr = 1, t = 0, last = 0, visible = true, raf = 0;
+
+  function hash(x, y, z) {
+    var n = x * 374761393 + y * 668265263 + z * 2147483647;
+    n = (n ^ (n >>> 13)) * 1274126177;
+    n = n ^ (n >>> 16);
+    return (n >>> 0) / 4294967295;
+  }
+  function smooth(a) { return a * a * (3 - 2 * a); }
+  function lerp(a, b, k) { return a + (b - a) * k; }
+  function noise(x, y, z) {
+    var xi = Math.floor(x), yi = Math.floor(y), zi = Math.floor(z);
+    var xf = smooth(x - xi), yf = smooth(y - yi), zf = smooth(z - zi);
+    function c(dx, dy, dz) { return hash(xi + dx, yi + dy, zi + dz); }
+    var x00 = lerp(c(0, 0, 0), c(1, 0, 0), xf), x10 = lerp(c(0, 1, 0), c(1, 1, 0), xf);
+    var x01 = lerp(c(0, 0, 1), c(1, 0, 1), xf), x11 = lerp(c(0, 1, 1), c(1, 1, 1), xf);
+    return lerp(lerp(x00, x10, yf), lerp(x01, x11, yf), zf);
+  }
+  function field(x, y, z) {
+    return noise(x, y, z) * 0.65 + noise(x * 2.1 + 17, y * 2.1 + 9, z * 1.3) * 0.35;
+  }
+  function resize() {
+    var r = canvas.getBoundingClientRect();
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = Math.max(1, Math.round(r.width)); h = Math.max(1, Math.round(r.height));
+    canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    draw();
+  }
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = "#60A5FA";
+    var cols = Math.ceil(w / CELL), rows = Math.ceil(h / CELL), s = 0.035;
+    for (var j = 0; j < rows; j++) {
+      for (var i = 0; i < cols; i++) {
+        var cx = i * CELL + CELL / 2, cy = j * CELL + CELL / 2;
+        var v = field(cx * s / 2.4, cy * s / 2.4, t);
+        var k = Math.min(1, Math.max(0, (v - 0.42) / 0.3));
+        if (k <= 0.02) continue;
+        var ex = Math.min(cx, w - cx) / (w * 0.18), ey = Math.min(cy, h - cy) / (h * 0.18);
+        var edge = Math.min(1, ex, ey);
+        if (edge <= 0) continue;
+        ctx.globalAlpha = (0.15 + 0.75 * k) * edge;
+        ctx.beginPath();
+        ctx.arc(cx, cy, Math.max(0.6, (CELL / 2 - 0.6) * k), 0, 6.2832);
+        ctx.fill();
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+  function frame(now) {
+    raf = 0;
+    if (!visible || document.hidden) return;
+    if (now - last >= 33) { t += 0.012; last = now; draw(); }
+    raf = requestAnimationFrame(frame);
+  }
+  function start() { if (!reduce && !raf && visible && !document.hidden) raf = requestAnimationFrame(frame); }
+  function stop() { if (raf) { cancelAnimationFrame(raf); raf = 0; } }
+
+  resize();
+  if (window.ResizeObserver) new ResizeObserver(resize).observe(canvas);
+  else window.addEventListener("resize", resize);
+  if (reduce) return;
+  if (window.IntersectionObserver) {
+    new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting;
+      if (visible) start(); else stop();
+    }).observe(canvas);
+  }
+  document.addEventListener("visibilitychange", function () { if (document.hidden) stop(); else start(); });
+  start();
+})();
+
+/* Card reveal: cards fade and rise in order as their section scrolls into view. */
+["start", "services", "agents", "process", "industries", "results", "tools", "testimonials", "faq"].forEach(function (id) {
+  var section = document.getElementById(id);
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!section || reduce || !window.IntersectionObserver) return;
+  var cards = section.querySelectorAll(".section-head, .i2o-card");
+  for (var i = 0; i < cards.length; i++) cards[i].style.setProperty("--reveal-delay", (i * 0.08) + "s");
+  section.classList.add("js-reveal");
+  var io = new IntersectionObserver(function (entries) {
+    if (!entries[0].isIntersecting) return;
+    for (var k = 0; k < cards.length; k++) cards[k].classList.add("is-in");
+    io.disconnect();
+  }, { threshold: 0.12 });
+  io.observe(section);
+});
 </script>
 </body>
 </html>
