@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inward2Onward LLC | AI Strategy &amp; Automation Consulting</title>
+  <script>
+    /* Preview only: ?theme=light shows the light (V1-style) body for comparison. Remove once a theme is chosen. */
+    try { if (new URLSearchParams(location.search).get("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}
+  </script>
   <meta name="description" content="Inward2Onward LLC is an AI strategy and automation consultancy based in Glendale, AZ. We install systems that work." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://inward2onward.com" />
@@ -510,6 +514,26 @@
       .marquee .chips[aria-hidden="true"] { display: none; }
     }
 
+    /* ── LIGHT THEME (preview, ?theme=light): white body like V1, dark nav, hero and footer ── */
+    html[data-theme="light"] {
+      --i2o-navy: #F8FAFC; --i2o-navy-2: #FFFFFF;
+      --i2o-s1: #1E293B; --i2o-s2: #4B5563; --i2o-s3: #4B5563;
+      --i2o-border: #E2E8F0; --i2o-blue-light: #1D4ED8; --i2o-blue: #1D4ED8;
+    }
+    html[data-theme="light"] .site-nav, html[data-theme="light"] .hero, html[data-theme="light"] .site-footer, html[data-theme="light"] .cookie-banner {
+      --i2o-navy: #0a1628; --i2o-navy-2: #0f2044;
+      --i2o-s1: #f1f5f9; --i2o-s2: #94a3b8; --i2o-s3: #8b98ad;
+      --i2o-border: rgba(59, 130, 246, 0.15); --i2o-blue-light: #60A5FA; --i2o-blue: #3B82F6;
+    }
+    html[data-theme="light"] .site-nav, html[data-theme="light"] .hero { background: #0a1628; }
+    html[data-theme="light"] .site-footer { background: #1E293B; }
+    html[data-theme="light"] .band { border-image: linear-gradient(to bottom, rgba(219, 234, 254, 0), rgba(219, 234, 254, 0.7) 14%, rgba(219, 234, 254, 0.7) 86%, rgba(219, 234, 254, 0)) fill 0 / / 0 100vmax; }
+    html[data-theme="light"] .band .i2o-card, html[data-theme="light"] .band .faq-item { background: #FFFFFF; }
+    html[data-theme="light"] .i2o-card { box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 12px 28px -16px rgba(30, 64, 175, 0.25); }
+    html[data-theme="light"] .i2o-card:hover, html[data-theme="light"] .i2o-card:focus-within { box-shadow: 0 2px 4px rgba(15, 23, 42, 0.08), 0 22px 40px -18px rgba(30, 64, 175, 0.35); }
+    html[data-theme="light"] .chips li { border-color: #BFDBFE; }
+    html[data-theme="light"] .tagline-band { background: #EFF6FF; }
+
     /* ── TAGLINE BAND ── */
     .tagline-band {
       border-top: 1px solid var(--i2o-border);
@@ -985,7 +1009,7 @@
       </details>
       <details class="faq-item">
         <summary>How much does it cost?</summary>
-        <p>Work starts with Scout, our $1,500 SIGNALS diagnostic. Scout is credited in full against a build inside 30 days. Builds, called Command, start at $5,000. An implementation retainer starts at $2,000 a month, with a three-month minimum. Build scope and price are set in a written agreement.</p>
+        <p>Work starts with Scout, our $1,500 SIGNALS diagnostic. Scout is credited in full against a build that starts within 30 days of the first milestone. Builds, called Command, start at $5,000. An implementation retainer starts at $2,000 a month, with a three-month minimum. Build scope and price are set in a written agreement.</p>
       </details>
       <details class="faq-item">
         <summary>Where are you based?</summary>
@@ -1042,7 +1066,7 @@
       "name": "How much does it cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Work starts with Scout, our $1,500 SIGNALS diagnostic. Scout is credited in full against a build inside 30 days. Builds, called Command, start at $5,000. An implementation retainer starts at $2,000 a month, with a three-month minimum. Build scope and price are set in a written agreement."
+        "text": "Work starts with Scout, our $1,500 SIGNALS diagnostic. Scout is credited in full against a build that starts within 30 days of the first milestone. Builds, called Command, start at $5,000. An implementation retainer starts at $2,000 a month, with a three-month minimum. Build scope and price are set in a written agreement."
       }
     },
     {
@@ -1067,7 +1091,7 @@
       <h2 class="contact-heading">Ready to build something real?</h2>
       <p class="contact-sub">Based in Glendale, AZ. Serving clients nationally.</p>
       <p class="contact-sub">Book a call: a 30-minute online call with EJ Steele.</p>
-      <!-- Held for EJ: what the caller leaves with, and whether the call is free. -->
+      <!-- Held for EJ: what the first call costs and what the caller leaves with. -->
     </div>
     <div class="contact-list">
       <div class="contact-row">
